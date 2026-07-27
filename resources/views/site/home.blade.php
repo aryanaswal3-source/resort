@@ -9,7 +9,12 @@
 
 @section('content')
 
+<div class="container">
+    <div class="row">
+        <h1>hellooo</h1>
 
+    </div>
+</div>
 
 <section class="hero">
   <svg class="hero-cliffs" viewBox="0 0 1440 420" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of dark volcanic cliffs above the ocean at dusk">
