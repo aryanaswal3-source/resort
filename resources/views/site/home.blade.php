@@ -1,144 +1,698 @@
 @extends('layout.site-layout')
 
-@section('title', 'home page')
+@section('title', 'Home | Resort')
 
 @push('styles')
-
-
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 @endpush
 
 @section('content')
 
-<div class="container">
-    <div class="row">
-        <h1>hellooo</h1>
+    {{-- ===== Global Fixed Buy Now Button ===== --}}
+    <button class="btn btn-buy-now">
+        <span class="icon-circle"><i class="bi bi-droplet-fill"></i></span> Buy Now
+    </button>
 
-    </div>
-</div>
+    {{-- ===== Explore Section ===== --}}
+    <section class="explore-section">
+        <div class="container">
 
-<section class="hero">
-  <svg class="hero-cliffs" viewBox="0 0 1440 420" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of dark volcanic cliffs above the ocean at dusk">
-    <polygon points="0,420 0,260 90,300 170,210 260,270 340,180 430,250 520,150 610,240 700,170 800,260 900,190 1000,270 1100,200 1220,280 1310,220 1440,290 1440,420" fill="#0E1113"></polygon>
-    <polygon points="0,420 0,330 120,360 240,320 360,370 480,330 620,380 760,340 900,390 1050,350 1200,390 1320,360 1440,400 1440,420" fill="#191E20"></polygon>
-  </svg>
-  <div class="hero-content">
-    <div class="hero-headline-block">
-      <p class="eyebrow dark">Marejada &nbsp;·&nbsp; a cliff above the Atlantic</p>
-      <h1 class="serif">Where the ocean<br>runs out of <em>land</em>.</h1>
-      <p class="hero-sub">Eighteen rooms cut into black volcanic rock, forty metres above open water. No entertainment schedule. No children under fourteen. Just the tide, the wind, and a very long table.</p>
+            <!-- Top heading -->
+            <div class="text-center mb-5">
+                <p class="section-label mb-2">EXPLORE</p>
+                <h2 class="section-title explore-heading">We are cool to give you pleasure</h2>
+            </div>
+
+            <div class="row align-items-center g-5">
+
+                <!-- Left: Text content -->
+                <div class="col-lg-6 position-relative">
+
+                    <h3 class="section-title explore-subheading mb-4">
+                        As much as comfort want to get from us everything
+                    </h3>
+
+                    <p class="mb-4">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt eveniet
+                        reprehenderit ratione ad perspiciatis repudiandae iste ipsam temporibus sit quo!
+                        Incidunt, necessitatibus fugiat ut dignissimos pariatur odit natus ipsum! Obcaecati
+                        iste ipsam temporibus sit quo! Incidunt, necessitatibus Obcaecati iste.
+                    </p>
+
+                    <p class="mb-4">
+                        Konin wansis dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua. Ut nim ad minim veniam, quis nostrud
+                        exercitation. dolor sit amet, consectetur adipisicing quis nostrud. Konin wansis
+                        dolor sit amet, consectetur adipisicing elit dignissimos pariatur
+                    </p>
+
+                    <a href="#" class="btn btn-explore">
+                        Explore More
+                        <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                    </a>
+                </div>
+
+                <!-- Right: Image with gold offset border -->
+                <div class="col-lg-6">
+                    <div class="explore-img-wrap">
+                        <img src="{{ asset('image/resort-pool.jpg') }}" alt="Resort pool at sunset">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- ===== City View Carousel Section ===== --}}
+    <section class="cityview-section" style="background-image: url('{{ asset('image/beach-hut.jpg') }}');">
+
+        <!-- Top wavy border -->
+        <div class="cityview-wave top">
+            <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--bg)" d="M0,80 L0.0,20 C9.5,22.5 38.0,30.7 57.1,35.0 C76.2,39.3 95.2,
+                44.2 114.3,46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,
+                38.8 266.6,43.7 285.7,45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,
+                52.0 C419.0,51.0 438.1,40.8 457.1,41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,
+                43.7 571.4,44.0 C590.5,44.3 609.5,56.2 628.6,55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,
+                33.7 723.9,32.5 742.9,35.0 C761.9,37.5 781.0,50.7 800.0,52.0 C819.0,53.3 838.1,44.2 857.1,
+                43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,46.0 952.4,48.0 971.4,49.0 C990.4,50.0 1009.5,
+                50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,49.5 1123.9,50.2 1142.9,48.0 C1162.0,
+                45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
+            </svg>
+        </div>
+
+        <div class="container cityview-card-wrap">
+            <div id="cityViewCarousel" class="carousel slide cityview-card position-relative" data-bs-ride="false">
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <p class="section-label mb-2">CITY VIEW</p>
+                        <h3 class="section-title mb-4">A charming view of the city</h3>
+                        <p class="mb-3">
+                            Ipsum, dolor sit amet consectetur adipisicing elit. Quuntur necessitatibus
+                            fugit eligendi accusantium vel quos cupiditate ducimus placeat explicabo
+                            distinctio, consectetur imi, a voluptate delectus.
+                        </p>
+                        <p class="mb-0">
+                            Onin wansis dolor sit amet, consectetur adipisicing elit, sed smod tempor
+                            incididunt ut labore et dolore magna aliqua. Ad veniam, quis nostrud exercitation
+                            consectetur.
+                        </p>
+                    </div>
+
+                    <div class="carousel-item">
+                        <p class="section-label mb-2">BEACH VIEW</p>
+                        <h3 class="section-title mb-4">A relaxing view of the beach</h3>
+                        <p class="mb-3">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur debitis
+                            eos animi possimus repellat, iure nam praesentium voluptatibus dolorum
+                            necessitatibus.
+                        </p>
+                        <p class="mb-0">
+                            The view do eiusmod tempor incididunt ut labore et dolore magna aliqua minim
+                            veniam quis nostrud exercitation ullamco laboris nisi ut aliquip.
+                        </p>
+                    </div>
+
+                    <div class="carousel-item">
+                        <p class="section-label mb-2">POOL VIEW</p>
+                        <h3 class="section-title mb-4">A refreshing view of the pool</h3>
+                        <p class="mb-3">
+                            Konin wansis dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.
+                        </p>
+                        <p class="mb-0">
+                            Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat duis aute irure dolor in reprehenderit.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Custom arrows -->
+                <button class="cityview-arrow prev" type="button" data-bs-target="#cityViewCarousel" data-bs-slide="prev">
+                    <i class="bi bi-arrow-left"></i>
+                </button>
+                <button class="cityview-arrow next" type="button" data-bs-target="#cityViewCarousel" data-bs-slide="next">
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- Bottom wavy border -->
+        <div class="cityview-wave bottom">
+            <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--bg)" d="M0,80 L0.0,20 C9.5,22.5 38.0,30.7 57.1,35.0 C76.2,39.3 95.2,44.2 114.3,
+                46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,38.8 266.6,43.7 285.7,
+                45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,52.0 C419.0,51.0 438.1,40.8 457.1,
+                41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,43.7 571.4,44.0 C590.5,44.3 609.5,56.2 628.6,
+                55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,33.7 723.9,32.5 742.9,35.0 C761.9,37.5 781.0,50.7 800.0,
+                52.0 C819.0,53.3 838.1,44.2 857.1,43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,46.0 952.4,48.0 971.4,
+                49.0 C990.4,50.0 1009.5,50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,49.5 1123.9,50.2 1142.9,
+                48.0 C1162.0,45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
+            </svg>
+        </div>
+
+    </section>
+
+    {{-- ===== Facilities Section ===== --}}
+    <section class="facilities-section">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <p class="section-label mb-2">FACILITIES</p>
+                <h2 class="section-title">Giving entirely awesome</h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="facility-card">
+                        <div class="facility-icon"><i class="bi bi-truck"></i></div>
+                        <h4 class="section-title">Pick Up &amp; Drop</h4>
+                        <p>parkn ipsum dolor sit amet, consectetur adiing elit sed do eiu</p>
+                        <button class="facility-arrow"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="facility-card">
+                        <div class="facility-icon"><i class="bi bi-cup-hot"></i></div>
+                        <h4 class="section-title">Welcome Drink</h4>
+                        <p>parkn ipsum dolor sit amet, consectetur adiing elit sed do eiu</p>
+                        <button class="facility-arrow"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="facility-card">
+                        <div class="facility-icon"><i class="bi bi-house-door"></i></div>
+                        <h4 class="section-title">Parking Space</h4>
+                        <p>parkn ipsum dolor sit amet, consectetur adiing elit sed do eiu</p>
+                        <button class="facility-arrow"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="facility-card">
+                        <div class="facility-icon"><i class="bi bi-droplet-half"></i></div>
+                        <h4 class="section-title">Cold Hot &amp; Water</h4>
+                        <p>parkn ipsum dolor sit amet, consectetur adiing elit sed do eiu</p>
+                        <button class="facility-arrow"><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- ===== Our Rooms Section ===== --}}
+    <section class="rooms-section">
+        <div class="container">
+
+            <div class="text-center mb-5">
+                <p class="section-label mb-2">OUR ROOMS</p>
+                <h2 class="section-title">Fascinating rooms &amp; suites</h2>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+
+                <!-- Left: feature grid -->
+                <div class="col-lg-6">
+                    <div class="row g-3 h-100">
+
+                        <div class="col-6">
+                            <div class="room-feature-box active">
+                                <div class="room-feature-icon"><i class="bi bi-credit-card-2-front"></i></div>
+                                <span class="room-feature-tag">Free cost</span>
+                                <p class="room-feature-title">No booking fee</p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="room-feature-box">
+                                <div class="room-feature-icon"><i class="bi bi-award"></i></div>
+                                <span class="room-feature-tag">Free cost</span>
+                                <p class="room-feature-title">Best rate guarantee</p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="room-feature-box">
+                                <div class="room-feature-icon"><i class="bi bi-airplane"></i></div>
+                                <span class="room-feature-tag">Free cost</span>
+                                <p class="room-feature-title">Reservations 24/7</p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="room-feature-box">
+                                <div class="room-feature-icon"><i class="bi bi-speedometer2"></i></div>
+                                <span class="room-feature-tag">Free cost</span>
+                                <p class="room-feature-title">High-speed Wi-Fi</p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="room-feature-box">
+                                <div class="room-feature-icon"><i class="bi bi-cup-hot"></i></div>
+                                <span class="room-feature-tag">Free cost</span>
+                                <p class="room-feature-title">Free breakfast</p>
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="room-feature-box">
+                                <div class="room-feature-icon"><i class="bi bi-person"></i></div>
+                                <span class="room-feature-tag">100% free</span>
+                                <p class="room-feature-title">One person free</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right: room image -->
+                <div class="col-lg-6">
+                    <div class="rooms-img-wrap h-100">
+                        <img src="{{ asset('image/room-bed.jpg') }}" alt="Resort room with pillows">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+    {{-- ===== Countdown / Last Minute Offer Section ===== --}}
+    <section class="countdown-section" style="background-image: url('{{ asset('image/ocean-rocks.jpg') }}');">
+ 
+        <div class="section-wave top">
+            <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--bg)" d="M0,80 L0.0,20 C9.5,22.5 38.0,30.7 57.1,35.0 C76.2,39.3 95.2,
+                44.2 114.3,46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,
+                38.8 266.6,43.7 285.7,45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,52.0 C419.0,
+                51.0 438.1,40.8 457.1,41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,43.7 571.4,44.0 C590.5,
+                44.3 609.5,56.2 628.6,55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,33.7 723.9,32.5 742.9,35.0 C761.9,
+                37.5 781.0,50.7 800.0,52.0 C819.0,53.3 838.1,44.2 857.1,43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,
+                46.0 952.4,48.0 971.4,49.0 C990.4,50.0 1009.5,50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,
+                49.5 1123.9,50.2 1142.9,48.0 C1162.0,45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
+            </svg>
+        </div>
+ 
+        <div class="container">
+            <p class="countdown-label mb-2">LAST MINUTE!</p>
+            <h2 class="countdown-heading">
+                <span class="script-part">Incredible!</span><span class="bold-part">Are you coming today</span>
+            </h2>
+ 
+            <div class="countdown-timer">
+                <div class="countdown-unit">
+                    <span class="num">520</span>
+                    <span class="label">DAYS</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="num">14</span>
+                    <span class="label">HOURS</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="num">09</span>
+                    <span class="label">MINUTES</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="num">28</span>
+                    <span class="label">SECONDS</span>
+                </div>
+            </div>
+ 
+            <a href="#" class="btn-join">
+                Join Us Today
+                <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+            </a>
+        </div>
+ 
+        <div class="section-wave bottom">
+            <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--bg)" d="M0,80 L0.0,20 C9.5,22.5 38.0,30.7 57.1,35.0 C76.2,39.3 95.2,44.2 114.3,
+                46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,38.8 266.6,43.7 285.7,
+                45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,52.0 C419.0,51.0 438.1,40.8 457.1,
+                41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,43.7 571.4,44.0 C590.5,44.3 609.5,56.2 628.6,
+                55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,33.7 723.9,32.5 742.9,35.0 C761.9,37.5 781.0,50.7 800.0,
+                52.0 C819.0,53.3 838.1,44.2 857.1,43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,46.0 952.4,48.0 971.4,
+                49.0 C990.4,50.0 1009.5,50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,49.5 1123.9,
+                50.2 1142.9,48.0 C1162.0,45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
+            </svg>
+        </div>
+ 
+    </section>
+
+     {{-- ===== Exclusive Offers Section ===== --}}
+    <section class="offers-section">
+        <div class="container">
+ 
+            <div class="text-center mb-5">
+                <p class="section-label mb-2">EXCLUSIVE OFFERS</p>
+                <h2 class="section-title">You can get an exclusive offer</h2>
+            </div>
+ 
+            <div class="row g-4">
+ 
+                {{-- Deluxe Room --}}
+                <div class="col-lg-6">
+                    <div class="row g-0 offer-card align-items-stretch">
+                        <div class="col-5">
+                            <img src="{{ asset('image/room-deluxe.jpg') }}" alt="Deluxe Room" class="offer-img">
+                        </div>
+                        <div class="col-7">
+                            <div class="offer-details">
+                                <h4 class="section-title">Deluxe Room</h4>
+                                <div class="offer-stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
+                                <span class="offer-price">From $50.6/night</span>
+                                <a href="#" class="btn-explore">
+                                    Book Online
+                                    <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+                {{-- Premium Room --}}
+                <div class="col-lg-6">
+                    <div class="row g-0 offer-card align-items-stretch">
+                        <div class="col-5">
+                            <img src="{{ asset('image/room-premium.jpg') }}" alt="Premium Room" class="offer-img">
+                        </div>
+                        <div class="col-7">
+                            <div class="offer-details">
+                                <h4 class="section-title">Premium Room</h4>
+                                <div class="offer-stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
+                                <span class="offer-price">From $85.6/night</span>
+                                <a href="#" class="btn-explore">
+                                    Book Online
+                                    <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+                {{-- Classic Room --}}
+                <div class="col-lg-6">
+                    <div class="row g-0 offer-card align-items-stretch">
+                        <div class="col-5">
+                            <img src="{{ asset('image/room-classic.jpg') }}" alt="Classic Room" class="offer-img">
+                        </div>
+                        <div class="col-7">
+                            <div class="offer-details">
+                                <h4 class="section-title">Classic Room</h4>
+                                <div class="offer-stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
+                                <span class="offer-price">From $95.6/night</span>
+                                <a href="#" class="btn-explore">
+                                    Book Online
+                                    <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+                {{-- Budget Room --}}
+                <div class="col-lg-6">
+                    <div class="row g-0 offer-card align-items-stretch">
+                        <div class="col-5">
+                            <img src="{{ asset('image/room-budget.jpg') }}" alt="Budget Room" class="offer-img">
+                        </div>
+                        <div class="col-7">
+                            <div class="offer-details">
+                                <h4 class="section-title">Budget Room</h4>
+                                <div class="offer-stars">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
+                                <span class="offer-price">From $80.6/night</span>
+                                <a href="#" class="btn-explore">
+                                    Book Online
+                                    <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ 
+            </div>
+        </div>
+    </section>
+
+     {{-- ===== Area We Cover / Restaurant Tabs Section ===== --}}
+    <section class="area-section">
+        <div class="container">
+ 
+            <div class="text-center mb-5">
+                <p class="section-label mb-2">RESTAURANT</p>
+                <h2 class="section-title">The area we cover under ecorik</h2>
+            </div>
+ 
+            <div class="row align-items-start">
+ 
+                <div class="col-lg-6">
+                    <div class="area-img-wrap">
+                        <img src="{{ asset('image/restaurant.jpg') }}" alt="Restaurant">
+                    </div>
+                </div>
+ 
+                <div class="col-lg-6 ps-lg-5">
+ 
+                    <ul class="nav area-tabs" id="areaTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="restaurant-tab" data-bs-toggle="tab" data-bs-target="#restaurant-pane" type="button" role="tab">Restaurant</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pool-tab" data-bs-toggle="tab" data-bs-target="#pool-pane" type="button" role="tab">Swimming pool</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="conference-tab" data-bs-toggle="tab" data-bs-target="#conference-pane" type="button" role="tab">Conference room</button>
+                        </li>
+                    </ul>
+ 
+                    <div class="tab-content area-content" id="areaTabContent">
+ 
+                        <div class="tab-pane fade show active" id="restaurant-pane" role="tabpanel">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat atque quibusdam fuga natus necessitatibus eveniet maiores nostrum esse ut voluptates sint dolores, voluptatum consequatur ad est enim perferendis nostrum esse ut voluptates dolores consectetur voluptates.</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque</p>
+                            <a href="#" class="btn-explore">
+                                Learn About
+                                <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                            </a>
+                        </div>
+ 
+                        <div class="tab-pane fade" id="pool-pane" role="tabpanel">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat atque quibusdam fuga natus necessitatibus eveniet maiores nostrum esse ut voluptates sint dolores, voluptatum consequatur ad est enim perferendis nostrum esse ut voluptates dolores consectetur voluptates.</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque</p>
+                            <a href="#" class="btn-explore">
+                                Learn About
+                                <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                            </a>
+                        </div>
+ 
+                        <div class="tab-pane fade" id="conference-pane" role="tabpanel">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat atque quibusdam fuga natus necessitatibus eveniet maiores nostrum esse ut voluptates sint dolores, voluptatum consequatur ad est enim perferendis nostrum esse ut voluptates dolores consectetur voluptates.</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis, soluta, aspernatur dolorum sequi quisquam ullam in pariatur nihil dolorem cumque excepturi totam. Qui excepturi quasi cumque</p>
+                            <a href="#" class="btn-explore">
+                                Learn About
+                                <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                            </a>
+                        </div>
+ 
+                    </div>
+ 
+                </div>
+ 
+            </div>
+        </div>
+    </section>
+
+    {{-- ===== Special Offers Section (gold bg) ===== --}}
+<section class="special-offers-section">
+    <div class="container position-relative">
+
+        <div class="text-center mb-5">
+            <p class="section-label mb-2">EXCLUSIVE OFFERS</p>
+            <h2 class="section-title">You can get an exclusive offer</h2>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-4">
+                <div class="offer2-card">
+                    <span class="offer2-label">Up to 30% off</span>
+                    <h4>Swimming for man</h4>
+                    <div class="offer2-rating">4.5 <span>(432 Reviews)</span></div>
+                    <p class="offer2-desc">Swimming doller dolor sit aet odu tur adiing elitse</p>
+                    <div class="offer2-meta">
+                        <span><i class="bi bi-clock"></i>Duration: 2 Hours</span>
+                        <span><i class="bi bi-record-circle"></i>18+ years</span>
+                    </div>
+                    <a href="#" class="btn-explore">
+                        Book Online
+                        <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="offer2-card">
+                    <span class="offer2-label">This month only</span>
+                    <h4>$5 Breakfast package</h4>
+                    <div class="offer2-rating">5.0 <span>(580 Reviews)</span></div>
+                    <p class="offer2-desc">Start $5 doller dolor sit aet odeu tur adiing elitse</p>
+                    <div class="offer2-meta">
+                        <span><i class="bi bi-clock"></i>Duration: 2 Hours</span>
+                        <span><i class="bi bi-record-circle"></i>18+ years</span>
+                    </div>
+                    <a href="#" class="btn-explore">
+                        Book Online
+                        <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="offer2-card">
+                    <span class="offer2-label">30% off only this week</span>
+                    <h4>Free fitness club for women</h4>
+                    <div class="offer2-rating">4.9 <span>(580 Reviews)</span></div>
+                    <p class="offer2-desc">Start $5 doller dolor sit aet odeu tur adiing elitse</p>
+                    <div class="offer2-meta">
+                        <span><i class="bi bi-clock"></i>Duration: 2 Hours</span>
+                        <span><i class="bi bi-record-circle"></i>18+ years</span>
+                    </div>
+                    <a href="#" class="btn-explore">
+                        Book Online
+                        <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </div>
-    <div class="horizon-line"></div>
-    <div class="hero-below-line">
-      <span class="hero-coords mono">28.2916° N &nbsp;16.6291° W</span>
-      <span class="hero-scroll">Scroll &nbsp;↓</span>
-    </div>
-  </div>
 </section>
 
-<section class="section intro wrap">
-  <div>
-    <p class="eyebrow" style="color:var(--sea);margin-bottom:16px;">The cliff</p>
-    <h2 class="serif">Built from the stone<br>it stands on.</h2>
-  </div>
-  <div class="intro-copy">
-    <p>Marejada was quarried, not built — the same black basalt pulled from its own foundations was cut, stacked, and set back into the walls of every room. What couldn't be sourced from the cliff was left alone: the wind, the gulls, the sound of the swell against the rock forty metres below.</p>
-    <p>There is one road in, and it ends at the door. Everything past that point moves at the pace of the tide.</p>
-    <div class="stat-row">
-      <div><div class="stat-num serif">18</div><div class="stat-label">Rooms, total</div></div>
-      <div><div class="stat-num serif">1957</div><div class="stat-label">Quarry opened</div></div>
-      <div><div class="stat-num serif">40m</div><div class="stat-label">Above the water</div></div>
+{{-- ===== Testimonials Section ===== --}}
+<section class="testimonials-section">
+    <div class="container">
+
+        <div class="text-center mb-5">
+            <p class="section-label mb-2">TESTIMONIALS</p>
+            <h2 class="section-title">What customers say</h2>
+        </div>
+
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="testimonial-card">
+
+                <div class="carousel-inner">
+
+                    <div class="carousel-item active">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <h4>Excellent hotel</h4>
+                        <p class="testimonial-quote">"Hotel ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat veniam, quis nostrud exercitation enim ad minim consectetur"</p>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <h4>Great experience</h4>
+                        <p class="testimonial-quote">"Hotel ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat veniam, quis nostrud exercitation enim ad minim consectetur"</p>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="testimonial-stars">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <h4>Loved the stay</h4>
+                        <p class="testimonial-quote">"Hotel ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat veniam, quis nostrud exercitation enim ad minim consectetur"</p>
+                    </div>
+
+                </div>
+
+                <div class="testimonial-people">
+                    <button type="button" class="testimonial-person active" data-bs-target="#testimonialCarousel" data-bs-slide-to="0">
+                        <img src="{{ asset('image/avatar-1.jpg') }}" alt="Ayman Jenis">
+                        <div class="person-info">
+                            <strong>Aryan Aswal</strong>
+                            <span>Ary@ceo</span>
+                        </div>
+                    </button>
+                    <button type="button" class="testimonial-person" data-bs-target="#testimonialCarousel" data-bs-slide-to="1">
+                        <img src="{{ asset('image/avatar-2.jpg') }}" alt="Juhon Smit">
+                        <div class="person-info">
+                            <strong>Juhon Smit</strong>
+                            <span>Manager</span>
+                        </div>
+                    </button>
+                    <button type="button" class="testimonial-person" data-bs-target="#testimonialCarousel" data-bs-slide-to="2">
+                        <img src="{{ asset('image/avatar-3.jpg') }}" alt="Dew Kath">
+                        <div class="person-info">
+                            <strong>Dew Kath</strong>
+                            <span>Founder</span>
+                        </div>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
     </div>
-  </div>
 </section>
 
-<section class="stays section" id="stays">
-  <div class="wrap">
-    <p class="eyebrow">Stays</p>
-    <h2 class="serif">Three ways to sleep<br>above the water.</h2>
-  </div>
-  <div class="stay-grid">
-    <div class="stay-card">
-      <div class="stay-mark mono">01</div>
-      <h3>The Cliff Room</h3>
-      <p>A single volcanic-stone room facing due west, with a plunge pool cut into the rock ledge outside the window.</p>
-      <div class="stay-meta"><span>32m² · 1 terrace</span><span class="stay-price">from €410</span></div>
-    </div>
-    <div class="stay-card">
-      <div class="stay-mark mono">02</div>
-      <h3>Horizon Suite</h3>
-      <p>Two rooms joined by an open-air walkway, built around a private stretch of the cliff's edge and its own stone stair to the sea.</p>
-      <div class="stay-meta"><span>58m² · 2 terraces</span><span class="stay-price">from €640</span></div>
-    </div>
-    <div class="stay-card">
-      <div class="stay-mark mono">03</div>
-      <h3>The Point</h3>
-      <p>The resort's only freestanding house, set apart on the furthest edge of the quarry, with its own kitchen, pool, and boat mooring below.</p>
-      <div class="stay-meta"><span>140m² · full house</span><span class="stay-price">from €1,450</span></div>
-    </div>
-  </div>
-</section>
 
-<section class="days section wrap" id="days">
-  <p class="eyebrow" style="color:var(--sea);margin-bottom:16px;">Days here</p>
-  <h2 class="serif">Set by the tide,<br>not the clock.</h2>
-  <p class="days-lede">There's no printed activity board. Instead, a chalk tide table is redrawn each morning at the boathouse — today's reads like this.</p>
-  <div class="tide-table">
-    <div class="tide-row">
-      <span class="tide-time mono">06:40</span>
-      <span class="tide-name serif">Dawn swim<span>Off the stone stair, before the boats go out.</span></span>
-      <span class="tide-tag">Low tide</span>
-    </div>
-    <div class="tide-row">
-      <span class="tide-time mono">09:15</span>
-      <span class="tide-name serif">Boat to the sea caves<span>A forty-minute crossing to the north wall, weather allowing.</span></span>
-      <span class="tide-tag">Rising</span>
-    </div>
-    <div class="tide-row">
-      <span class="tide-time mono">14:00</span>
-      <span class="tide-name serif">Siesta service<span>Shutters down, terrace bar open, nothing scheduled.</span></span>
-      <span class="tide-tag">High tide</span>
-    </div>
-    <div class="tide-row">
-      <span class="tide-time mono">18:30</span>
-      <span class="tide-name serif">Wine on the rock<span>An open pour at the western ledge, until the light goes.</span></span>
-      <span class="tide-tag">Falling</span>
-    </div>
-    <div class="tide-row">
-      <span class="tide-time mono">21:30</span>
-      <span class="tide-name serif">Night dive<span>Guided, torch-lit, for confirmed divers only.</span></span>
-      <span class="tide-tag">Low tide</span>
-    </div>
-  </div>
-</section>
-
-<section class="dining section" id="table">
-  <div class="wrap dining-inner">
-    <div>
-      <p class="eyebrow" style="color:var(--sea);margin-bottom:16px;">Table</p>
-      <h2 class="serif">One table.<br>One seating.</h2>
-      <p>Dinner is served once a night, at a single long stone table that seats the whole house together. The menu isn't printed until the boats come back — it's built that afternoon, around whatever was caught.</p>
-      <p>No menus, no substitutions, no separate check. You eat what came off the water today.</p>
-    </div>
-    <div class="menu-sample">
-      <p class="eyebrow">Tonight, subject to the catch</p>
-      <div class="menu-item"><span>Raw local amberjack, citrus, oil</span><span>I</span></div>
-      <div class="menu-item"><span>Charred octopus, black potato</span><span>II</span></div>
-      <div class="menu-item"><span>Grilled catch of the day, ash butter</span><span>III</span></div>
-      <div class="menu-item"><span>Goat's curd, fig leaf, honey</span><span>IV</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="cta-strip" id="reserve">
-  <h2 class="serif">Come find the edge of it.</h2>
-  <a href="#" class="btn-light">Check availability</a>
-</section>
+ 
 
 
 
 @endsection
 
 @push('scripts')
-
-
 @endpush
