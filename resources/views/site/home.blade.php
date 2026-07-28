@@ -688,9 +688,6 @@
 </section>
 
 
- 
-
-
 
 @endsection
 
