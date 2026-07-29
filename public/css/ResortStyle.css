@@ -7,6 +7,7 @@
 }
 
 body {
+    padding-top:; 
     font-family: "Poppins", sans-serif;
     overflow-x: hidden;
 }
@@ -99,11 +100,13 @@ ul {
 ==========================*/
 
 .custom-navbar {
+    position: fixed;
     background: #d89b32;
     padding: 0;
     z-index: 9999;
-    /* height: 60px; */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
+
 
 .custom-navbar .container {
     position: relative;
@@ -700,3 +703,4 @@ ul {
     background:#d89b32;
     color:#fff;
 }
+

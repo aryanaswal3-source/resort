@@ -100,7 +100,7 @@ body {
     display: block;
 }
 
-/* ===== Floating Buy Now (now fixed site-wide) ===== */
+/* ===== Floating Buy Now (fixed site-wide) ===== */
 .btn-buy-now {
     position: fixed;
     top: 45%;
@@ -108,22 +108,20 @@ body {
     background-color: var(--green);
     color: #fae3e3;
     border: none;
-    border-radius: 50px;
+    border-radius: 30px;
     padding: 14px 28px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 0 0 6px rgba(130, 180, 64, .18),
-                0 0 25px 6px rgba(130, 180, 64, .45),
-                0 10px 25px rgba(130, 180, 64, .35);
     white-space: nowrap;
+    box-shadow: 0 1px 20px 1px var(--green);
     z-index: 1040;
-    transition: transform .2s ease, box-shadow .2s ease;
+    transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
 
 .btn-buy-now .icon-circle {
-    width: 22px;
+    width: 16px;
     height: 22px;
     background: rgba(255, 255, 255, .25);
     border-radius: 50%;
@@ -134,18 +132,9 @@ body {
 }
 
 .btn-buy-now:hover {
-    color: #090909;
+    color: #faf6f6;
+    background-color: var(--gold);
     transform: scale(1.05);
-    box-shadow: 0 0 0 8px rgba(130, 180, 64, .22),
-                0 0 32px 10px rgba(130, 180, 64, .55),
-                0 10px 25px rgba(143, 248, 7, 0.4);
-}
-
-@media (max-width: 767px) {
-    .btn-buy-now {
-        top: auto;
-        bottom: 20px;
-    }
 }
 
 /* ===== City View / Carousel Section ===== */
@@ -222,12 +211,6 @@ body {
 
 .cityview-arrow.prev { left: -24px; }
 .cityview-arrow.next { right: -24px; }
-
-@media (max-width: 767px) {
-    .cityview-card { padding: 35px 25px; }
-    .cityview-arrow.prev { left: 5px; }
-    .cityview-arrow.next { right: 5px; }
-}
 
 /* ===== Facilities Section ===== */
 .facilities-section {
@@ -450,13 +433,6 @@ body {
     justify-content: center;
 }
 
-@media (max-width: 767px) {
-    .countdown-timer { gap: 30px; }
-    .countdown-timer .countdown-unit .num { font-size: 2.2rem; }
-    .countdown-heading .script-part { font-size: 2.2rem; }
-    .countdown-heading .bold-part { font-size: 1.6rem; }
-}
-
 /* ===== Exclusive Offers Section ===== */
 .offers-section {
     padding: 80px 0;
@@ -502,10 +478,6 @@ body {
     color: var(--navy);
     display: block;
     margin-bottom: 20px;
-}
-
-@media (max-width: 767px) {
-    .offer-card .offer-img { min-height: 200px; }
 }
 
 /* ===== Area / Restaurant Tabs Section ===== */
@@ -749,17 +721,344 @@ body {
     font-size: .85rem;
 }
 
-@media (max-width: 767px) {
-    .testimonial-card { padding: 40px 20px; }
-    .testimonial-person { padding: 10px 15px; border-right: none; }
+/* ===== Auto-Scrolling Gallery Section ===== */
+.gallery-marquee-section {
+    overflow: hidden;
+    padding: 40px 0;
+    background: #fff;
 }
 
+.gallery-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: galleryScroll 30s linear infinite;
+}
+
+.gallery-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes galleryScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.gallery-item {
+    position: relative;
+    flex: 0 0 auto;
+    width: 320px;
+    height: 340px;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(36, 65, 107, .55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-item .gallery-overlay i {
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+/* ===== Our Blog Section ===== */
+.blog-section {
+    padding: 90px 0;
+}
+
+.blog-card {
+    background: #fff;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.1);
+}
+
+.blog-img-wrap {
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-img-wrap img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s ease;
+}
+
+.blog-card:hover .blog-img-wrap img {
+    transform: scale(1.08);
+}
+
+.blog-ribbon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--gold);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 28px 38px 8px 14px;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.blog-body {
+    padding: 25px 5px 0;
+}
+
+.blog-meta {
+    display: flex;
+    gap: 20px;
+    font-size: .85rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.blog-meta span i {
+    color: var(--gold);
+    margin-right: 5px;
+}
+
+.blog-body h4 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.blog-body h4 a {
+    color: var(--navy);
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.blog-card:hover .blog-body h4 a {
+    color: var(--gold);
+}
+
+.blog-body p {
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+.blog-readmore {
+    color: var(--gold);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.blog-readmore i {
+    transition: transform .2s ease;
+}
+
+.blog-readmore:hover i {
+    transform: translateX(5px);
+}
+
+/* ===== Hero Section (video background) ===== */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, .45);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.hero-heading {
+    font-family: 'Yellowtail', cursive;
+    font-weight: 400;
+    color: #fff;
+    font-size: 6rem;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.hero-subtext {
+    text-align: center;
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+}
+
+/* Booking search bar */
+.booking-bar {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,.2);
+}
+
+.booking-field {
+    background: #fff;
+    padding: 20px 28px;
+    flex: 1 1 220px;
+}
+
+.booking-field label {
+    display: block;
+    font-size: .75rem;
+    letter-spacing: .1em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.booking-field .booking-value {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.booking-field .booking-value i {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.booking-field select {
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--navy);
+    background: transparent;
+    width: 100%;
+    padding: 0;
+    appearance: none;
+}
+
+.booking-submit {
+    background: var(--gold);
+    flex: 1 1 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.booking-submit .btn-explore {
+    width: 90%;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   RESPONSIVE OVERRIDES
+   Sabhi @media rules ek hi jagah, breakpoint ke hisaab se
+   group kiye hue hain. Naya section add karte waqt agar
+   usko responsive tweak chahiye, to uska rule bas neeche
+   sahi breakpoint block mein, sahi comment ke niche daal dena.
+   ========================================================= */
+
+/* ---------- Tablet & below (max-width: 991px) ---------- */
+@media (max-width: 991px) {
+
+    /* Explore section: gold offset block hata do, chhoti screen pe clutter karta hai */
+    .explore-img-wrap::after {
+        display: none;
+    }
+
+    /* Hero section: heading chhota, booking fields 2-per-row */
+    .hero-heading {
+        font-size: 3.5rem;
+    }
+    .booking-field {
+        flex: 1 1 45%;
+    }
+
+}
+
+/* ---------- Mobile (max-width: 767px) ---------- */
 @media (max-width: 767px) {
+
+    /* Floating Buy Now button: side se hata ke bottom pe le aao */
+    .btn-buy-now {
+        top: auto;
+        bottom: 20px;
+    }
+
+    /* City View carousel: padding kam, arrows edge ke paas */
+    .cityview-card {
+        padding: 35px 25px;
+    }
+    .cityview-arrow.prev { left: 5px; }
+    .cityview-arrow.next { right: 5px; }
+
+    /* Countdown section: number/heading sizes chhoti screen ke liye */
+    .countdown-timer { gap: 30px; }
+    .countdown-timer .countdown-unit .num { font-size: 2.2rem; }
+    .countdown-heading .script-part { font-size: 2.2rem; }
+    .countdown-heading .bold-part { font-size: 1.6rem; }
+
+    /* Exclusive Offers cards: image height kam */
+    .offer-card .offer-img { min-height: 200px; }
+
+    /* Area / Restaurant tabs: image height kam, tabs wrap ho jaayen */
     .area-img-wrap img { height: 320px; }
     .area-tabs { gap: 18px; flex-wrap: wrap; }
     .area-tabs .nav-link { font-size: .95rem; }
-}
 
-@media (max-width: 991px) {
-    .explore-img-wrap::after { display: none; }
+    /* Testimonials: padding kam, person list stack ho */
+    .testimonial-card { padding: 40px 20px; }
+    .testimonial-person { padding: 10px 15px; border-right: none; }
+
+    /* Auto-scrolling gallery: chhote items */
+    .gallery-item { width: 220px; height: 240px; }
+
+    /* Hero section: heading aur chhota, booking fields full-width stack */
+    .hero-heading { font-size: 2.5rem; }
+    .booking-field { flex: 1 1 100%; }
+
 }

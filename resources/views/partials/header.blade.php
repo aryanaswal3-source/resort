@@ -1,4 +1,3 @@
-
 <header class="top-header">
     <div class="container">
         <div class="row align-items-center">
@@ -57,7 +56,7 @@
 
             <!-- Mobile Logo -->
             <a class="navbar-brand d-lg-none" href="{{ route('home') }}">
-                 <img src="image/logo2.png" alt="2">
+                <img src="image/logo2.png" alt="2">
             </a>
             <!-- Toggle -->
 
@@ -73,17 +72,19 @@
             <div class="collapse navbar-collapse " id="mainNavbar">
 
                 <ul class="navbar-nav me-auto">
-                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">
-                        Home
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Home One</a></li>
-                        <li><a class="dropdown-item" href="#">Home Two</a></li>
-                        <li><a class="dropdown-item" href="#">Home Three</a></li>
-                        <li><a class="dropdown-item" href="#">Home Four</a></li>
-                        <li><a class="dropdown-item" href="#">Home Five</a></li>
-                        <li><a class="dropdown-item" href="#">Home Six</a></li>
-                    </ul>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">
+                            Home
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Home One</a></li>
+                            <li><a class="dropdown-item" href="#">Home Two</a></li>
+                            <li><a class="dropdown-item" href="#">Home Three</a></li>
+                            <li><a class="dropdown-item" href="#">Home Four</a></li>
+                            <li><a class="dropdown-item" href="#">Home Five</a></li>
+                            <li><a class="dropdown-item" href="#">Home Six</a></li>
+                        </ul>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -184,6 +185,10 @@
 
                 </ul>
 
+                <button type="button" class="btn-signin" data-bs-toggle="modal" data-bs-target="#signInModal">
+                    <i class="bi bi-person"></i> Sign In
+                </button>
+
                 <!-- Phone -->
 
                 <div class="header-call">
@@ -207,4 +212,3 @@
     </nav>
 
 </header>
-

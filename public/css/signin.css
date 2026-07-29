@@ -1,0 +1,219 @@
+/* ===== Sign In Modal ===== */
+
+.btn-signin {
+    background: whitesmoke;
+    border: navajowhite;
+    color: #d89b32;;
+    border-radius: 50px;
+    padding: 8px 22px;
+    font-weight: 600;
+    font-size: .9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background .2s ease, color .2s ease;
+}
+
+.btn-signin:hover {
+    background: #d89b32;
+    color: #fff;
+}
+
+.signin-modal-content {
+    border: none;
+    border-radius: 14px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.signin-modal-content .modal-dialog,
+#signInModal .modal-dialog {
+    max-width: 900px;
+}
+
+.signin-row {
+    display: flex;
+    min-height: 560px;
+}
+
+/* Left gradient panel */
+.signin-side {
+    flex: 0 0 40%;
+    background: linear-gradient(160deg, var(--navy) 0%, #16283f 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.signin-side .signin-side-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(204, 140, 24, .18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 25px;
+}
+
+.signin-side h4 {
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+}
+
+.signin-side p {
+    color: rgba(255,255,255,.7);
+    font-size: .92rem;
+    max-width: 260px;
+}
+
+/* Floating decorative icons */
+.signin-side .floating-icon {
+    position: absolute;
+    color: rgba(255,255,255,.08);
+    font-size: 3rem;
+}
+.signin-side .floating-icon.i1 { top: 30px; left: 25px; font-size: 2.2rem; }
+.signin-side .floating-icon.i2 { bottom: 40px; right: 20px; font-size: 4rem; }
+.signin-side .floating-icon.i3 { top: 45%; right: -10px; font-size: 2.5rem; }
+
+/* Right form panel */
+.signin-form-side {
+    flex: 1;
+    padding: 50px 45px;
+    position: relative;
+}
+
+.btn-close-custom {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    z-index: 5;
+}
+
+.signin-label {
+    display: block;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+
+.signin-input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.signin-input-group i.field-icon {
+    position: absolute;
+    left: 15px;
+    top: 52px;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.signin-input {
+    width: 100%;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    padding: 12px 15px 12px 42px;
+    font-size: .95rem;
+    color: var(--navy);
+}
+
+.signin-input:focus {
+    outline: none;
+    border-color: var(--gold);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 70%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.signin-forgot {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signin-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0;
+    color: var(--text-muted);
+    font-size: .8rem;
+}
+
+.signin-divider::before,
+.signin-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.social-btn-row {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-social {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    padding: 11px;
+    background: #fff;
+    color: var(--navy);
+    font-weight: 600;
+    font-size: .88rem;
+    transition: background .2s ease;
+}
+
+.btn-social:hover {
+    background: #d89b32;
+}
+
+.btn-social.google i { color: #EA4335; }
+.btn-social.facebook i { color: #1877F2; }
+
+.modal-backdrop.show {
+    z-index: 99998 !important;
+}
+
+.modal.show {
+    z-index: 99999 !important;
+}
+
+
+@media (max-width: 767px) {
+    .signin-side { display: none; }
+    .signin-form-side { padding: 40px 25px; }
+}
