@@ -43,7 +43,7 @@
 
                 <div class="col-lg-3 col-md-6">
 
-                    <img src="{{ asset('image/logo2.png') }}" class="footer-logo" alt="Logo">
+                    <img src="{{ asset('image/logo3.jpg') }}" class="footer-logo" alt="Logo">
 
                     <p class="footer-about">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -130,7 +130,7 @@
 
                             <div class="contact-text">
                                 <h5>Address</h5>
-                                <p>205 Fida Walinton, Tongo Street Front The USA</p>
+                                <p>Park Estate, Hathi Paon George Everest House, 5km from Mall, Mussoorie 248179 India</p>
                             </div>
                         </div>
 
@@ -142,7 +142,7 @@
 
                             <div class="contact-text">
                                 <h5>Phone</h5>
-                                <p>+882-569-756</p>
+                                <p>+91 982569756</p>
                             </div>
                         </div>
 
@@ -154,7 +154,7 @@
 
                             <div class="contact-text">
                                 <h5>Email</h5>
-                                <p>hello@ecorik.com</p>
+                                <p>sunsetvista@gmail.com.com</p>
                             </div>
                         </div>
 
@@ -174,7 +174,7 @@
 
                 <div class="col-lg-6 text-center text-lg-start">
                     <p>
-                        © 2026 <span>Vivek Aryan Resort</span> is Proudly Owned by Vivek Badoni
+                        © 2026 <span>SUNSET VISTA</span> is Proudly Owned by Vivek Badoni
                     </p>
                 </div>
 
