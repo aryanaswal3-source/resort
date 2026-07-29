@@ -26,7 +26,7 @@
             <div class="col-lg-4 col-md-4 col-8 text-center text-md-start">
 
                 <a href="{{ route('home') }}" class="logo">
-                    <img src="image/logo2.png" alt="2">
+                    <img src="image/logo3.jpg" alt="2">
                     {{-- ECO<span>RIK</span> --}}
                 </a>
 
@@ -36,11 +36,11 @@
 
             <div class="col-lg-4 col-md-4 col-4">
 
-                <div class="header-address d-none d-lg-flex mb-2">
+                <div class="header-address d-none d-lg-flex mb-1">
 
                     <i class="bx bx-location-plus"></i>
 
-                    <span>205 Fida Walinton, Tongo Street Front, USA</span>
+                    <span>Park Estate, Hathi Paon George Everest House, Mussoorie 248179 India</span>
 
                 </div>
 
@@ -57,7 +57,7 @@
 
             <!-- Mobile Logo -->
             <a class="navbar-brand d-lg-none" href="{{ route('home') }}">
-                 <img src="image/logo2.png" alt="2">
+                 <img src="image/logo3.jpg" alt="2">
             </a>
             <!-- Toggle -->
 
@@ -71,7 +71,7 @@
             <!-- Menu -->
 
             <div class="collapse navbar-collapse " id="mainNavbar">
-
+                
                 <ul class="navbar-nav me-auto">
                     <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">
                         Home
@@ -91,7 +91,7 @@
                             Pages
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">About Us</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/about') }}">About Us</a></li>
                             <li><a class="dropdown-item" href="#">Team</a></li>
                             <li><a class="dropdown-item" href="#">FAQ</a></li>
                             <li><a class="dropdown-item" href="#">FAQ</a></li>
@@ -195,7 +195,7 @@
                     </div>
 
                     <div class="call-text">
-                        <h6> +91-8765-4332</h6>
+                        <h6> +91 982569756</h6>
                     </div>
 
                 </div>
