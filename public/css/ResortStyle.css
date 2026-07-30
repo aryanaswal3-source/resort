@@ -7,7 +7,7 @@
 }
 
 body {
-    padding-top:; 
+    padding-top:;
     font-family: "Poppins", sans-serif;
     overflow-x: hidden;
 }
@@ -109,9 +109,7 @@ ul {
 
     /* height: 60px; */
     position: fixed;
-
 }
-
 
 .custom-navbar .container {
     position: relative;
@@ -682,30 +680,63 @@ ul {
     transition: 0.4s;
 }
 
-
 .footer-bottom i {
     margin: 0 4px;
 }
 
-.scroll-top{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    width:50px;
-    height:50px;
-    background:#404041;
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-decoration:none;
-    font-size:18px;
-    transition:.4s;
-    z-index:999;
+.scroll-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 50px;
+    height: 50px;
+    background: #404041;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.4s;
+    z-index: 999;
 }
 
-.scroll-top:hover{
-    background:#d89b32;
-    color:#fff;
+.scroll-top:hover {
+    background: #d89b32;
+    color: #fff;
 }
 
+/* maprespnsive  */
+.map-section {
+    width: 100%;
+}
+
+.map-section span {
+    display: block;
+    width: 100%;
+}
+
+.map-section iframe {
+    width: 100% !important;
+    height: 400px;
+    display: block;
+    border: 0;
+}
+
+@media (max-width: 992px) {
+    .map-section iframe {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .map-section iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .map-section iframe {
+        height: 250px;
+    }
+}

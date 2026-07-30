@@ -73,12 +73,12 @@
                 
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">
+                        <a href="{{ url('/') }}" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">
                             Home
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Home One</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/') }}">Home One</a></li>
                             <li><a class="dropdown-item" href="#">Home Two</a></li>
                             <li><a class="dropdown-item" href="#">Home Three</a></li>
                             <li><a class="dropdown-item" href="#">Home Four</a></li>
@@ -174,10 +174,10 @@
 
                     <li class="nav-item dropdown">
 
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Contacts </a>
+                        <a href="{{ url('/contact') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Contacts </a>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Contact Style One</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/contact') }}">Contact Style One</a></li>
                             <li><a class="dropdown-item" href="#">Contact Style Two</a></li>
 
                         </ul>
