@@ -87,8 +87,11 @@
 
     @include('partials.signin-modal')
 
+    @include('partials.signup-modal')
+
 
     @stack('scripts')
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -98,6 +101,30 @@
 
     @stack('scripts')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const signInModalEl = document.getElementById('signInModal');
+    const signUpModalEl = document.getElementById('signUpModal');
+    const signInModal = new bootstrap.Modal(signInModalEl);
+    const signUpModal = new bootstrap.Modal(signUpModalEl);
+
+    document.getElementById('goToSignUp')?.addEventListener('click', function (e) {
+        e.preventDefault();
+        signInModal.hide();
+        setTimeout(() => signUpModal.show(), 300);
+    });
+
+    document.getElementById('backToSignIn')?.addEventListener('click', function (e) {
+        e.preventDefault();
+        signUpModal.hide();
+        setTimeout(() => signInModal.show(), 300);
+    });
+
+    @if (session('form') === 'register' && $errors->any())
+        signUpModal.show();
+    @endif
+});
+</script>
 </body>
 
 </html>

@@ -74,7 +74,7 @@
                     </div>
 
                     <p class="text-center mt-4 mb-0 small">
-                        Don't have an account? <a href="#" class="signin-forgot">Create one</a>
+                       Don't have an account? <a href="#" class="signin-forgot" id="goToSignUp">Create one</a>
                     </p>
                 </div>
 
