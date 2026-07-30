@@ -1,0 +1,265 @@
+.page-banner-overlay {
+    background: rgba(10, 20, 30, 0.55);
+}
+
+.page-title {
+    font-family: "Playfair Display", serif;
+}
+
+@media (max-width: 768px) {
+    .page-banner {
+        min-height: 320px;
+    }
+}
+
+.breadcrumb {
+    background: transparent;
+    font-size: 18px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "•";
+    color: #fff;
+    padding: 0 12px;
+}
+
+.breadcrumb-item a:hover {
+    color: #d68a16 !important;
+}
+
+.breadcrumb-item {
+    color: #d68a16 !important;
+}
+
+@media (max-width: 1400px) {
+}
+
+@media (max-width: 1200px) {
+    .page-banner {
+        min-height: 430px;
+    }
+
+    .page-title {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 992px) {
+    .page-banner {
+        min-height: 380px;
+    }
+
+    .page-title {
+        font-size: 42px;
+    }
+
+    .breadcrumb {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 576px) {
+    .page-banner {
+        min-height: 260px;
+        padding: 70px 15px;
+    }
+
+    .page-title {
+        font-size: 29px;
+        line-height: 1.3;
+    }
+
+    .breadcrumb {
+        font-size: 14px;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .breadcrumb-item + .breadcrumb-item::before {
+        padding: 0 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    .page-banner {
+        min-height: 220px;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    .breadcrumb {
+        font-size: 14px;
+    }
+}
+
+/* ==================rowCard /csssss============= */
+
+.icon-circle {
+    width: 70px !important;
+    height: 70px !important;
+    min-width: 70px !important;
+    max-width: 70px !important;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    border: 2px dotted #d2a24c;
+    border-radius: 50% !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #d2a24c;
+    box-sizing: border-box;
+}
+
+.info-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: #274672;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.info-card p,
+.info-card a {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    background-color: #cc8c18;
+    border-color: #e0c08e;
+}
+
+.info-card:hover .icon-circle {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+}
+
+.info-card:hover h5,
+.info-card:hover p,
+.info-card:hover a {
+    color: #fff !important;
+}
+
+@media (max-width: 768px) {
+    .info-card {
+        padding: 1.5rem !important;
+    }
+
+    .icon-circle {
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px !important;
+        max-width: 60px !important;
+        font-size: 20px;
+    }
+
+    .info-card h5 {
+        font-size: 1rem;
+    }
+
+    .info-card p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .info-card {
+        padding: 1.25rem !important;
+    }
+
+    .icon-circle {
+        width: 55px !important;
+        height: 55px !important;
+        min-width: 55px !important;
+        max-width: 55px !important;
+        font-size: 18px;
+    }
+
+    .info-card h5 {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .info-card p {
+        font-size: 0.8rem;
+    }
+}
+
+/* Hover effect chota screen pe hata dena (touch devices pe stuck hover lagta hai) */
+@media (max-width: 991px) {
+    .info-card:hover {
+        transform: none;
+    }
+}
+
+/* =================form css==================== */
+
+.contact-form-title {
+    font-family: "Playfair Display", serif;
+    color: #24416B;
+    font-size: 43px;
+
+}
+
+
+.form-control::placeholder {
+    color: #828282;
+}
+
+.form-control {
+    background: #b3b3b30f;
+}
+
+
+/* Input focus color match theme se */
+.form-control:focus {
+    border-color: #d68a16;
+    box-shadow: 0 0 0 0.2rem rgba(214, 137, 22, 0.098);
+}
+.btn-warning {
+    background-color: #cc8c18;
+    border-color: #cc8c18;
+}
+
+.btn-warning:hover {
+    background-color: #b57a13;
+    border-color: #b57a13;
+}
+
+
+.send-btn-icon {
+    width: 40px;
+    height: 40px;
+    color: #cc8c18;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .contact-form-title {
+        font-size: 28px;
+    }
+
+    .form-control-lg {
+        font-size: 1rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .contact-form-title {
+        font-size: 22px;
+    }
+
+    .btn-lg {
+        width: 100%;
+    }
+}
