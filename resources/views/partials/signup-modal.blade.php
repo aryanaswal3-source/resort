@@ -7,6 +7,7 @@
                 <i class="bi bi-x-lg"></i>
             </button>
 
+            
             <div class="signin-row">
 
                 {{-- Left gradient panel (reused from signin) --}}
