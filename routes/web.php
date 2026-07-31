@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\RegisterController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('site.home');
@@ -18,8 +17,7 @@ Route::get('/welcome', function () {
 })->name('welcome');
 
 Route::post('/register', [RegisterController::class,
- 'register'])->name('register');
-
+    'register'])->name('register');
 
 Route::get('/contact', function () {
     return view('site.contact');
@@ -28,3 +26,6 @@ Route::get('/contact', function () {
 Route::post('/contact-store', [ContactController::class, 'store'])
     ->name('contact.store');
 
+Route::get('/gallery', function () {
+    return view('site.galleryfour');
+})->name('gallery');
