@@ -124,9 +124,9 @@
 
     {{-- ===== City View Carousel Section ===== --}}
     <section class="cityview-section" style="background-image: url('{{ asset('image/beach-hut.jpg') }}');">
-
+        
         <!-- Top wavy border -->
-        <div class="cityview-wave top">
+        <div class="cityview-wave top ">
             <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill="var(--bg)" d="M0,80 L0.0,20 C9.5,22.5 38.0,30.7 57.1,35.0 C76.2,39.3 95.2,
                     44.2 114.3,46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,
@@ -347,7 +347,7 @@
 
     {{-- ===== Countdown / Last Minute Offer Section ===== --}}
     <section class="countdown-section" style="background-image: url('{{ asset('image/ocean-rocks.jpg') }}');">
-
+        
         <div class="section-wave top">
             <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill="var(--bg)" d="M0,80 L0.0,20 C9.5,22.5 38.0,30.7 57.1,35.0 C76.2,39.3 95.2,
@@ -420,9 +420,11 @@
 
                 {{-- Deluxe Room --}}
                 <div class="col-lg-6">
-                    <div class="row g-0 offer-card align-items-stretch">
+                    <div class="row g-3 offer-card align-items-stretch">
                         <div class="col-5">
+                            <div class="offer-img-wrap">
                             <img src="{{ asset('image/room-deluxe.jpg') }}" alt="Deluxe Room" class="offer-img">
+                        </div>
                         </div>
                         <div class="col-7">
                             <div class="offer-details">
@@ -447,9 +449,11 @@
 
                 {{-- Premium Room --}}
                 <div class="col-lg-6">
-                    <div class="row g-0 offer-card align-items-stretch">
+                    <div class="row g-3 offer-card align-items-stretch">
                         <div class="col-5">
+                            <div class="offer-img-wrap">
                             <img src="{{ asset('image/room-premium.jpg') }}" alt="Premium Room" class="offer-img">
+                        </div>
                         </div>
                         <div class="col-7">
                             <div class="offer-details">
@@ -474,9 +478,11 @@
 
                 {{-- Classic Room --}}
                 <div class="col-lg-6">
-                    <div class="row g-0 offer-card align-items-stretch">
+                    <div class="row g-3 offer-card align-items-stretch">
                         <div class="col-5">
+                            <div class="offer-img-wrap">
                             <img src="{{ asset('image/room-classic.jpg') }}" alt="Classic Room" class="offer-img">
+                        </div>
                         </div>
                         <div class="col-7">
                             <div class="offer-details">
@@ -501,10 +507,12 @@
 
                 {{-- Budget Room --}}
                 <div class="col-lg-6">
-                    <div class="row g-0 offer-card align-items-stretch">
+                    <div class="row g-3 offer-card align-items-stretch">
                         <div class="col-5">
+                            <div class="offer-img-wrap">
                             <img src="{{ asset('image/room-budget.jpg') }}" alt="Budget Room" class="offer-img">
                         </div>
+                         </div>
                         <div class="col-7">
                             <div class="offer-details">
                                 <h4 class="section-title">Budget Room</h4>

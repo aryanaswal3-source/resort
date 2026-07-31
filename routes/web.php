@@ -28,3 +28,4 @@ Route::get('/contact', function () {
 Route::post('/contact-store', [ContactController::class, 'store'])
     ->name('contact.store');
 
+    
