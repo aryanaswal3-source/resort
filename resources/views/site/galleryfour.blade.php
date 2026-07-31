@@ -69,7 +69,7 @@
 
                 <div class="col-6 col-md-3">
                     <div class="room-card">
-                        <img src="https://images.un~splash.com/photo-1611892440504-42a792e24d32?w=500" alt="room">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=500" alt="room">
                         <div class="price-badge "><small class="fw-semibold ">Price</small><span
                                 class="amount ">₹1000.00</span></div>
                         <div class="info-card">
