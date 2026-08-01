@@ -91,7 +91,7 @@
                     <i class="fa-solid fa-gear"></i>
                     <span>Settings</span>
                 </a>
-            </li>
+            </li>   
         </ul>
     </div>
 

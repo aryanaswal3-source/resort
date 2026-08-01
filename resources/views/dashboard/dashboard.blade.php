@@ -207,7 +207,7 @@
         </div>
     </div>
 
-    {{-- ============ Quick Actions ============ --}}
+    {{-- ============ Quick Actions ================ --}}
 
     {{-- <div class="row mt-4">
         <div class="col-12">

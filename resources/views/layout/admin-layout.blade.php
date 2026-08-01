@@ -32,7 +32,7 @@
         {{-- Sidebar --}}
         @include('partials.admin-sidebar')
 
-        {{-- Main --}}
+        {{-- Main --}}      
         <div class="main-wrapper">
 
             {{-- Header --}}
