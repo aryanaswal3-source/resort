@@ -78,12 +78,7 @@
                         </a>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/') }}">Home One</a></li>
-                            <li><a class="dropdown-item" href="#">Home Two</a></li>
-                            <li><a class="dropdown-item" href="#">Home Three</a></li>
-                            <li><a class="dropdown-item" href="#">Home Four</a></li>
-                            <li><a class="dropdown-item" href="#">Home Five</a></li>
-                            <li><a class="dropdown-item" href="#">Home Six</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/') }}">Home</a></li>
                         </ul>
                     </li>
 
@@ -113,10 +108,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Room Grid</a></li>
-                            <li><a class="dropdown-item" href="#">Room List View</a></li>
-                            <li><a class="dropdown-item" href="#">Room Block View</a></li>
-                            <li><a class="dropdown-item" href="#">Room Details Left Siderbar</a></li>
-                            <li><a class="dropdown-item" href="#">Room Details Left Siderbar</a></li>
+                            
                         </ul>
                     </li>
 
@@ -125,11 +117,11 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Gallery </a>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Gallery Columns Two</a></li>
-                            <li><a class="dropdown-item" href="#">Gallery Columns Three</a></li>
-                            <li><a class="dropdown-item" href="#">Gallery Columns Four</a></li>
-                            <li><a class="dropdown-item" href="#">Gallery Columns Box</a></li>
-                            <li><a class="dropdown-item" href="#">Gallery Masonry</a></li>
+                            {{-- <li><a class="dropdown-item" href="#">Gallery Columns Two</a></li>
+                            <li><a class="dropdown-item" href="#">Gallery Columns Three</a></li> --}}
+                            <li><a class="dropdown-item" href="{{ url('/gallery') }}"> Room Gallery</a></li>
+                            {{-- <li><a class="dropdown-item" href="#">Gallery Columns Box</a></li>
+                            <li><a class="dropdown-item" href="#">Gallery Masonry</a></li> --}}
                         </ul>
                     </li>
 
@@ -139,10 +131,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Services Style One</a></li>
-                            <li><a class="dropdown-item" href="#">Services Style Two</a></li>
-                            <li><a class="dropdown-item" href="#">Services Style Three</a></li>
-                            <li><a class="dropdown-item" href="#">Services Style Four</a></li>
-                            <li><a class="dropdown-item" href="#">Services Details</a></li>
+                            
                         </ul>
                     </li>
 
@@ -165,10 +154,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">News Grid</a></li>
-                            <li><a class="dropdown-item" href="#">News Columns Two</a></li>
-                            <li><a class="dropdown-item" href="#">News Left Siderbar</a></li>
-                            <li><a class="dropdown-item" href="#">News Right Siderbar</a></li>
-                            <li><a class="dropdown-item" href="#">News Details </a></li>
+                           
                         </ul>
                     </li>
 
@@ -177,8 +163,7 @@
                         <a href="{{ url('/contact') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Contacts </a>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/contact') }}">Contact Style One</a></li>
-                            <li><a class="dropdown-item" href="#">Contact Style Two</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/contact') }}">Contact Us</a></li>    
 
                         </ul>
                     </li>
