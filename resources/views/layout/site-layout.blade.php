@@ -24,7 +24,7 @@
         href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
-        <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -102,29 +102,29 @@
     @stack('scripts')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const signInModalEl = document.getElementById('signInModal');
-    const signUpModalEl = document.getElementById('signUpModal');
-    const signInModal = new bootstrap.Modal(signInModalEl);
-    const signUpModal = new bootstrap.Modal(signUpModalEl);
+        document.addEventListener('DOMContentLoaded', function() {
+            const signInModalEl = document.getElementById('signInModal');
+            const signUpModalEl = document.getElementById('signUpModal');
+            const signInModal = new bootstrap.Modal(signInModalEl);
+            const signUpModal = new bootstrap.Modal(signUpModalEl);
 
-    document.getElementById('goToSignUp')?.addEventListener('click', function (e) {
-        e.preventDefault();
-        signInModal.hide();
-        setTimeout(() => signUpModal.show(), 300);
-    });
+            document.getElementById('goToSignUp')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                signInModal.hide();
+                setTimeout(() => signUpModal.show(), 300);
+            });
 
-    document.getElementById('backToSignIn')?.addEventListener('click', function (e) {
-        e.preventDefault();
-        signUpModal.hide();
-        setTimeout(() => signInModal.show(), 300);
-    });
+            document.getElementById('backToSignIn')?.addEventListener('click', function(e) {
+                e.preventDefault();
+                signUpModal.hide();
+                setTimeout(() => signInModal.show(), 300);
+            });
 
-    @if (session('form') === 'register' && $errors->any())
-        signUpModal.show();
-    @endif
-});
-</script>
+            @if (session('form') === 'register' && $errors->any())
+                signUpModal.show();
+            @endif
+        });
+    </script>
 </body>
 
 </html>
