@@ -1,67 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Admin Panel') - Aryan Resort</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@yield('title', 'Admin Panel')</title>
+
+    <!-- Bootstrap -->
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     
+    <!-- Fontawesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+
     @stack('styles')
+
 </head>
+
 <body>
-              
 
-    @if (session('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success!',
-                text: @json(session('success')),
-                showConfirmButton: true
-            });
+    <div class="admin-wrapper">
 
-            window.history.replaceState({}, document.title);
-        </script>
-    @endif
+        {{-- Sidebar --}}
+        @include('partials.admin-sidebar')
 
-    @if (session('error'))
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: @json(session('error')),
-                showConfirmButton: true
-            });
+        {{-- Main --}}      
+        <div class="main-wrapper">
 
-            window.history.replaceState({}, document.title);
-        </script>
-    @endif
+            {{-- Header --}}
+            @include('partials.admin-header')
 
-    @if ($errors->any())
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Validation Error!',
-                html: `{!! implode('<br>', $errors->all()) !!}`,
-                showConfirmButton: true
-            });
+            {{-- Content --}}
+            <main class="main-content">
 
-            window.history.replaceState({}, document.title);
-        </script>
-    @endif
+                @yield('content')
 
+            </main>
 
-    ['ll']
-    {{-- Page Content --}}
-    @yield('content')
+        </div>
 
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    {{-- <script src="{{ asset('js/admin.js') }}"></script> --}}
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const sidebar = document.getElementById("adminSidebar");
+
+        menuBtn.addEventListener("click", function() {
+            sidebar.classList.toggle("show");
+        });
+
+        document.addEventListener("click", function(e) {
+
+            if (
+                !sidebar.contains(e.target) &&
+                !menuBtn.contains(e.target)
+            ) {
+                sidebar.classList.remove("show");
+            }
+
+        });
+    </script>
+
     @stack('scripts')
+
 </body>
+
 </html>

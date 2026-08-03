@@ -13,7 +13,7 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/welcome', function () {
-    return view('site.welcome');
+    return view('welcome');
 })->name('welcome');
 
 Route::post('/register', [RegisterController::class,
@@ -30,3 +30,10 @@ Route::get('/gallery', function () {
     return view('site.galleryfour');
 })->name('gallery');
 
+// Route::get('/admin', function () {
+//     return view('layout.admin-layout');
+// });
+
+Route::get('/admin', function () {
+    return view('dashboard.dashboard');
+})->name('admin.dashboard');
