@@ -25,9 +25,9 @@ ul {
 
 /*==========================================VARIABLES=========================================*/
 :root {
-    --green: #12321a;
-    --green2: #1d4526;
-    --maroon: #3a0f14;
+    --violet: #4a2c5e;
+    --violet2: #6b3fa0;
+    --violet-dark: #1a1024;
 
     --yellow: #f4cf3a;
     --yellow-dark: #e3b915;
@@ -55,7 +55,7 @@ ul {
     left: 15px;
     width: 270px;
     height: calc(100vh - 30px);
-    background: linear-gradient(180deg, #12321a 0%, #1c4d29 45%, #3a0f14 100%);
+    background: linear-gradient(180deg, #53336f 0%, #4a2c5e 45%, #1e0d2d 100%);
     border-radius: 22px;
     padding: 18px;
     display: flex;
@@ -96,7 +96,7 @@ ul {
 }
 
 .sidebar-menu-wrapper::-webkit-scrollbar-thumb {
-    background: var(--yellow);
+    background: rgb(244, 207, 58);
     border-radius: 20px;
 }
 
@@ -144,10 +144,9 @@ ul {
 }
 
 .sidebar-menu a:hover {
-    background: rgba(255, 255, 255, 0.08);
-
+    background: rgba(255, 255, 255, 0.1);
     transform: translateX(5px);
-    color: #ffd633;
+    color: #ffd55d;
 }
 
 .sidebar-menu a.active {
@@ -358,7 +357,7 @@ ul {
 /*================ Dashboard Banner ================*/
 
 .dashboard-banner {
-    background: linear-gradient(135deg, #2f7d32, #194d25);
+    background: linear-gradient(135deg, #6b3fa0, #3d2560);
 }
 
 .dashboard-banner h2 {
@@ -377,7 +376,7 @@ ul {
 .dashboard-banner {
     width: 100%;
     min-height: 260px;
-    background: linear-gradient(135deg, #2f7d32, #194d25);
+    background: linear-gradient(135deg, #6b3fa0, #3d2560);
     border-radius: 30px;
 }
 
@@ -468,31 +467,39 @@ ul {
 .bo-card {
     border-radius: 20px;
     color: #fff;
-    padding: 22px;
+    padding: 20px;
     position: relative;
     overflow: hidden;
-     transition: transform 0.9s ease;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.9s ease;
 }
+
 .bo-card:hover {
     transform: translateY(-11px);
 }
 
 .bo-card .bo-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.2);
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.25);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    flex: none;
 }
 
+.bo-card .bo-text {
+    display: flex;
+    flex-direction: column;
+}
 .bo-card .bo-number {
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 800;
     line-height: 1.1;
-    margin-top: 10px;
 }
 
 .bo-card .bo-label {
@@ -515,100 +522,126 @@ ul {
 }
 
 .bo-total {
-    background: linear-gradient(135deg, #12321a, #1d4526);
+    background: linear-gradient(135deg, #6b3fa0, #3d2560);
 }
 .bo-pending {
-    background: linear-gradient(135deg, #f2932e, #e0741a);
+    background: linear-gradient(135deg, #d4527e, #a02d5c);
 }
 .bo-confirm {
-    background: linear-gradient(135deg, #12857a, #0d6b62);
+    background: linear-gradient(135deg, #4a2c5e, #2b1a3a);
 }
 .bo-payment {
-    background: linear-gradient(135deg, #6a3fc0, #4c2a94);
+     background: linear-gradient(135deg, #8a5cc4, #5c3690);
 }
 
 .bo-view-btn {
-    background: #d9f2c4;
-    color: #1d4526;
+    background: #e6d9f5;
+    color: #4a2c5e;
     border: none;
     border-radius: 50px;
     font-weight: 700;
     font-size: 0.9rem;
     padding: 10px 22px;
 }
+
 .bo-view-btn:hover {
-    background: #c9ecad;
-    color: #1d4526;
+    background: #d6c2ec;
+    color: #4a2c5e;
 }
 
-    /* ============ Quick Actions ============  */
+/* ============ Quick Action Cards ============ */
 
-/*.qa-title {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 700;
-    color: #1c1c1c;
-}
-.qa-title .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #4caf50;
-}
-
-.qa-card {
-    border-radius: 22px;
-    padding: 30px 20px;
+.quick-action-card {
+    border-radius: 20px;
+    padding: 28px 20px;
     text-align: center;
-    text-decoration: none;
-    display: block;
-    transition: transform 0.15s ease;
-}
-.qa-card:hover {
-    transform: translateY(-4px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
 }
 
-.qa-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 18px;
+.quick-action-card .qa-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #fff;
-    margin: 0 auto 16px;
+    margin-bottom: 10px;
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
-.qa-card h6 {
-    font-weight: 800;
-    color: #1c1c1c;
-    margin-bottom: 4px;
+.quick-action-card:hover .qa-icon {
+    transform: scale(1.15) rotate(-8deg);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1) saturate(1.3);
 }
-.qa-card p {
-    font-size: 0.85rem;
-    color: #6b7a70;
+
+.quick-action-card h6 {
+    font-weight: 700;
+    font-size: 1rem;
     margin: 0;
 }
 
-.qa-room {
-    background: #e7f6d8;
-}
-.qa-room .qa-icon {
-    background: #8bc34a;
-}
-
-.qa-category {
-    background: #fdf3d0;
-}
-.qa-category .qa-icon {
-    background: #f2b705;
+.quick-action-card p {
+    font-size: 0.85rem;
+    color: #555;
+    margin: 0;
 }
 
-.qa-bookings {
-    background: #fce1e6;
+.quick-action-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    filter: brightness(1.05);
 }
-.qa-bookings .qa-icon {
-    background: #e0455f;
-} */
+
+/* Card color variants — Deep Violet theme */
+
+.qa-additem {
+    background: #e6d9f5;
+}
+.qa-additem .qa-icon {
+    background: #6b3fa0;
+}
+
+.qa-addcategory {
+    background: #fdeecb;
+}
+.qa-addcategory .qa-icon {
+    background: #e3b915;
+}
+
+.qa-vieworders {
+    background: #fbd9e2;
+}
+.qa-vieworders .qa-icon {
+    background: #d4527e;
+}
+
+.qa-bulkproducts {
+    background: #ded2f0;
+}
+.qa-bulkproducts .qa-icon {
+    background: #4a2c5e;
+}
+
+.qa-itemslist {
+    background: #f5e0e8;
+}
+.qa-itemslist .qa-icon {
+    background: #a02d5c;
+}
+
+.qa-categories {
+    background: #eee3f9;
+}
+.qa-categories .qa-icon {
+    background: #8a5cc4;
+}

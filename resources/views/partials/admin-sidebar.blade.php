@@ -10,7 +10,7 @@
         <ul class="sidebar-menu">
 
             <li>
-                <a href="#" class="active">
+                <a href="{{ route('admin.dashboard') }}" class="active">
                     <i class="fa-solid fa-house"></i>
                     <span>Dashboard</span>
                 </a>
@@ -37,33 +37,33 @@
                 </a>
             </li>
 
-            <li>
+            {{-- <li>
                 <a href="#">
                     <i class="fa-solid fa-bowl-food"></i>
                     <span>Item List</span>
                 </a>
-            </li>
+            </li> --}}
 
-            <li>
+            {{-- <li>
                 <a href="#">
                     <i class="fa-solid fa-cart-shopping"></i>
                     <span>Order List</span>
                 </a>
-            </li>
+            </li> --}}
 
-            <li>
+            {{-- <li>
                 <a href="#">
                     <i class="fa-solid fa-boxes-stacked"></i>
                     <span>Add Bulk Products</span>
                 </a>
-            </li>
+            </li> --}}
 
-            <li>
+            {{-- <li>
                 <a href="#">
                     <i class="fa-solid fa-box-open"></i>
                     <span>Bulk Product List</span>
                 </a>
-            </li>
+            </li> --}}
 
             <li>
                 <a href="#">
@@ -80,7 +80,8 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="{{ route('admin.gallery.index') }}"
+                    class="{{ request()->routeIs('admin.gallery.*') ? 'active' : '' }}">
                     <i class="fa-solid fa-image"></i>
                     <span>Gallery</span>
                 </a>
@@ -91,7 +92,7 @@
                     <i class="fa-solid fa-gear"></i>
                     <span>Settings</span>
                 </a>
-            </li>   
+            </li>
         </ul>
     </div>
 

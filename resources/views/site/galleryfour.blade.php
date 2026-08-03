@@ -170,6 +170,40 @@
                         </div>
                     </div>
                 </div>
+                @forelse ($images as $image)
+                    <div class="col-6 col-md-3">
+                        <div class="room-card">
+
+                            <img src="{{ asset('storage/' . $image->image_path) }}"
+                                alt="{{ $image->title ?? 'Gallery image' }}">
+
+                            <!-- Price -->
+                            <div class="price-badge">
+                                <small class="fw-semibold">Price</small>
+                                <span class="amount">
+                                    ₹{{ number_format($image->price, 2) }}
+                                </span>
+                            </div>
+
+                            <!-- Info -->
+                            <div class="info-card">
+                                <div class="tag">(New)</div>
+                                <h5>{{ $image->title ?? 'Untitled' }}</h5>
+
+                                <a href="#">
+                                    View More <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                @empty
+
+                    <div class="col-12 text-center">
+                        <h4>No Images Found</h4>
+                    </div>
+                @endforelse
 
             </div>
 
