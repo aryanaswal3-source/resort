@@ -1,5 +1,6 @@
 <?php
-
+ use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\SiteGalleryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -26,9 +27,11 @@ Route::get('/contact', function () {
 Route::post('/contact-store', [ContactController::class, 'store'])
     ->name('contact.store');
 
-Route::get('/gallery', function () {
-    return view('site.galleryfour');
-})->name('gallery');
+// Route::get('/gallery', function () {
+//     return view('site.galleryfour');
+// })->name('gallery');
+
+Route::get('/gallery', [SiteGalleryController::class, 'index'])->name('gallery');
 
 // Route::get('/admin', function () {
 //     return view('layout.admin-layout');
@@ -37,3 +40,8 @@ Route::get('/gallery', function () {
 Route::get('/admin', function () {
     return view('dashboard.dashboard');
 })->name('admin.dashboard');
+
+
+Route::get('/admin/gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
+Route::post('/admin/gallery', [GalleryController::class, 'store'])->name('admin.gallery.store');
+Route::delete('/admin/gallery/{gallery}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
