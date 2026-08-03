@@ -57,7 +57,7 @@
                 <!-- Card 1: Email Us -->
                 <div class="col-6 col-lg-3">
                     <div class="info-card border rounded p-4 p-lg-5 text-center h-100">
-                        <div class="icon-circle mx-auto mb-3">
+                        <div class="info-icon-circle mx-auto mb-3">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <h5 class="fw-bold mb-3 fs-4">Email Us:</h5>
@@ -71,7 +71,7 @@
                 <!-- Card 2: Call Us -->
                 <div class="col-6 col-lg-3">
                     <div class="info-card border rounded p-4 p-lg-5 text-center h-100">
-                        <div class="icon-circle mx-auto mb-3">
+                        <div class="info-icon-circle mx-auto mb-3">
                             <i class="fa-solid fa-phone"></i>
                         </div>
                         <h5 class="fw-bold mb-3 fs-4">Call Us:</h5>
@@ -83,7 +83,7 @@
                 <!-- Card 3: Location -->
                 <div class="col-6 col-lg-3">
                     <div class="info-card border rounded p-4 p-lg-5 text-center h-100">
-                        <div class="icon-circle mx-auto mb-3">
+                        <div class="info-icon-circle mx-auto mb-3">
                             <i class="fa-solid fa-location-dot"></i>
                         </div>
                         <h5 class="fw-bold mb-3 fs-4">Location</h5>
@@ -95,7 +95,7 @@
                 <!-- Card 4: Call Us -->
                 <div class="col-6 col-lg-3">
                     <div class="info-card border rounded p-4 p-lg-5 text-center h-100">
-                        <div class="icon-circle mx-auto mb-3">
+                        <div class="info-icon-circle mx-auto mb-3">
                             <i class="fa-solid fa-phone"></i>
                         </div>
                         <h5 class="fw-bold mb-3 fs-4">Call Us:</h5>

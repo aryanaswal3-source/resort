@@ -32,7 +32,6 @@ ul {
 
 .top-header {
     background: #ffffff;
-    padding: 12px 0;
     border-bottom: 1px solid #ececec;
 }
 
@@ -102,7 +101,6 @@ ul {
 .custom-navbar {
     position: fixed;
     background: #d89b32;
-    padding: 0;
     z-index: 9999;
 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
@@ -311,10 +309,7 @@ ul {
 ==========================*/
 
 @media (max-width: 991px) {
-    .top-header {
-        padding: 14px 0;
-    }
-
+    
     .social-icons {
         display: none;
     }
@@ -363,7 +358,7 @@ ul {
     }
 
     .top-header {
-        padding: 12px 0;
+        padding: 0;
     }
 
     .navbar-brand {

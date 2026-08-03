@@ -1,0 +1,55 @@
+:root {
+    --navy: #24416B;
+    --gold: #CC8C18;
+    --green: #82B440;
+    --text-muted: #7A7E9A;
+    --bg: #ffffff;
+    --card-bg: #ffffff;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.section-label {
+    letter-spacing: .3em;
+    font-weight: 600;
+    font-size: .85rem;
+    color: var(--gold);
+}
+
+.btn-explore {
+    background-color: var(--gold);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 32px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: opacity .2s ease;
+}
+
+.btn-explore:hover {
+    opacity: .85;
+    color: #fff;
+}
+
+.btn-explore .icon-circle {
+    background: #fff;
+    color: var(--gold);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .3s ease;
+}
+
+.btn-explore:hover .icon-circle {
+    transform: translateX(6px);
+}
