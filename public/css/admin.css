@@ -471,6 +471,10 @@ ul {
     padding: 22px;
     position: relative;
     overflow: hidden;
+     transition: transform 0.9s ease;
+}
+.bo-card:hover {
+    transform: translateY(-11px);
 }
 
 .bo-card .bo-icon {
