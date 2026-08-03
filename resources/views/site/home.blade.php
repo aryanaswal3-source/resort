@@ -407,6 +407,7 @@
 
     </section>
 
+    
     {{-- ===== Exclusive Offers Section ===== --}}
     <section class="offers-section">
         <div class="container">
