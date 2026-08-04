@@ -4,7 +4,6 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/aboutpg.css') }}">
-    
 @endpush
 
 @section('content')
@@ -13,7 +12,9 @@
         <div class="page-banner-overlay"></div>
         <div class="container position-relative">
             <div class="page-banner-content text-center">
-                <h1 class="page-banner-title">About Us</h1>
+                <h1 class="display-3 fw-bold text-white lh-lg" style="font-family: 'Playfair Display', serif; ">
+                    About
+                </h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center mb-0">
                         <li class="breadcrumb-item">
@@ -285,92 +286,94 @@
 
     {{-- ===============sliding card=================  --}}
     <section class="testimonial-section py-5">
-    <div class="container">
-        <div class="text-center mb-5">
-            <span class="section-subtitle">TESTIMONIALS</span>
-            <h2 class="section-title">What customers say</h2>
-        </div>
-
-        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-            <div class="carousel-inner">
-
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <div class="row g-4">
-                        @for ($i = 0; $i < 3; $i++)
-                        <div class="col-md-4">
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <h5 class="testimonial-title">Excellent hotel</h5>
-                                <p class="testimonial-text">
-                                    "Awesome yksum dolor sit ametco elit, sed do eiusmod tempor incididunt et md do
-                                    eiusmoeiusmod tempor inte emamnsecacing eiusmoeiusmod"
-                                </p>
-                                <div class="testimonial-author">
-                                    <img src="{{ asset('image/testimonials/user-'.($i+1).'.jpg') }}" alt="Aryan Jenis">
-                                    <div>
-                                        <h6>Aryan Jenis</h6>
-                                        <span>CEO@Leasuely</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endfor
-                    </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="carousel-item">
-                    <div class="row g-4">
-                        @for ($i = 0; $i < 3; $i++)
-                        <div class="col-md-4">
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <h5 class="testimonial-title">Great experience</h5>
-                                <p class="testimonial-text">
-                                    "Awesome yksum dolor sit ametco elit, sed do eiusmod tempor incididunt et md do
-                                    eiusmoeiusmod tempor inte emamnsecacing eiusmoeiusmod"
-                                </p>
-                                <div class="testimonial-author">
-                                    <img src="{{ asset('image/testimonials/user-'.($i+4).'.jpg') }}" alt="Guest">
-                                    <div>
-                                        <h6>Sarah Khan</h6>
-                                        <span>Traveler</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endfor
-                    </div>
-                </div>
-
+        <div class="container">
+            <div class="text-center mb-5">
+                <span class="section-subtitle">TESTIMONIALS</span>
+                <h2 class="section-title">What customers say</h2>
             </div>
 
-            <!-- Manual Arrows -->
-            <button class="carousel-control-prev testimonial-arrow" type="button"
-                data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                <span class="arrow-icon">&larr;</span>
-            </button>
-            <button class="carousel-control-next testimonial-arrow" type="button"
-                data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                <span class="arrow-icon">&rarr;</span>
-            </button>
-        </div>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+                <div class="carousel-inner">
 
-    </div>
-</section>
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="row g-4">
+                            @for ($i = 0; $i < 3; $i++)
+                                <div class="col-md-4">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                        <h5 class="testimonial-title">Excellent hotel</h5>
+                                        <p class="testimonial-text">
+                                            "Awesome yksum dolor sit ametco elit, sed do eiusmod tempor incididunt et md do
+                                            eiusmoeiusmod tempor inte emamnsecacing eiusmoeiusmod"
+                                        </p>
+                                        <div class="testimonial-author">
+                                            <img src="{{ asset('image/testimonials/user-' . ($i + 1) . '.jpg') }}"
+                                                alt="Aryan Jenis">
+                                            <div>
+                                                <h6>Aryan Jenis</h6>
+                                                <span>CEO@Leasuely</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endfor
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="row g-4">
+                            @for ($i = 0; $i < 3; $i++)
+                                <div class="col-md-4">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-stars">
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                            <i class="bi bi-star-fill"></i>
+                                        </div>
+                                        <h5 class="testimonial-title">Great experience</h5>
+                                        <p class="testimonial-text">
+                                            "Awesome yksum dolor sit ametco elit, sed do eiusmod tempor incididunt et md do
+                                            eiusmoeiusmod tempor inte emamnsecacing eiusmoeiusmod"
+                                        </p>
+                                        <div class="testimonial-author">
+                                            <img src="{{ asset('image/testimonials/user-' . ($i + 4) . '.jpg') }}"
+                                                alt="Guest">
+                                            <div>
+                                                <h6>Sarah Khan</h6>
+                                                <span>Traveler</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endfor
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Manual Arrows -->
+                <button class="carousel-control-prev testimonial-arrow" type="button"
+                    data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="arrow-icon">&larr;</span>
+                </button>
+                <button class="carousel-control-next testimonial-arrow" type="button"
+                    data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="arrow-icon">&rarr;</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
 @endsection
 
 @push('scripts')

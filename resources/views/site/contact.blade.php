@@ -21,9 +21,8 @@
         <div class="page-banner-overlay position-absolute top-0 start-0 w-100 h-100"></div>
 
         <div class="container position-relative text-center">
-
-            <h1 class="display-5 fw-bold text-white mb-3  lh-lg ">
-                Contact Style One
+            <h1 class="display-3 fw-bold text-white lh-lg" style="font-family: 'Playfair Display', serif; ">
+                Contact
             </h1>
 
             <nav aria-label="breadcrumb">
@@ -104,7 +103,7 @@
                     </div>
                 </div>
 
-                
+
             </div>
         </div>
     </section>

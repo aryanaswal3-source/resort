@@ -20,8 +20,8 @@
 
         <div class="container position-relative text-center">
 
-            <h1 class="display-5 fw-bold text-white mb-3  lh-lg ">
-                Gallery Columns
+            <h1 class="display-3 fw-bold text-white  lh-lg" style="font-family: 'Playfair Display', serif; ">
+                Gallery
             </h1>
 
             <nav aria-label="breadcrumb">
