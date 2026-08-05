@@ -130,7 +130,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Services </a>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Services Style One</a></li>
+                            <li><a class="dropdown-item" href="{{ url('/services') }}"> Our Services </a></li>
                             
                         </ul>
                     </li>

@@ -10,7 +10,8 @@
         <ul class="sidebar-menu">
 
             <li>
-                <a href="{{ route('admin.dashboard') }}" class="active">
+                <a href="{{ route('admin.dashboard') }}"
+                    class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <i class="fa-solid fa-house"></i>
                     <span>Dashboard</span>
                 </a>
@@ -26,17 +27,17 @@
             <li>
                 <a href="#">
                     <i class="fa-solid fa-list"></i>
-                    <span>Category List</span>
+                    <span> List</span>
                 </a>
             </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-utensils"></i>
-                    <span>Add Items</span>
+            <li class="nav-item">
+                <a href="{{ route('admin.services.index') }}"
+                    class="{{ request()->routeIs('admin.services.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Services</span>
                 </a>
             </li>
-
             {{-- <li>
                 <a href="#">
                     <i class="fa-solid fa-bowl-food"></i>

@@ -1,9 +1,12 @@
 <?php
- use App\Http\Controllers\Admin\GalleryController;
-use App\Http\Controllers\SiteGalleryController;
+
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SiteGalleryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Admin\AdminServiceController;
 
 Route::get('/', function () {
     return view('site.home');
@@ -41,7 +44,16 @@ Route::get('/admin', function () {
     return view('dashboard.dashboard');
 })->name('admin.dashboard');
 
-
 Route::get('/admin/gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
 Route::post('/admin/gallery', [GalleryController::class, 'store'])->name('admin.gallery.store');
 Route::delete('/admin/gallery/{gallery}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
+
+// Route::get('/services', function () {
+//     return view('site.services');
+// })->name('servies');
+
+Route::get('/services', [ServiceController::class, 'index'])->name('services');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('services', AdminServiceController::class);
+});

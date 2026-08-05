@@ -137,6 +137,11 @@
         </div>
 
         {{-- ============ Quick Actions ================ --}}
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-3 ">
+            <h4 class="fw-bold m-0 d-flex align-items-center gap-2" style="color:#8a4a52;">
+                <i class="bi bi-escape fw-bolder fs-3"></i> Quick Actions
+            </h4>
+        </div>
 
         <div class="row g-3 mt-2">
 
@@ -182,6 +187,7 @@
 
             <div class="col-md-4">
                 <div class="quick-action-card qa-itemslist">
+                    <a href="{{ route('admin.services.create') }}" class="stretched-link"></a>
                     <div class="qa-icon">
                         <i class="fa-solid fa-spa"></i>
                     </div>
@@ -189,7 +195,6 @@
                     <p>Create amenity or service</p>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="quick-action-card qa-categories">
                     <div class="qa-icon">
