@@ -56,7 +56,7 @@
 
             <!-- Mobile Logo -->
             <a class="navbar-brand d-lg-none" href="{{ route('home') }}">
-                 <img src="image/logo3.jpg" alt="2">
+                <img src="image/logo3.jpg" alt="2">
             </a>
             <!-- Toggle -->
 
@@ -70,7 +70,7 @@
             <!-- Menu -->
 
             <div class="collapse navbar-collapse " id="mainNavbar">
-                
+
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item dropdown">
                         <a href="{{ url('/') }}" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">
@@ -108,7 +108,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Room Grid</a></li>
-                            
+
                         </ul>
                     </li>
 
@@ -131,7 +131,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url('/services') }}"> Our Services </a></li>
-                            
+
                         </ul>
                     </li>
 
@@ -149,21 +149,19 @@
                     </li>
 
                     <li class="nav-item dropdown">
-
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> News </a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Query </a>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">News Grid</a></li>
-                           
+                            <li><a class="dropdown-item" href="{{ route('query.form') }}">Enquiry</a></li>
                         </ul>
                     </li>
-
                     <li class="nav-item dropdown">
 
-                        <a href="{{ url('/contact') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Contacts </a>
+                        <a href="{{ url('/contact') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            Contacts </a>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/contact') }}">Contact Us</a></li>    
+                            <li><a class="dropdown-item" href="{{ url('/contact') }}">Contact Us</a></li>
 
                         </ul>
                     </li>

@@ -79,6 +79,13 @@
                     <span>Bookings</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ route('admin.queries.index') }}"
+                    class="{{ request()->routeIs('admin.queries.*') ? 'active' : '' }}">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <span>Customer Queries</span>
+                </a>
+            </li>
 
             <li>
                 <a href="{{ route('admin.gallery.index') }}"
