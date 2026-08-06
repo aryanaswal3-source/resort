@@ -28,6 +28,99 @@ textarea.form-control {
     padding: 16px 22px;
 }
 
+/* ===== Hanging Poster (decorative) ===== */
+.hanging-poster {
+    position: absolute;
+    top: 0;
+    left: -190px;
+    width: 160px;
+    z-index: 5;
+    text-align: center;
+    animation: posterDrop 1s ease-out forwards, posterSwing 4s ease-in-out 1s infinite;
+    transform-origin: top center;
+    opacity: 0;
+}
+
+.poster-pin {
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle at 30% 30%, #e8c876, var(--gold));
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0,0,0,.3);
+    position: relative;
+    z-index: 2;
+}
+
+.poster-rope {
+    width: 2px;
+    height: 70px;
+    background: #b8a88a;
+    margin: 0 auto;
+}
+
+.poster-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 22px 14px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.15);
+    transform: rotate(-2deg);
+}
+
+.poster-icon {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.poster-sub {
+    font-size: .7rem;
+    letter-spacing: .15em;
+    color: var(--text-muted);
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.poster-main {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.poster-divider {
+    width: 30px;
+    height: 10px;
+    background: var(--gold);
+    margin: 0 auto 10px;
+}
+
+.poster-note {
+    font-size: .72rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+@keyframes posterDrop {
+    from {
+        top: -260px;
+        opacity: 0;
+    }
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes posterSwing {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
 /* Cards */
 .card {
     border-radius: 20px;
@@ -42,6 +135,32 @@ textarea.form-control {
 .card-body h4 {
     color: var(--navy);
     font-family: 'Playfair Display', serif;
+}
+
+/* Form cards hover */
+.card.shadow.border-0.rounded-4 {
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.card.shadow.border-0.rounded-4:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.1) !important;
+}
+
+/* Input fields hover */
+.form-control:hover,
+.form-select:hover {
+    border-color: var(--gold);
+}
+
+/* Book Now buttons hover */
+.btn-success {
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(204, 140, 24, .35);
 }
 
 /* Primary action button (theme gold, replacing orange) */
@@ -156,6 +275,48 @@ textarea.form-control {
     padding:12px;
     margin-bottom:10px;
 }
+
+.calendar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: .8rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.legend-dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.legend-selected { background: #198754; }
+.legend-range { background: #fff4cc; border: 1px solid #d4a017; }
+.legend-today { background: #fff; border: 2px solid #d4a017; }
+
+.py-5 .rounded-4.shadow-sm {
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.py-5 .rounded-4.shadow-sm:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.1) !important;
+}
+
+.py-5 .bi {
+    display: inline-block;
+    transition: transform .3s ease, color .3s ease;
+}
+
+.py-5 .rounded-4.shadow-sm:hover .bi {
+    transform: translateY(-6px) scale(1.15);
+}
+
+
 
 @media (max-width: 767px) {
     .form-control,

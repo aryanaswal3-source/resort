@@ -91,3 +91,111 @@
     background-color: var(--gold);
     transform: scale(1.05);
 }
+
+/* ===== Floating WhatsApp + Call Buttons ===== */
+.floating-contact {
+    position: fixed;
+    bottom: 90px;
+    right: 25px;
+    z-index: 1040;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.floating-btn {
+    position: relative;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.4rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+    transition: transform .2s ease;
+}
+
+.floating-btn:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.whatsapp-btn {
+    background: #25D366;
+}
+
+.whatsapp-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #25D366;
+    animation: pulseRing 2s infinite;
+    z-index: -1;
+}
+
+.call-btn {
+    background: var(--gold);
+}
+
+/* Tooltip */
+.floating-tooltip {
+    position: absolute;
+    right: 68px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--navy);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: .8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, right .2s ease;
+}
+
+.floating-tooltip::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: var(--navy);
+}
+
+.floating-btn:hover .floating-tooltip {
+    opacity: 1;
+    visibility: visible;
+    right: 68px;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(1);
+        opacity: .6;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    .floating-contact {
+        bottom: 80px;
+        right: 25px;
+    }
+    .floating-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2rem;
+    }
+    .floating-tooltip {
+        display: none;
+    }
+}

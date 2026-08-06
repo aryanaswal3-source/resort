@@ -44,6 +44,18 @@
         </span> Buy Now
     </button>
 
+    {{-- ===== Floating WhatsApp + Call buttons ===== --}}
+<div class="floating-contact">
+    <a href="https://wa.me/919368545116" target="_blank" class="floating-btn whatsapp-btn">
+        <i class="bi bi-whatsapp"></i>
+        <span class="floating-tooltip">Chat on WhatsApp</span>
+    </a>
+    {{-- <a href="tel:+919876543210" class="floating-btn call-btn">
+        <i class="bi bi-telephone-fill"></i>
+        <span class="floating-tooltip">Call Us Now</span>
+    </a> --}}
+</div>
+
 
     @if (session('success'))
         <script>
