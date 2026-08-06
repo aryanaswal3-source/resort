@@ -199,7 +199,7 @@
                         handle the rest.
                     </p>
 
-                    <a href="{{-- route('booking') --}}" class="btn btn-dark px-4 py-3 fw-semibold text-uppercase">
+                    <a href="{{ route('booking.create') }}" class="btn btn-dark px-4 py-3 fw-semibold text-uppercase">
                         Book Now
                     </a>
                 </div>
@@ -244,8 +244,7 @@
                                             <img src="{{ $service->image ? asset('storage/' . $service->image) : asset('image/adminlogo.png') }}"
                                                 alt="{{ $service->title }}" class="w-100 service-card-img">
 
-                                            <a href="#"
-                                                class="btn btn-light rounded-pill position-absolute service-book-btn px-3 py-2 fw-semibold">
+                                            <a href="{{ route('booking.create') }}" class="btn-explore btn btn-light rounded-pill position-absolute service-book-btn px-3 py-2 fw-semibold">
                                                 Book Now
                                             </a>
 

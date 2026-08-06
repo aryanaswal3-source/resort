@@ -7,6 +7,9 @@ use App\Http\Controllers\SiteGalleryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Admin\AdminServiceController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\Admin\BookingController as AdminBookingController;
+
 
 Route::get('/', function () {
     return view('site.home');
@@ -56,4 +59,16 @@ Route::get('/services', [ServiceController::class, 'index'])->name('services');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('services', AdminServiceController::class);
+});
+
+
+// Public
+Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
+Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+
+// Admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/bookings', [AdminBookingController::class, 'index'])->name('bookings.index');
+    Route::put('/bookings/{booking}/status', [AdminBookingController::class, 'updateStatus'])->name('bookings.status');
+    Route::delete('/bookings/{booking}', [AdminBookingController::class, 'destroy'])->name('bookings.destroy');
 });

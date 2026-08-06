@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="booking-submit">
-                    <a href="#" class="btn-explore">
+                   <a href="{{ route('booking.create') }}" class="btn-explore">
                         Check Availability
                         <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
                     </a>
@@ -67,10 +67,6 @@
         </div>
     </section>
 
-    {{-- ===== Global Fixed Buy Now Button ===== --}}
-    <button class="btn btn-buy-now">
-        <span class="icon-circle"><i class="bi bi-droplet-fill"></i></span> Buy Now
-    </button>
 
     {{-- ===== Explore Section ===== --}}
     <section class="explore-section">
@@ -439,7 +435,7 @@
                                 </div>
                                 <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
                                 <span class="offer-price">From ₹5000/night</span>
-                                <a href="#" class="btn-explore">
+                               <a href="{{ route('booking.create') }}" class="btn-explore">
                                     Book Online
                                     <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
                                 </a>
@@ -468,7 +464,7 @@
                                 </div>
                                 <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
                                 <span class="offer-price">From ₹3000/night</span>
-                                <a href="#" class="btn-explore">
+                               <a href="{{ route('booking.create') }}" class="btn-explore">
                                     Book Online
                                     <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
                                 </a>
@@ -497,7 +493,7 @@
                                 </div>
                                 <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
                                 <span class="offer-price">From ₹6000/night</span>
-                                <a href="#" class="btn-explore">
+                              <a href="{{ route('booking.create') }}" class="btn-explore">
                                     Book Online
                                     <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
                                 </a>
@@ -526,7 +522,7 @@
                                 </div>
                                 <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
                                 <span class="offer-price">From ₹2000/night</span>
-                                <a href="#" class="btn-explore">
+                               <a href="{{ route('booking.create') }}" class="btn-explore">
                                     Book Online
                                     <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
                                 </a>
@@ -646,7 +642,7 @@
                             <span><i class="bi bi-clock"></i>Duration: 2 Hours</span>
                             <span><i class="bi bi-record-circle"></i>18+ years</span>
                         </div>
-                        <a href="#" class="btn-explore">
+                       <a href="{{ route('booking.create') }}" class="btn-explore">
                             Book Online
                             <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
                         </a>
@@ -663,7 +659,7 @@
                             <span><i class="bi bi-clock"></i>Duration: 2 Hours</span>
                             <span><i class="bi bi-record-circle"></i>18+ years</span>
                         </div>
-                        <a href="#" class="btn-explore">
+                      <a href="{{ route('booking.create') }}" class="btn-explore">
                             Book Online
                             <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
                         </a>
@@ -680,7 +676,7 @@
                             <span><i class="bi bi-clock"></i>Duration: 2 Hours</span>
                             <span><i class="bi bi-record-circle"></i>18+ years</span>
                         </div>
-                        <a href="#" class="btn-explore">
+                        <a href="{{ route('booking.create') }}" class="btn-explore">
                             Book Online
                             <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
                         </a>

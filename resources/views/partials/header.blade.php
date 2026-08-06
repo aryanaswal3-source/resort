@@ -56,7 +56,7 @@
 
             <!-- Mobile Logo -->
             <a class="navbar-brand d-lg-none" href="{{ route('home') }}">
-                 <img src="image/logo3.jpg" alt="2">
+                <img src="image/logo3.jpg" alt="2">
             </a>
             <!-- Toggle -->
 
@@ -70,7 +70,7 @@
             <!-- Menu -->
 
             <div class="collapse navbar-collapse " id="mainNavbar">
-                
+
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item dropdown">
                         <a href="{{ url('/') }}" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">
@@ -88,7 +88,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url('/about') }}">About Us</a></li>
-                            <li><a class="dropdown-item" href="#">Team</a></li>
+                            {{-- <li><a class="dropdown-item" href="#">Team</a></li>
                             <li><a class="dropdown-item" href="#">FAQ</a></li>
                             <li><a class="dropdown-item" href="#">FAQ</a></li>
                             <li><a class="dropdown-item" href="#">Testimonial</a></li>
@@ -97,7 +97,7 @@
                             <li><a class="dropdown-item" href="#">Terms Conditions</a></li>
                             <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
                             <li><a class="dropdown-item" href="#">Coming Soon</a></li>
-                            <li><a class="dropdown-item" href="#">404 Error</a></li>
+                            <li><a class="dropdown-item" href="#">404 Error</a></li> --}}
 
                         </ul>
                     </li>
@@ -108,7 +108,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Room Grid</a></li>
-                            
+
                         </ul>
                     </li>
 
@@ -131,20 +131,19 @@
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url('/services') }}"> Our Services </a></li>
-                            
+
                         </ul>
                     </li>
 
                     <li class="nav-item dropdown">
 
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Shop</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Booking</a>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Product Grid</a></li>
+                            <li>
+                                <a class="dropdown-item" href="{{ url('/booking') }}">Book Now</a>
+                            </li>
                             <li><a class="dropdown-item" href="#">Checkout</a></li>
-                            <li><a class="dropdown-item" href="#">Cart</a></li>
-                            <li><a class="dropdown-item" href="#">Single Product</a></li>
-
                         </ul>
                     </li>
 
@@ -154,16 +153,16 @@
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">News Grid</a></li>
-                           
+
                         </ul>
                     </li>
 
                     <li class="nav-item dropdown">
-
-                        <a href="{{ url('/contact') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Contacts </a>
+                         <a href="{{ url('/contact') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        Contacts </a>
 
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/contact') }}">Contact Us</a></li>    
+                            <li><a class="dropdown-item" href="{{ url('/contact') }}">Contact Us</a></li>
 
                         </ul>
                     </li>

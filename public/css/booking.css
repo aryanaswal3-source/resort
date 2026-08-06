@@ -1,0 +1,165 @@
+/* ===== Booking Form Styling ===== */
+.form-label {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: .9rem;
+    margin-bottom: 8px;
+}
+
+.form-control,
+.form-select {
+    height: 52px;
+    border-radius: 30px;
+    border: 1px solid #e2e2e2;
+    padding: 0 22px;
+    font-size: .95rem;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.2rem rgba(204, 140, 24, .15);
+}
+
+textarea.form-control {
+    height: auto;
+    border-radius: 20px;
+    padding: 16px 22px;
+}
+
+/* Cards */
+.card {
+    border-radius: 20px;
+    transition: box-shadow .3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 15px 40px rgba(0,0,0,.08) !important;
+}
+
+.card-body h3,
+.card-body h4 {
+    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+}
+
+/* Primary action button (theme gold, replacing orange) */
+.btn-success {
+    background: var(--gold);
+    border: none;
+    font-weight: 600;
+    letter-spacing: .3px;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.btn-success:hover {
+    background: #b57a13;
+    transform: translateY(-2px);
+}
+
+.btn-success:focus,
+.btn-success:active {
+    background: var(--gold) !important;
+    box-shadow: 0 0 0 0.2rem rgba(204, 140, 24, .25) !important;
+}
+
+/* Booking Summary numbers */
+.card-body .text-success {
+    color: var(--gold) !important;
+}
+
+/* Sidebar date inputs (calendar) */
+#sidebarCheckIn,
+#sidebarCheckOut {
+    background: #faf9f7;
+    cursor: pointer;
+}
+
+#sidebarCheckIn:focus,
+#sidebarCheckOut:focus {
+    background: #fff;
+}
+
+/* ========================= */
+/* Premium Booking Calendar  */
+/* ========================= */
+
+.flatpickr-calendar{
+    width:100% !important;
+    border:none !important;
+    box-shadow:none !important;
+    border-radius:20px;
+}
+
+.flatpickr-month{
+    background:linear-gradient(90deg,#d4a017,#b8860b);
+    color:#fff;
+    border-radius:15px 15px 0 0;
+}
+
+.flatpickr-current-month{
+    color:#fff;
+}
+
+.flatpickr-current-month input.cur-year{
+    color:#fff !important;
+}
+
+.flatpickr-weekday{
+    color:#b8860b !important;
+    font-weight:700;
+}
+
+.flatpickr-day{
+    border-radius:10px;
+    transition:.3s;
+}
+
+.flatpickr-day:hover{
+    background:#f5e6b5;
+}
+
+.flatpickr-day.selected{
+    background:#198754 !important;
+    color:#fff !important;
+    border:none !important;
+}
+
+.flatpickr-day.today{
+    border:2px solid #d4a017 !important;
+}
+
+.flatpickr-day.inRange{
+    background:#fff4cc !important;
+}
+
+.booking-summary-box{
+    background:#eef8ef;
+    border:2px solid #198754;
+    border-radius:15px;
+    padding:18px;
+    margin-top:20px;
+}
+
+.booking-summary-box h5{
+    color:#198754;
+    margin-bottom:15px;
+}
+
+.date-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#fff;
+    border-radius:10px;
+    padding:12px;
+    margin-bottom:10px;
+}
+
+@media (max-width: 767px) {
+    .form-control,
+    .form-select {
+        height: 48px;
+    }
+}

@@ -74,7 +74,8 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="{{ route('admin.bookings.index') }}"
+                    class="{{ request()->routeIs('admin.bookings.*') ? 'active' : '' }}">
                     <i class="fa-solid fa-calendar"></i>
                     <span>Bookings</span>
                 </a>

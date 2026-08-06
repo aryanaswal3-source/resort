@@ -37,6 +37,13 @@
 
 <body>
 
+    
+    {{-- ===== Global Fixed Buy Now Button ===== --}}
+    <button class="btn btn-buy-now">
+        <span class="icon-circle"><i class="bi bi-droplet-fill"></i>
+        </span> Buy Now
+    </button>
+
 
     @if (session('success'))
         <script>
