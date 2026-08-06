@@ -6,7 +6,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ServiceController;
 
-use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 

@@ -151,23 +151,16 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Query </a>
 
                         <ul class="dropdown-menu">
-<<<<<<< HEAD
-                            <li><a class="dropdown-item" href="#">News Grid</a></li>
 
-=======
                             <li><a class="dropdown-item" href="{{ route('query.form') }}">Enquiry</a></li>
->>>>>>> origin/vivek
+
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-<<<<<<< HEAD
-                         <a href="{{ url('/contact') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        Contacts </a>
-=======
 
                         <a href="{{ url('/contact') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             Contacts </a>
->>>>>>> origin/vivek
+
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url('/contact') }}">Contact Us</a></li>
