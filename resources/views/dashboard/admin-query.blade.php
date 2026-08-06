@@ -47,7 +47,7 @@
                             <th>Stay</th>
                             <th>Guests</th>
                             <th>Status</th>
-                            <th width="170">Action</th>
+                            <th class="text-center" width="200">Action</th>
                         </tr>
 
                     </thead>
@@ -114,43 +114,49 @@
 
                                 <td>
 
-                                    <form action="{{ route('admin.queries.status', $q->id) }}" method="POST">
+                                    <div class="d-flex align-items-center gap-2">
 
-                                        @csrf
-                                        @method('PATCH')
+                                        <span
+                                            class="badge
+                                                @if ($q->status == 'pending') bg-warning text-dark
+                                                @elseif($q->status == 'contacted') bg-info
+                                                @elseif($q->status == 'confirmed') bg-success
+                                                @elseif($q->status == 'cancelled') bg-danger @endif">
+                                            {{ ucfirst($q->status) }}
+                                        </span>
 
-                                        <select class="form-select form-select-sm" name="status"
-                                            onchange="this.form.submit()">
 
-                                            <option value="pending" @selected($q->status == 'pending')>
-                                                Pending
-                                            </option>
 
-                                            <option value="contacted" @selected($q->status == 'contacted')>
-                                                Contacted
-                                            </option>
-
-                                            <option value="confirmed" @selected($q->status == 'confirmed')>
-                                                Confirmed
-                                            </option>
-
-                                            <option value="cancelled" @selected($q->status == 'cancelled')>
-                                                Cancelled
-                                            </option>
-                                        </select>
-                                    </form>
+                                    </div>
                                 </td>
                                 <td>
+                                    <div class="d-flex align-items-center gap-2 text-center"">
 
-                                    <form action="{{ route('admin.queries.destroy', $q->id) }}" method="POST"
-                                        onsubmit="return confirm('Delete this query?')">
+                                        <form action="{{ route('admin.queries.status', $q->id) }}" method="POST"
+                                            class="mb-0">
+                                            @csrf
+                                            @method('PATCH')
 
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-sm btn-outline-danger">
-                                            <i class="fa-solid fa-trash"></i> Delete
-                                        </button>
-                                    </form>
+                                            <select class="form-select form-select-sm" name="status"
+                                                onchange="this.form.submit()" style="min-width:160px;">
+                                                <option value="pending" @selected($q->status == 'pending')>Pending</option>
+                                                <option value="contacted" @selected($q->status == 'contacted')>Contacted</option>
+                                                <option value="confirmed" @selected($q->status == 'confirmed')>Confirmed</option>
+                                                <option value="cancelled" @selected($q->status == 'cancelled')>Cancelled</option>
+                                            </select>
+                                        </form>
+
+                                        <form action="{{ route('admin.queries.destroy', $q->id) }}" method="POST"
+                                            onsubmit="return confirm('Delete this query?')" class="mb-0">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+
+                                    </div>
                                 </td>
                             </tr>
 
