@@ -645,3 +645,23 @@ ul {
 .qa-categories .qa-icon {
     background: #8a5cc4;
 }
+.table thead th{
+    font-weight:600;
+    white-space:nowrap;
+}
+
+.table td{
+    vertical-align:middle;
+}
+
+.card{
+    border-radius:18px;
+}
+
+.form-select-sm{
+    min-width:140px;
+}
+
+.badge{
+    font-size:.8rem;
+}

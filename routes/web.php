@@ -1,14 +1,19 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\SiteGalleryController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceController;
+
 use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
+
+
+use App\Http\Controllers\SiteGalleryController;
+use App\Http\Controllers\TravelQueryController;
+use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
@@ -72,3 +77,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/bookings/{booking}/status', [AdminBookingController::class, 'updateStatus'])->name('bookings.status');
     Route::delete('/bookings/{booking}', [AdminBookingController::class, 'destroy'])->name('bookings.destroy');
 });
+
+Route::get('/query-form', [TravelQueryController::class, 'create'])->name('query.form');
+Route::post('/query-form', [TravelQueryController::class, 'store'])->name('query.store');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/queries', [TravelQueryController::class, 'index'])->name('admin.queries.index');
+    Route::patch('/queries/{query}/status', [TravelQueryController::class, 'updateStatus'])->name('admin.queries.status');
+    Route::delete('/queries/{query}', [TravelQueryController::class, 'destroy'])->name('admin.queries.destroy');
+});
+

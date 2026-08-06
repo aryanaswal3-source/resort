@@ -167,11 +167,12 @@
 
             <div class="col-md-4">
                 <div class="quick-action-card qa-vieworders">
+                     <a href=" {{ route('admin.queries.index') }}" class="stretched-link"></a>
                     <div class="qa-icon">
                         <i class="fa-solid fa-user-group"></i>
                     </div>
-                    <h6>Guests</h6>
-                    <p>View guest details</p>
+                    <h6>Guests Queries</h6>
+                    <p>View guest queries</p>
                 </div>
             </div>
 
