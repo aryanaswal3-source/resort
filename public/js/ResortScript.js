@@ -1,48 +1,46 @@
 
-    "use strict";
+"use strict";
 
-    /*==============================
-            STICKY NAVBAR
-    ===============================*/
+/*==============================
+        STICKY NAVBAR
+===============================*/
 
-    window.addEventListener("scroll", function() {
+window.addEventListener("scroll", function () {
 
-        const navbar = document.querySelector(".custom-navbar");
+    const navbar = document.querySelector(".custom-navbar");
 
-        if (window.scrollY > 100) {
+    if (window.scrollY > 100) {
 
-            navbar.classList.add("sticky");
+        navbar.classList.add("sticky");
 
-        } else {
+    } else {
 
-            navbar.classList.remove("sticky");
+        navbar.classList.remove("sticky");
 
-        }
+    }
 
-    });
+});
 
 
-    /*==============================
-        CLOSE MOBILE MENU
-    ===============================*/
+/*==============================
+    CLOSE MOBILE MENU
+===============================*/
 
-    const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+/*==============================
+CLOSE MOBILE MENU
+===============================*/
 
-    const navbarCollapse = document.querySelector(".navbar-collapse");
+const navbarCollapse = document.querySelector("#mainNavbar");
 
-    navLinks.forEach(link => {
+document.querySelectorAll(".dropdown-menu .dropdown-item, .navbar-nav > .nav-item > .nav-link:not(.dropdown-toggle)")
+    .forEach(link => {
 
-        link.addEventListener("click", () => {
+        link.addEventListener("click", function () {
 
             if (window.innerWidth < 992) {
 
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-
-                if (bsCollapse) {
-
-                    bsCollapse.hide();
-
-                }
+                const bsCollapse = bootstrap.Collapse.getOrCreateInstance(navbarCollapse);
+                bsCollapse.hide();
 
             }
 
@@ -51,68 +49,67 @@
     });
 
 
-    /*==============================
-        MOBILE DROPDOWN
-    ===============================*/
+/*==============================
+    MOBILE DROPDOWN
+===============================*/
 
-    if (window.innerWidth < 992) {
+/*==============================
+ MOBILE DROPDOWN
+===============================*/
 
-        document.querySelectorAll(".dropdown-toggle").forEach(function(item) {
+if (window.innerWidth < 992) {
 
-            item.addEventListener("click", function(e) {
+    document.querySelectorAll(".dropdown-toggle").forEach(function (item) {
 
-                e.preventDefault();
+        item.addEventListener("click", function (e) {
 
-                let submenu = this.nextElementSibling;
+            e.preventDefault();
+            e.stopPropagation();
 
-                if (submenu.style.display === "block") {
+            const submenu = this.nextElementSibling;
 
-                    submenu.style.display = "none";
-
-                } else {
-
-                    document.querySelectorAll(".dropdown-menu").forEach(function(menu) {
-
-                        menu.style.display = "none";
-
-                    });
-
-                    submenu.style.display = "block";
-
+            // Close other open dropdowns
+            document.querySelectorAll(".dropdown-menu.show").forEach(function (menu) {
+                if (menu !== submenu) {
+                    menu.classList.remove("show");
                 }
-
             });
+
+            // Toggle current dropdown
+            submenu.classList.toggle("show");
 
         });
 
+    });
+
+}
+
+
+/*==============================
+        ACTIVE LINK
+===============================*/
+
+const currentLocation = window.location.href;
+
+const menuItem = document.querySelectorAll(".navbar-nav .nav-link");
+
+menuItem.forEach(link => {
+
+    if (link.href === currentLocation) {
+
+        link.classList.add("active");
+
     }
 
-
-    /*==============================
-            ACTIVE LINK
-    ===============================*/
-
-    const currentLocation = window.location.href;
-
-    const menuItem = document.querySelectorAll(".navbar-nav .nav-link");
-
-    menuItem.forEach(link => {
-
-        if (link.href === currentLocation) {
-
-            link.classList.add("active");
-
-        }
-
-    });
+});
 
 
-    /*==============================
-        SCROLL TO TOP (Future Use)
-    ===============================*/
+/*==============================
+    SCROLL TO TOP (Future Use)
+===============================*/
 
-    window.addEventListener("load", () => {
+window.addEventListener("load", () => {
 
-        document.body.classList.add("loaded");
+    document.body.classList.add("loaded");
 
-    });
+});
