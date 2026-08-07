@@ -13,10 +13,12 @@ use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\SiteGalleryController;
 use App\Http\Controllers\TravelQueryController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Service;
 
 
 Route::get('/', function () {
-    return view('site.home');
+    $services = Service::latest()->take(4)->get();
+    return view('site.home', compact('services'));
 })->name('home');
 
 Route::get('/about', function () {

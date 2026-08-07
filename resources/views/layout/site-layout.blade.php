@@ -36,12 +36,17 @@
 
 <body>
     {{-- ===== Global Fixed Buy Now Button ===== --}}
-    <button class="btn-buy-now">
-        <span class="icon-circle">
-            <i class="bi bi-droplet-fill"></i> 
-        </span>
-        <span>Buy Now</span>
-    </button>
+   <a href="https://www.durexindia.com/?srsltid=AfmBOoppOtUhP1dB4nYjFgrfsHfj-ShW5wKsN5T-PEe-gvnFLBkUnqAx"
+   class="btn-buy-now"
+   target="_blank">
+
+    <span class="icon-circle">
+        <i class="bi bi-droplet-fill"></i>
+    </span>
+
+    <span>Buy Now</span>
+
+</a>
 
     {{-- ===== Floating WhatsApp + Call buttons ===== --}}
 <div class="floating-contact">

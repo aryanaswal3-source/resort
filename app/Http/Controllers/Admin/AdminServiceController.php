@@ -45,6 +45,7 @@ class AdminServiceController extends Controller
             'reviews_count'  => 'nullable|integer|min:0',
             'nights'         => 'nullable|integer|min:0',
             'persons'        => 'nullable|integer|min:0',
+            'price'          => 'required|numeric|min:0',
         ]);
 
         if ($request->hasFile('image')) {
@@ -87,6 +88,7 @@ class AdminServiceController extends Controller
             'reviews_count'  => 'nullable|integer|min:0',
             'nights'         => 'nullable|integer|min:0',
             'persons'        => 'nullable|integer|min:0',
+            'price'          => 'required|numeric|min:0',
         ]);
 
         if ($request->hasFile('image')) {

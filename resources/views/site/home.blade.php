@@ -402,9 +402,8 @@
         </div>
 
     </section>
-
     
-    {{-- ===== Exclusive Offers Section ===== --}}
+{{-- ===== Exclusive Offers Section ===== --}}
     <section class="offers-section">
         <div class="container">
 
@@ -415,121 +414,37 @@
 
             <div class="row g-4">
 
-                {{-- Deluxe Room --}}
-                <div class="col-lg-6">
-                    <div class="row g-3 offer-card align-items-stretch">
-                        <div class="col-5">
-                            <div class="offer-img-wrap">
-                            <img src="{{ asset('image/room-deluxe.jpg') }}" alt="Deluxe Room" class="offer-img">
-                        </div>
-                        </div>
-                        <div class="col-7">
-                            <div class="offer-details">
-                                <h4 class="section-title">Deluxe Room</h4>
-                                <div class="offer-stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
+                @forelse ($services as $service)
+                    <div class="col-lg-6">
+                        <div class="row g-3 offer-card align-items-stretch">
+                            <div class="col-5">
+                                <div class="offer-img-wrap">
+                                    <img src="{{ $service->image ? asset('storage/' . $service->image) : asset('image/adminlogo.png') }}" alt="{{ $service->title }}" class="offer-img">
                                 </div>
-                                <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
-                                <span class="offer-price">From ₹5000/night</span>
-                               <a href="{{ route('booking.create') }}" class="btn-explore">
-                                    Book Online
-                                    <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
-                                </a>
+                            </div>
+                            <div class="col-7">
+                                <div class="offer-details">
+                                    <h4 class="section-title">{{ $service->title }}</h4>
+                                    <div class="offer-stars">
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            <i class="bi bi-star-fill {{ $i <= round($service->rating) ? '' : 'text-secondary opacity-25' }}"></i>
+                                        @endfor
+                                    </div>
+                                    <p>{{ Str::limit($service->description, 70) }}</p>
+                                    <span class="offer-price">From ₹{{ number_format($service->price, 0) }}/night</span>
+                                    <a href="{{ route('booking.create') }}" class="btn-explore">
+                                        Book Online
+                                        <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                {{-- Premium Room --}}
-                <div class="col-lg-6">
-                    <div class="row g-3 offer-card align-items-stretch">
-                        <div class="col-5">
-                            <div class="offer-img-wrap">
-                            <img src="{{ asset('image/room-premium.jpg') }}" alt="Premium Room" class="offer-img">
-                        </div>
-                        </div>
-                        <div class="col-7">
-                            <div class="offer-details">
-                                <h4 class="section-title">Premium Room</h4>
-                                <div class="offer-stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
-                                <span class="offer-price">From ₹3000/night</span>
-                               <a href="{{ route('booking.create') }}" class="btn-explore">
-                                    Book Online
-                                    <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
-                                </a>
-                            </div>
-                        </div>
+                @empty
+                    <div class="col-12 text-center text-muted">
+                        No rooms available right now.
                     </div>
-                </div>
-
-                {{-- Classic Room --}}
-                <div class="col-lg-6">
-                    <div class="row g-3 offer-card align-items-stretch">
-                        <div class="col-5">
-                            <div class="offer-img-wrap">
-                            <img src="{{ asset('image/room-classic.jpg') }}" alt="Classic Room" class="offer-img">
-                        </div>
-                        </div>
-                        <div class="col-7">
-                            <div class="offer-details">
-                                <h4 class="section-title">Classic Room</h4>
-                                <div class="offer-stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
-                                <span class="offer-price">From ₹6000/night</span>
-                              <a href="{{ route('booking.create') }}" class="btn-explore">
-                                    Book Online
-                                    <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Budget Room --}}
-                <div class="col-lg-6">
-                    <div class="row g-3 offer-card align-items-stretch">
-                        <div class="col-5">
-                            <div class="offer-img-wrap">
-                            <img src="{{ asset('image/room-budget.jpg') }}" alt="Budget Room" class="offer-img">
-                        </div>
-                         </div>
-                        <div class="col-7">
-                            <div class="offer-details">
-                                <h4 class="section-title">Budget Room</h4>
-                                <div class="offer-stars">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>Dvxry ipsum dolor ametsctetur adipisicing elit, sed do eiumod tempor incididunt sit.</p>
-                                <span class="offer-price">From ₹2000/night</span>
-                               <a href="{{ route('booking.create') }}" class="btn-explore">
-                                    Book Online
-                                    <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforelse
 
             </div>
         </div>

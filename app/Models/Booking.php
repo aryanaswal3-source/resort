@@ -10,7 +10,10 @@ class Booking extends Model
         'name',
         'email',
         'phone',
-        'room_type',
+        'service_id',
+        'price',
+        'gst_amount',
+        'total_amount',
         'check_in_date',
         'check_out_date',
         'adults',
@@ -18,4 +21,9 @@ class Booking extends Model
         'message',
         'status',
     ];
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
 }

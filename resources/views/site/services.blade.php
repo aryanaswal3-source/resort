@@ -244,7 +244,8 @@
                                             <img src="{{ $service->image ? asset('storage/' . $service->image) : asset('image/adminlogo.png') }}"
                                                 alt="{{ $service->title }}" class="w-100 service-card-img">
 
-                                            <a href="{{ route('booking.create') }}" class="btn-explore btn btn-light rounded-pill position-absolute service-book-btn px-3 py-2 fw-semibold">
+                                            <a href="{{ route('booking.create') }}"
+                                                class="btn-explore btn btn-light rounded-pill position-absolute service-book-btn px-3 py-2 fw-semibold">
                                                 Book Now
                                             </a>
 
@@ -269,13 +270,21 @@
                                                     Review{{ $service->reviews_count > 1 ? 's' : '' }})</span>
                                             </div>
 
-                                            <div class="d-flex gap-3 text-secondary small">
-                                                <span><i class="bi bi-clock text-success"></i> {{ $service->nights }}
-                                                    Night{{ $service->nights > 1 ? 's' : '' }}</span>
-                                                <span><i class="bi bi-question-circle text-success fw-bolder"></i>
-                                                    {{ $service->persons }}
-                                                    Person{{ $service->persons > 1 ? 's' : '' }}</span>
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div class="d-flex gap-3 text-secondary small">
+                                                    <span><i class="bi bi-clock text-success"></i> {{ $service->nights }}
+                                                        Night{{ $service->nights > 1 ? 's' : '' }}</span>
+                                                    <span><i class="bi bi-question-circle text-success fw-bolder"></i>
+                                                        {{ $service->persons }}
+                                                        Person{{ $service->persons > 1 ? 's' : '' }}</span>
+                                                </div>
+
+                                                <span class="fw-bold" style="color: var(--gold);">
+                                                    ₹{{ number_format($service->price, 0) }}<small
+                                                        class="text-secondary fw-normal">/night</small>
+                                                </span>
                                             </div>
+
                                         </div>
 
                                     </div>

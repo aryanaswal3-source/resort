@@ -57,8 +57,8 @@
 
                         <div class="col-md-3">
                             <label class="form-label">Rating (0–5)</label>
-                            <input type="number" name="rating" class="form-control" step="0.1" min="0" max="5"
-                                value="{{ old('rating', 0) }}">
+                            <input type="number" name="rating" class="form-control" step="0.1" min="0"
+                                max="5" value="{{ old('rating', 0) }}">
                         </div>
 
                         <div class="col-md-3">
@@ -99,6 +99,12 @@
                                     Mark as Featured
                                 </label>
                             </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Price per Night (₹)</label>
+                            <input type="number" name="price" class="form-control" step="0.01" min="0"
+                                value="{{ old('price') }}" placeholder="e.g. 2500" required>
                         </div>
 
                     </div>
