@@ -7,7 +7,7 @@
 }
 
 body {
-    padding-top:;
+    padding-top: 0;
     font-family: "Poppins", sans-serif;
     overflow-x: hidden;
 }
@@ -26,9 +26,7 @@ ul {
     list-style: none;
 }
 
-/*=========================
-      TOP HEADER
-==========================*/
+/*========================= TOP HEADER=========================*/
 
 .top-header {
     background: #ffffff;
@@ -94,9 +92,7 @@ ul {
     background: #fbf2e8;
 }
 
-/*=========================
-        NAVBAR
-==========================*/
+/*========================= NAVBAR=========================*/
 
 .custom-navbar {
     position: fixed;
@@ -124,10 +120,120 @@ ul {
     padding: 18px 15px !important;
     transition: 0.35s;
 }
+/*============================NAV HOVER===========================*/
 
-/* ==========================
-      MOBILE LOGO
-========================== */
+.custom-navbar .nav-link {
+    position: relative;
+    color: #fff !important;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 18px 10px !important;
+    margin: 0 4px;
+    border-radius: 8px;
+    transition: all 0.35s ease;
+}
+
+/* Hover + Active */
+.custom-navbar .nav-link:hover,
+.custom-navbar .nav-link.active {
+    color: #fff !important;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 6px 18px rgba(255, 215, 0, 0.28);
+}
+
+/* Animated Underline */
+.custom-navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 10%;
+    bottom: 6px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        #d89b32,
+        #ffd700,
+        #fff,
+        #ffd700,
+        #d89b32
+    );
+    background-size: 300%;
+    transition: width 0.35s ease;
+    animation: lineMove 2s linear infinite;
+}
+
+.custom-navbar .nav-link:hover::after,
+.custom-navbar .nav-link.active::after {
+    width: 80%;
+}
+@keyframes lineMove {
+    from {
+        background-position: 0%;
+    }
+    to {
+        background-position: 300%;
+    }
+}
+/* Mobile */
+@media (max-width: 991px) {
+    .custom-navbar .navbar-nav {
+        gap: 0;
+    }
+
+    .custom-navbar .nav-link {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 14px 15px !important;
+        color: #222 !important;
+        position: relative;
+        background: transparent !important;
+    }
+
+    /* No background */
+    .custom-navbar .nav-link:hover,
+    .custom-navbar .nav-link.active {
+        color: #d89b32 !important;
+        background: transparent !important;
+        box-shadow: none;
+    }
+
+    /* Sci-fi Underline */
+    .custom-navbar .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 5px;
+        bottom: 6px;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(
+            90deg,
+            #d89b32,
+            #ffd700,
+            #fff,
+            #ffd700,
+            #d89b32
+        );
+        background-size: 300%;
+        transition: width 0.35s ease;
+        animation: lineMove 2s linear infinite;
+    }
+
+    .custom-navbar .nav-link:hover::after,
+    .custom-navbar .nav-link.active::after {
+        width: 40%;
+    }
+    @keyframes lineMove {
+        from {
+            background-position: 0%;
+        }
+        to {
+            background-position: 300%;
+        }
+    }
+}
+
+/* =========================  MOBILE LOGO========================= */
 
 .navbar-brand {
     padding: 0;
@@ -144,6 +250,9 @@ ul {
 }
 
 @media (max-width: 991px) {
+    .top-header {
+        display: none !important;
+    }
     .custom-navbar {
         padding: 10px 0;
     }
@@ -173,9 +282,7 @@ ul {
     color: #222 !important;
 } */
 
-/*=========================
-      DROPDOWN
-==========================*/
+/*========================= DROPDOWN==========================*/
 
 .dropdown-menu {
     border: none;
@@ -238,9 +345,7 @@ ul {
     }
 }
 
-/*=========================
-      PHONE BOX
-==========================*/
+/*=========================PHONE BOX=========================*/
 
 .header-call {
     display: flex;
@@ -268,9 +373,7 @@ ul {
     font-weight: 600;
 }
 
-/*=========================
-      TOGGLE
-==========================*/
+/*=========================TOGGLE==========================*/
 
 .navbar-toggler {
     background: #fff;
@@ -281,9 +384,7 @@ ul {
     box-shadow: none;
 }
 
-/*=========================
-      STICKY
-==========================*/
+/*========================= STICKY=========================*/
 
 .sticky {
     position: fixed;
@@ -304,12 +405,9 @@ ul {
     }
 }
 
-/*=========================
-      RESPONSIVE
-==========================*/
+/*========================= RESPONSIVE=========================*/
 
 @media (max-width: 991px) {
-    
     .social-icons {
         display: none;
     }
@@ -453,7 +551,7 @@ ul {
     background: #d89b32;
     color: #fff;
 }
-/*========================================= newsletter  responsive==================================*/
+/*===================================== newsletter  responsive==================================*/
 
 @media (max-width: 991px) {
     .newsletter-section {
@@ -512,7 +610,7 @@ ul {
     }
 }
 
-/*==========================   footer content===========================*/
+/*==========================footer content===========================*/
 
 .footer-main {
     background: #0d0d0f;

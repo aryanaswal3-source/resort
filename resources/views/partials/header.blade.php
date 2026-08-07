@@ -48,6 +48,7 @@
         </div>
 
     </div>
+</header>
     <!--======================== 2 NAVBAR===========================-->
 
     <nav class="navbar navbar-expand-lg custom-navbar">
@@ -72,100 +73,48 @@
             <div class="collapse navbar-collapse " id="mainNavbar">
 
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item dropdown">
-                        <a href="{{ url('/') }}" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">
-                            Home
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/') }}">Home</a></li>
-                        </ul>
+                    <!-- Direct Link - Single Item -->
+                    <li class="nav-item">
+                        <a href="{{ url('/') }}" class="nav-link">Home</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            Pages
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/about') }}">About Us</a></li>
-                            {{-- <li><a class="dropdown-item" href="#">Team</a></li>
-                            <li><a class="dropdown-item" href="#">FAQ</a></li>
-                            <li><a class="dropdown-item" href="#">FAQ</a></li>
-                            <li><a class="dropdown-item" href="#">Testimonial</a></li>
-                            <li><a class="dropdown-item" href="#">User</a></li>
-                            <li><a class="dropdown-item" href="#">Book Table</a></li>
-                            <li><a class="dropdown-item" href="#">Terms Conditions</a></li>
-                            <li><a class="dropdown-item" href="#">Privacy Policy</a></li>
-                            <li><a class="dropdown-item" href="#">Coming Soon</a></li>
-                            <li><a class="dropdown-item" href="#">404 Error</a></li> --}}
-
-                        </ul>
+                    <!-- Direct Link - Single Item -->
+                    <li class="nav-item">
+                        <a href="{{ url('/about') }}" class="nav-link">About Us</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Rooms </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Room Grid</a></li>
-
-                        </ul>
+                    <!-- Direct Link - Single Item -->
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Room Grid</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Gallery </a>
-
-                        <ul class="dropdown-menu">
-                            {{-- <li><a class="dropdown-item" href="#">Gallery Columns Two</a></li>
-                            <li><a class="dropdown-item" href="#">Gallery Columns Three</a></li> --}}
-                            <li><a class="dropdown-item" href="{{ url('/gallery') }}"> Room Gallery</a></li>
-                            {{-- <li><a class="dropdown-item" href="#">Gallery Columns Box</a></li>
-                            <li><a class="dropdown-item" href="#">Gallery Masonry</a></li> --}}
-                        </ul>
+                    <!-- Direct Link - Single Item -->
+                    <li class="nav-item">
+                        <a href="{{ url('/gallery') }}" class="nav-link">Room Gallery</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Services </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/services') }}"> Our Services </a></li>
-
-                        </ul>
+                    <!-- Direct Link - Single Item -->
+                    <li class="nav-item">
+                        <a href="{{ url('/services') }}" class="nav-link">Our Services</a>
                     </li>
 
+                    <!-- DROPDOWN - 2 Items -->
                     <li class="nav-item dropdown">
-
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Booking</a>
-
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Booking</a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="{{ url('/booking') }}">Book Now</a>
-                            </li>
+                            <li><a class="dropdown-item" href="{{ url('/booking') }}">Book Now</a></li>
                             <li><a class="dropdown-item" href="#">Checkout</a></li>
                         </ul>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> Query </a>
-
-                        <ul class="dropdown-menu">
-
-                            <li><a class="dropdown-item" href="{{ route('query.form') }}">Enquiry</a></li>
-
-                        </ul>
+                    <!-- Direct Link - Single Item -->
+                    <li class="nav-item">
+                        <a href="{{ route('query.form') }}" class="nav-link">Enquiry</a>
                     </li>
-                    <li class="nav-item dropdown">
 
-                        <a href="{{ url('/contact') }}" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            Contacts </a>
-
-
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/contact') }}">Contact Us</a></li>
-
-                        </ul>
+                    <!-- Direct Link - Single Item -->
+                    <li class="nav-item">
+                        <a href="{{ url('/contact') }}" class="nav-link">Contact Us</a>
                     </li>
 
                 </ul>
@@ -196,4 +145,4 @@
 
     </nav>
 
-</header>
+{{-- </header> --}}

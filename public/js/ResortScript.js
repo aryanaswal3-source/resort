@@ -20,12 +20,6 @@ window.addEventListener("scroll", function () {
     }
 
 });
-
-
-/*==============================
-    CLOSE MOBILE MENU
-===============================*/
-
 /*==============================
 CLOSE MOBILE MENU
 ===============================*/
@@ -51,10 +45,6 @@ document.querySelectorAll(".dropdown-menu .dropdown-item, .navbar-nav > .nav-ite
 
 /*==============================
     MOBILE DROPDOWN
-===============================*/
-
-/*==============================
- MOBILE DROPDOWN
 ===============================*/
 
 if (window.innerWidth < 992) {
