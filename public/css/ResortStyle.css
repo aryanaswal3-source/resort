@@ -116,7 +116,7 @@ ul {
 .custom-navbar .nav-link {
     color: #fff !important;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 18px 15px !important;
     transition: 0.35s;
 }
@@ -126,10 +126,10 @@ ul {
     position: relative;
     color: #fff !important;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 18px 10px !important;
     margin: 0 4px;
-    border-radius: 8px;
+    border-radius: 50px;
     transition: all 0.35s ease;
 }
 

@@ -157,6 +157,7 @@
 
             <div class="col-md-4">
                 <div class="quick-action-card qa-addcategory">
+                    <a href="{{ route('admin.bookings.index') }}"class="stretched-link"></a>
                     <div class="qa-icon">
                         <i class="fa-solid fa-calendar-check"></i>
                     </div>
@@ -167,7 +168,7 @@
 
             <div class="col-md-4">
                 <div class="quick-action-card qa-vieworders">
-                     <a href=" {{ route('admin.queries.index') }}" class="stretched-link"></a>
+                    <a href=" {{ route('admin.queries.index') }}" class="stretched-link"></a>
                     <div class="qa-icon">
                         <i class="fa-solid fa-user-group"></i>
                     </div>

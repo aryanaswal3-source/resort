@@ -8,13 +8,13 @@
 
                 <div class="social-icons mb-3">
 
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/_badoni_ji/"><i class="fa-brands fa-instagram""></i></a>
 
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.guvi.in/verify-certificate?id=1C1121187877nOiHt4&course=chatgptenglish&trk=public_profile_see-credential"><i class="fa-solid fa-g""></i></a>
 
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/in/vivek-badoni-396912325"><i class="fab fa-linkedin-in"></i></a>
 
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.youtube.com/@VivekBadoni-r9"><i class="fab fa-youtube"></i></a>
 
                 </div>
 
@@ -49,100 +49,97 @@
 
     </div>
 </header>
-    <!--======================== 2 NAVBAR===========================-->
+<!--======================== 2 NAVBAR===========================-->
 
-    <nav class="navbar navbar-expand-lg custom-navbar">
+<nav class="navbar navbar-expand-lg custom-navbar">
 
-        <div class="container">
+    <div class="container">
 
-            <!-- Mobile Logo -->
-            <a class="navbar-brand d-lg-none" href="{{ route('home') }}">
-                <img src="image/logo3.jpg" alt="2">
-            </a>
-            <!-- Toggle -->
+        <!-- Mobile Logo -->
+        <a class="navbar-brand d-lg-none" href="{{ route('home') }}">
+            <img src="image/logo3.jpg" alt="2">
+        </a>
+        <!-- Toggle -->
 
-            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#mainNavbar">
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar">
 
-                <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
 
-            </button>
+        </button>
 
-            <!-- Menu -->
+        <!-- Menu -->
 
-            <div class="collapse navbar-collapse " id="mainNavbar">
+        <div class="collapse navbar-collapse gap-2 text-bold " id="mainNavbar">
 
-                <ul class="navbar-nav me-auto">
-                    <!-- Direct Link - Single Item -->
-                    <li class="nav-item">
-                        <a href="{{ url('/') }}" class="nav-link">Home</a>
-                    </li>
+            <ul class="navbar-nav me-auto">
+                <!-- Direct Link - Single Item -->
+                <li class="nav-item">
+                    <a href="{{ url('/') }}" class="nav-link">Home</a>
+                </li>
 
-                    <!-- Direct Link - Single Item -->
-                    <li class="nav-item">
-                        <a href="{{ url('/about') }}" class="nav-link">About Us</a>
-                    </li>
+                <!-- Direct Link - Single Item -->
+                <li class="nav-item">
+                    <a href="{{ url('/about') }}" class="nav-link">About Us</a>
+                </li>
 
-                    <!-- Direct Link - Single Item -->
-                    <li class="nav-item">
+
+                <li class="nav-item">
                         <a href="#" class="nav-link">Room Grid</a>
                     </li>
 
-                    <!-- Direct Link - Single Item -->
-                    <li class="nav-item">
-                        <a href="{{ url('/gallery') }}" class="nav-link">Room Gallery</a>
-                    </li>
 
-                    <!-- Direct Link - Single Item -->
-                    <li class="nav-item">
-                        <a href="{{ url('/services') }}" class="nav-link">Our Services</a>
-                    </li>
+                <li class="nav-item">
+                    <a href="{{ url('/gallery') }}" class="nav-link">Room Gallery</a>
+                </li>
 
-                    <!-- DROPDOWN - 2 Items -->
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Booking</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('/booking') }}">Book Now</a></li>
-                            <li><a class="dropdown-item" href="#">Checkout</a></li>
-                        </ul>
-                    </li>
 
-                    <!-- Direct Link - Single Item -->
-                    <li class="nav-item">
-                        <a href="{{ route('query.form') }}" class="nav-link">Enquiry</a>
-                    </li>
+                <li class="nav-item">
+                    <a href="{{ url('/services') }}" class="nav-link">Our Services</a>
+                </li>
 
-                    <!-- Direct Link - Single Item -->
-                    <li class="nav-item">
-                        <a href="{{ url('/contact') }}" class="nav-link">Contact Us</a>
-                    </li>
 
-                </ul>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Booking</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url('/booking') }}">Book Now</a></li>
+                        <li><a class="dropdown-item" href="#">Checkout</a></li>
+                    </ul>
+                </li>
 
-                <button type="button" class="btn-signin" data-bs-toggle="modal" data-bs-target="#signInModal">
-                    <i class="bi bi-person"></i> Sign In
-                </button>
+                <li class="nav-item">
+                    <a href="{{ route('query.form') }}" class="nav-link">Enquiry</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/contact') }}" class="nav-link">Contact Us</a>
+                </li>
 
-                <!-- Phone -->
+            </ul>
 
-                <div class="header-call">
+            <button type="button" class="btn-signin" data-bs-toggle="modal" data-bs-target="#signInModal">
+                <i class="bi bi-person"></i> Sign In
+            </button>
 
-                    <div class="call-icon">
+            <!-- Phone -->
 
-                        <i class="fa fa-phone-volume"></i>
+            <div class="header-call">
 
-                    </div>
+                <div class="call-icon">
 
-                    <div class="call-text">
-                        <h6> +91 982569756</h6>
-                    </div>
+                    <i class="fa fa-phone-volume"></i>
 
+                </div>
+
+                <div class="call-text">
+                    <h6> +91 982569756</h6>
                 </div>
 
             </div>
 
         </div>
 
-    </nav>
+    </div>
+
+</nav>
 
 {{-- </header> --}}
