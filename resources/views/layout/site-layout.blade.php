@@ -36,7 +36,7 @@
 
 <body>
     {{-- ===== Global Fixed Buy Now Button ===== --}}
-   <a href="https://www.durexindia.com/?srsltid=AfmBOoppOtUhP1dB4nYjFgrfsHfj-ShW5wKsN5T-PEe-gvnFLBkUnqAx"
+   <a href="{{ route('booking.create') }}"
    class="btn-buy-now"
    target="_blank">
 

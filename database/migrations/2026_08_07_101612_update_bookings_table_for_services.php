@@ -6,31 +6,58 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-   public function up(): void
-{
-    Schema::table('bookings', function (Blueprint $table) {
-        $table->dropColumn('room_type');
+    public function up(): void
+    {
+        Schema::table('bookings', function (Blueprint $table) {
 
-        $table->foreignId('service_id')->after('phone')->constrained('services')->onDelete('cascade');
-        $table->decimal('price', 10, 2)->after('service_id');
-        $table->decimal('gst_amount', 10, 2)->default(0)->after('price');
-        $table->decimal('total_amount', 10, 2)->default(0)->after('gst_amount');
-    });
-}
+            if (Schema::hasColumn('bookings', 'room_type')) {
+                $table->dropColumn('room_type');
+            }
 
-    /**
-     * Reverse the migrations.
-     */
+            if (!Schema::hasColumn('bookings', 'service_id')) {
+                $table->foreignId('service_id')
+                    ->after('phone')
+                    ->constrained('services')
+                    ->cascadeOnDelete();
+            }
+
+            if (!Schema::hasColumn('bookings', 'price')) {
+                $table->decimal('price', 10, 2)->default(0)->after('service_id');
+            }
+
+            if (!Schema::hasColumn('bookings', 'gst_amount')) {
+                $table->decimal('gst_amount', 10, 2)->default(0)->after('price');
+            }
+
+            if (!Schema::hasColumn('bookings', 'total_amount')) {
+                $table->decimal('total_amount', 10, 2)->default(0)->after('gst_amount');
+            }
+        });
+    }
+
     public function down(): void
-{
-    Schema::table('bookings', function (Blueprint $table) {
-        $table->dropForeign(['service_id']);
-        $table->dropColumn(['service_id', 'price', 'gst_amount', 'total_amount']);
+    {
+        Schema::table('bookings', function (Blueprint $table) {
 
-        $table->enum('room_type', ['Deluxe', 'Premium', 'Classic', 'Budget'])->after('phone');
-    });
-}
+            if (Schema::hasColumn('bookings', 'service_id')) {
+                $table->dropForeign(['service_id']);
+            }
+
+            $table->dropColumn([
+                'service_id',
+                'price',
+                'gst_amount',
+                'total_amount'
+            ]);
+
+            if (!Schema::hasColumn('bookings', 'room_type')) {
+                $table->enum('room_type', [
+                    'Deluxe',
+                    'Premium',
+                    'Classic',
+                    'Budget'
+                ])->after('phone');
+            }
+        });
+    }
 };
