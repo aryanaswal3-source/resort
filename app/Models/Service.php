@@ -23,6 +23,7 @@ class Service extends Model
         'nights',
         'persons',
         'slug',
+        'price', 
     ];
 
     protected $casts = [

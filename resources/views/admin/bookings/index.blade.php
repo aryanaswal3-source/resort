@@ -22,6 +22,9 @@
                         <th>Check In</th>
                         <th>Check Out</th>
                         <th>Guests</th>
+                        <th>Price</th>
+                        <th>GST</th>
+                        <th>Total</th>
                         <th>Status</th>
                         <th class="text-end">Actions</th>
                     </tr>
@@ -34,10 +37,13 @@
                                 <div class="text-muted small">{{ $booking->email }}</div>
                                 <div class="text-muted small">{{ $booking->phone }}</div>
                             </td>
-                            <td>{{ $booking->room_type }}</td>
+                            <td>{{ $booking->service->title ?? 'N/A' }}</td>
                             <td>{{ \Carbon\Carbon::parse($booking->check_in_date)->format('d M Y') }}</td>
                             <td>{{ \Carbon\Carbon::parse($booking->check_out_date)->format('d M Y') }}</td>
                             <td>{{ $booking->adults }} Adults, {{ $booking->children }} Children</td>
+                            <td>₹{{ number_format($booking->price, 0) }}</td>
+                            <td>₹{{ number_format($booking->gst_amount, 0) }}</td>
+                            <td class="fw-bold">₹{{ number_format($booking->total_amount, 0) }}</td>
                             <td>
                                 @if ($booking->status === 'pending')
                                     <span class="badge bg-warning text-dark">Pending</span>
@@ -69,7 +75,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center text-muted py-4">No bookings yet.</td>
+                            <td colspan="10" class="text-center text-muted py-4">No bookings yet.</td>
                         </tr>
                     @endforelse
                 </tbody>

@@ -24,8 +24,7 @@
 
         <div class="card shadow-sm">
             <div class="card-body">
-                <form action="{{ route('admin.services.update', $service) }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ route('admin.services.update', $service) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -68,8 +67,8 @@
 
                         <div class="col-md-3">
                             <label class="form-label">Rating (0–5)</label>
-                            <input type="number" name="rating" class="form-control" step="0.1" min="0" max="5"
-                                value="{{ old('rating', $service->rating) }}">
+                            <input type="number" name="rating" class="form-control" step="0.1" min="0"
+                                max="5" value="{{ old('rating', $service->rating) }}">
                         </div>
 
                         <div class="col-md-3">
@@ -105,12 +104,17 @@
                         <div class="col-md-6 d-flex align-items-center">
                             <div class="form-check mt-4">
                                 <input type="checkbox" name="is_featured" value="1" class="form-check-input"
-                                    id="is_featured"
-                                    {{ old('is_featured', $service->is_featured) ? 'checked' : '' }}>
+                                    id="is_featured" {{ old('is_featured', $service->is_featured) ? 'checked' : '' }}>
                                 <label class="form-check-label" for="is_featured">
                                     Mark as Featured
                                 </label>
                             </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Price per Night (₹)</label>
+                            <input type="number" name="price" class="form-control" step="0.01" min="0"
+                                value="{{ old('price', $service->price) }}" required>
                         </div>
 
                     </div>

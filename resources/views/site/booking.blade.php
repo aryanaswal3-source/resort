@@ -66,220 +66,223 @@
     <section class="pb-2">
         <div class="container">
             <div class="container position-relative">
-            <div class="row g-4">
+                <div class="row g-4">
 
-                <!-- Left Side Booking Form -->
-                  <section class="py-5">
-    <div class="container position-relative">
+                    <!-- Left Side Booking Form -->
+                    <section class="py-5">
+                        <div class="container position-relative">
 
-        {{-- ===== Hanging Poster (decorative, desktop only) ===== --}}
-        <div class="hanging-poster d-none d-xl-block">
-            <div class="poster-pin"></div>
-            <div class="poster-rope"></div>
-            <div class="poster-card">
-                <i class="bi bi-suitcase-lg poster-icon"></i>
-                <h6 class="poster-sub">BOOK YOUR</h6>
-                <h5 class="poster-main">DREAM STAY</h5>
-                <div class="poster-divider"></div>
-                <p class="poster-note">Limited Rooms Available</p>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            {{-- ...tera existing form column aur sidebar column yahan waisa hi rahega... --}}
-        </div>
-
-    </div>
-</section>
-
-
-
-                <div class="col-lg-8">
-
-                    <div class="card shadow border-0 rounded-4">
-                        <div class="card-body p-4">
-
-                            <h3 class="mb-4 fw-bold">Booking Details</h3>
-
-                            <form action="{{ route('booking.store') }}" method="POST" id="bookingForm">
-                                @csrf
-
-                                <div class="row">
-
-                                    <!-- Name -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label"><i class="bi bi-person-fill me-1"
-                                                style="color: var(--gold);"></i> Full Name</label>
-                                        <input type="text" name="name" class="form-control"
-                                            placeholder="Enter Full Name" required>
-                                    </div>
-
-                                    <!-- Email -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label"><i class="bi bi-envelope-fill me-1"
-                                                style="color: var(--gold);"></i> Email Address</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Enter Email"
-                                            required>
-                                    </div>
-
-                                    <!-- Phone -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label"><i class="bi bi-telephone-fill me-1"
-                                                style="color: var(--gold);"></i> Phone Number</label>
-                                        <input type="text" name="phone" class="form-control"
-                                            placeholder="Enter Phone Number" required>
-                                    </div>
-
-                                    <!-- Room Type -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label"><i class="bi bi-door-open-fill me-1"
-                                                style="color: var(--gold);"></i> Room Type</label>
-                                        <select name="room_type" class="form-select" required>
-                                            <option value="">Select Room</option>
-                                            <option value="Deluxe">Deluxe</option>
-                                            <option value="Premium">Premium</option>
-                                            <option value="Classic">Classic</option>
-                                            <option value="Budget">Budget</option>
-                                        </select>
-                                    </div>
-
-                                    <!-- Check In -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label"><i class="bi bi-calendar-check-fill me-1"
-                                                style="color: var(--gold);"></i> Check In Date</label>
-                                        <input type="date" name="check_in_date" id="mainCheckIn" class="form-control"
-                                            required>
-                                    </div>
-
-                                    <!-- Check Out -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label"><i class="bi bi-calendar-x-fill me-1"
-                                                style="color: var(--gold);"></i> Check Out Date</label>
-                                        <input type="date" name="check_out_date" id="mainCheckOut" class="form-control"
-                                            required>
-                                    </div>
-
-                                    <!-- Adults -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label"><i class="bi bi-people-fill me-1"
-                                                style="color: var(--gold);"></i> Adults</label>
-                                        <input type="number" name="adults" class="form-control" min="1"
-                                            value="1">
-                                    </div>
-
-                                    <!-- Children -->
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label"><i class="bi bi-emoji-smile-fill me-1"
-                                                style="color: var(--gold);"></i> Children</label>
-                                        <input type="number" name="children" class="form-control" min="0"
-                                            value="0">
-                                    </div>
-
-                                    <!-- Message -->
-                                    <div class="col-12 mb-4">
-                                        <label class="form-label"><i class="bi bi-chat-left-text-fill me-1"
-                                                style="color: var(--gold);"></i> Special Request</label>
-                                        <textarea name="message" rows="4" class="form-control" placeholder="Write your message..."></textarea>
-                                    </div>
-                                    <!-- Button -->
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-success w-100 py-3 rounded-pill">
-                                            Book Now
-                                        </button>
-                                    </div>
-
+                            {{-- ===== Hanging Poster (decorative, desktop only) ===== --}}
+                            <div class="hanging-poster d-none d-xl-block">
+                                <div class="poster-pin"></div>
+                                <div class="poster-rope"></div>
+                                <div class="poster-card">
+                                    <i class="bi bi-suitcase-lg poster-icon"></i>
+                                    <h6 class="poster-sub">BOOK YOUR</h6>
+                                    <h5 class="poster-main">DREAM STAY</h5>
+                                    <div class="poster-divider"></div>
+                                    <p class="poster-note">Limited Rooms Available</p>
                                 </div>
-                            </form>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Right Side -->
-                <div class="col-lg-4">
-
-                    <!-- Booking Summary -->
-                    <div class="card shadow border-0 rounded-4 mb-4">
-
-                        <div class="card-body">
-
-                            <h4 class="fw-bold mb-4">
-                                Booking Summary
-                            </h4>
-
-                            <div class="d-flex justify-content-between mb-3">
-                                <span>Room Price</span>
-                                <strong>₹2000</strong>
                             </div>
 
-                            <div class="d-flex justify-content-between mb-3">
-                                <span>Nights</span>
-                                <strong>2</strong>
-                            </div>
-
-                            <div class="d-flex justify-content-between mb-3">
-                                <span>GST (18%)</span>
-                                <strong>₹720</strong>
-                            </div>
-
-                            <hr>
-
-                            <div class="d-flex justify-content-between">
-
-                                <h5>Total</h5>
-
-                                <h5 class="text-success">
-                                    ₹4720
-                                </h5>
-
+                            <div class="row g-4">
+                                {{-- ...tera existing form column aur sidebar column yahan waisa hi rahega... --}}
                             </div>
 
                         </div>
+                    </section>
 
-                    </div>
-                    <!-- Calendar -->
-                    <div class="card shadow border-0 rounded-4 mb-4">
 
-                        <div class="card-body">
 
-                            <h4 class="fw-bold mb-1">Select Your Dates</h4>
-                            <p class="text-muted small mb-3">Choose check-in and check-out dates for your booking</p>
+                    <div class="col-lg-8">
 
-                            <input type="text" id="calendar" hidden>
+                        <div class="card shadow border-0 rounded-4">
+                            <div class="card-body p-4">
 
-                            <div class="calendar-legend mt-2 mb-1">
-                                <span><i class="legend-dot legend-selected"></i> Selected</span>
-                                <span><i class="legend-dot legend-range"></i> Date Range</span>
-                                <span><i class="legend-dot legend-today"></i> Today</span>
-                            </div>
+                                <h3 class="mb-4 fw-bold">Booking Details</h3>
 
-                            <div class="booking-summary-box mt-3">
+                                <form action="{{ route('booking.store') }}" method="POST" id="bookingForm">
+                                    @csrf
 
-                                <h5 class="mb-3">📅 Your Selected Dates</h5>
+                                    <div class="row">
 
-                                <div class="date-row">
-                                    <span>Check-in</span>
-                                    <strong id="checkin">Not Selected</strong>
-                                </div>
+                                        <!-- Name -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label"><i class="bi bi-person-fill me-1"
+                                                    style="color: var(--gold);"></i> Full Name</label>
+                                            <input type="text" name="name" class="form-control"
+                                                placeholder="Enter Full Name" required>
+                                        </div>
 
-                                <div class="date-row">
-                                    <span>Check-out</span>
-                                    <strong id="checkout">Not Selected</strong>
-                                </div>
+                                        <!-- Email -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label"><i class="bi bi-envelope-fill me-1"
+                                                    style="color: var(--gold);"></i> Email Address</label>
+                                            <input type="email" name="email" class="form-control"
+                                                placeholder="Enter Email" required>
+                                        </div>
 
-                                <div class="date-row">
-                                    <span>Total Nights</span>
-                                    <strong id="nights">0</strong>
-                                </div>
+                                        <!-- Phone -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label"><i class="bi bi-telephone-fill me-1"
+                                                    style="color: var(--gold);"></i> Phone Number</label>
+                                            <input type="text" name="phone" class="form-control"
+                                                placeholder="Enter Phone Number" required>
+                                        </div>
 
+                                        <!-- Room Type -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label"><i class="bi bi-door-open-fill me-1"
+                                                    style="color: var(--gold);"></i> Room Type</label>
+                                            <select name="service_id" id="serviceSelect" class="form-select" required>
+                                                <option value="">Select Room</option>
+                                                @foreach ($services as $service)
+                                                    <option value="{{ $service->id }}" data-price="{{ $service->price }}">
+                                                        {{ $service->title }} —
+                                                        ₹{{ number_format($service->price, 0) }}/night
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <!-- Check In -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label"><i class="bi bi-calendar-check-fill me-1"
+                                                    style="color: var(--gold);"></i> Check In Date</label>
+                                            <input type="date" name="check_in_date" id="mainCheckIn" class="form-control"
+                                                required>
+                                        </div>
+
+                                        <!-- Check Out -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label"><i class="bi bi-calendar-x-fill me-1"
+                                                    style="color: var(--gold);"></i> Check Out Date</label>
+                                            <input type="date" name="check_out_date" id="mainCheckOut"
+                                                class="form-control" required>
+                                        </div>
+
+                                        <!-- Adults -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label"><i class="bi bi-people-fill me-1"
+                                                    style="color: var(--gold);"></i> Adults</label>
+                                            <input type="number" name="adults" class="form-control" min="1"
+                                                value="1">
+                                        </div>
+
+                                        <!-- Children -->
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label"><i class="bi bi-emoji-smile-fill me-1"
+                                                    style="color: var(--gold);"></i> Children</label>
+                                            <input type="number" name="children" class="form-control" min="0"
+                                                value="0">
+                                        </div>
+
+                                        <!-- Message -->
+                                        <div class="col-12 mb-4">
+                                            <label class="form-label"><i class="bi bi-chat-left-text-fill me-1"
+                                                    style="color: var(--gold);"></i> Special Request</label>
+                                            <textarea name="message" rows="4" class="form-control" placeholder="Write your message..."></textarea>
+                                        </div>
+                                        <!-- Button -->
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-success w-100 py-3 rounded-pill">
+                                                Book Now
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
                     </div>
 
-                    <button type="button" id="sidebarBookBtn" class="btn btn-success w-100 py-3 rounded-pill fw-bold">
-                        Book Now
-                    </button>
+                    <!-- Right Side -->
+                    <div class="col-lg-4">
+
+                        <!-- Booking Summary -->
+                        <div class="card shadow border-0 rounded-4 mb-4">
+
+                            <div class="card-body">
+
+                                <h4 class="fw-bold mb-4">
+                                    Booking Summary
+                                </h4>
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span>Room Price</span>
+                                    <strong id="summaryRoomPrice">₹0</strong>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span>Nights</span>
+                                    <strong id="summaryNights">0</strong>
+                                </div>
+
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span>GST (18%)</span>
+                                    <strong id="summaryGst">₹0</strong>
+                                </div>
+
+                                <hr>
+
+                                <div class="d-flex justify-content-between">
+
+                                    <h5>Total</h5>
+
+                                    <h5 class="text-success" id="summaryTotal">
+                                        ₹0
+                                    </h5>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <!-- Calendar -->
+                        <div class="card shadow border-0 rounded-4 mb-4">
+
+                            <div class="card-body">
+
+                                <h4 class="fw-bold mb-1">Select Your Dates</h4>
+                                <p class="text-muted small mb-3">Choose check-in and check-out dates for your booking</p>
+
+                                <input type="text" id="calendar" hidden>
+
+                                <div class="calendar-legend mt-2 mb-1">
+                                    <span><i class="legend-dot legend-selected"></i> Selected</span>
+                                    <span><i class="legend-dot legend-range"></i> Date Range</span>
+                                    <span><i class="legend-dot legend-today"></i> Today</span>
+                                </div>
+
+                                <div class="booking-summary-box mt-3">
+
+                                    <h5 class="mb-3">📅 Your Selected Dates</h5>
+
+                                    <div class="date-row">
+                                        <span>Check-in</span>
+                                        <strong id="checkin">Not Selected</strong>
+                                    </div>
+
+                                    <div class="date-row">
+                                        <span>Check-out</span>
+                                        <strong id="checkout">Not Selected</strong>
+                                    </div>
+
+                                    <div class="date-row">
+                                        <span>Total Nights</span>
+                                        <strong id="nights">0</strong>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="button" id="sidebarBookBtn"
+                            class="btn btn-success w-100 py-3 rounded-pill fw-bold">
+                            Book Now
+                        </button>
     </section>
 
     {{-- ===== Why Book With Us ===== --}}
@@ -435,67 +438,116 @@
 
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
+   <script>
+    document.addEventListener("DOMContentLoaded", function() {
 
-            const fp = flatpickr("#calendar", {
+        let currentNights = 0;
 
-                inline: true,
-                mode: "range",
-                minDate: "today",
+        function updateSummary() {
+            const select = document.getElementById("serviceSelect");
+            const selectedOption = select.options[select.selectedIndex];
+            const price = selectedOption ? parseFloat(selectedOption.dataset.price || 0) : 0;
 
-                onChange: function(selectedDates) {
+            const subtotal = price * currentNights;
+            const gst = subtotal * 0.18;
+            const total = subtotal + gst;
 
-                    if (selectedDates.length > 0) {
+            document.getElementById("summaryRoomPrice").innerText =
+                "₹" + price.toLocaleString('en-IN');
 
-                        document.getElementById("checkin").innerHTML =
-                            flatpickr.formatDate(selectedDates[0], "Y-m-d");
+            document.getElementById("summaryNights").innerText = currentNights;
 
-                        document.getElementById("mainCheckIn").value =
-                            flatpickr.formatDate(selectedDates[0], "Y-m-d");
+            document.getElementById("summaryGst").innerText =
+                "₹" + gst.toLocaleString('en-IN', { maximumFractionDigits: 0 });
 
-                    }
+            document.getElementById("summaryTotal").innerText =
+                "₹" + total.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+        }
 
-                    if (selectedDates.length == 1) {
+        const fp = flatpickr("#calendar", {
 
-                        document.getElementById("checkout").innerHTML = "Not Selected";
-                        document.getElementById("mainCheckOut").value = "";
-                        document.getElementById("nights").innerHTML = "0";
+            inline: true,
+            mode: "range",
+            minDate: "today",
 
-                    }
+            onChange: function(selectedDates) {
 
-                    if (selectedDates.length == 2) {
+                if (selectedDates.length > 0) {
 
-                        document.getElementById("checkout").innerHTML =
-                            flatpickr.formatDate(selectedDates[1], "Y-m-d");
+                    document.getElementById("checkin").innerHTML =
+                        flatpickr.formatDate(selectedDates[0], "Y-m-d");
 
-                        document.getElementById("mainCheckOut").value =
-                            flatpickr.formatDate(selectedDates[1], "Y-m-d");
+                    document.getElementById("mainCheckIn").value =
+                        flatpickr.formatDate(selectedDates[0], "Y-m-d");
 
-                        let nights = Math.ceil(
-                            (selectedDates[1] - selectedDates[0]) /
-                            (1000 * 60 * 60 * 24)
-                        );
+                }
 
-                        document.getElementById("nights").innerHTML = nights;
+                if (selectedDates.length == 1) {
 
+                    document.getElementById("checkout").innerHTML = "Not Selected";
+                    document.getElementById("mainCheckOut").value = "";
+                    document.getElementById("nights").innerHTML = "0";
+
+                    currentNights = 0;
+                    updateSummary();
+
+                    const availabilityBox = document.getElementById("availabilityCheck");
+                    if (availabilityBox) availabilityBox.style.display = "none";
+
+                }
+
+                if (selectedDates.length == 2) {
+
+                    document.getElementById("checkout").innerHTML =
+                        flatpickr.formatDate(selectedDates[1], "Y-m-d");
+
+                    document.getElementById("mainCheckOut").value =
+                        flatpickr.formatDate(selectedDates[1], "Y-m-d");
+
+                    let nights = Math.ceil(
+                        (selectedDates[1] - selectedDates[0]) /
+                        (1000 * 60 * 60 * 24)
+                    );
+
+                    document.getElementById("nights").innerHTML = nights;
+
+                    currentNights = nights;
+                    updateSummary();
+
+                    const availabilityBox = document.getElementById("availabilityCheck");
+                    const loadingEl = document.getElementById("availabilityLoading");
+                    const resultEl = document.getElementById("availabilityResult");
+
+                    if (availabilityBox) {
+                        availabilityBox.style.display = "block";
+                        loadingEl.style.display = "flex";
+                        resultEl.style.display = "none";
+
+                        setTimeout(function() {
+                            loadingEl.style.display = "none";
+                            resultEl.style.display = "flex";
+                        }, 1500);
                     }
 
                 }
 
-            });
-
-            document.getElementById("sidebarBookBtn").addEventListener("click", function() {
-
-                if (fp.selectedDates.length < 2) {
-                    alert("Please select both check-in and check-out dates.");
-                    return;
-                }
-
-                document.getElementById("bookingForm").requestSubmit();
-
-            });
+            }
 
         });
-    </script>
+
+        document.getElementById("serviceSelect").addEventListener("change", updateSummary);
+
+        document.getElementById("sidebarBookBtn").addEventListener("click", function() {
+
+            if (fp.selectedDates.length < 2) {
+                alert("Please select both check-in and check-out dates.");
+                return;
+            }
+
+            document.getElementById("bookingForm").requestSubmit();
+
+        });
+
+    });
+</script>
 @endpush
