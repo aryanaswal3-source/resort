@@ -24,6 +24,7 @@ class Service extends Model
         'persons',
         'slug',
         'price', 
+        'total_rooms',
     ];
 
     protected $casts = [

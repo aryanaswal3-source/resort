@@ -279,6 +279,10 @@
 
                         </div>
 
+                        <script id="fullyBookedData" type="application/json">
+                           {!! json_encode($fullyBookedDates) !!}
+                        </script>
+
                         <button type="button" id="sidebarBookBtn"
                             class="btn btn-success w-100 py-3 rounded-pill fw-bold">
                             Book Now
@@ -438,116 +442,145 @@
 
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
 
-        let currentNights = 0;
+            // ===== Step A: PHP se aaya blocked-dates data padhna =====
+            const fullyBookedData = JSON.parse(
+                document.getElementById("fullyBookedData").textContent
+            );
 
-        function updateSummary() {
-            const select = document.getElementById("serviceSelect");
-            const selectedOption = select.options[select.selectedIndex];
-            const price = selectedOption ? parseFloat(selectedOption.dataset.price || 0) : 0;
+            let currentNights = 0;
+            let fp = null; // Flatpickr instance yahan store hogi
 
-            const subtotal = price * currentNights;
-            const gst = subtotal * 0.18;
-            const total = subtotal + gst;
+            // ===== Step B: Booking Summary update karne wala function =====
+            function updateSummary() {
+                const select = document.getElementById("serviceSelect");
+                const selectedOption = select.options[select.selectedIndex];
+                const price = selectedOption ? parseFloat(selectedOption.dataset.price || 0) : 0;
 
-            document.getElementById("summaryRoomPrice").innerText =
-                "₹" + price.toLocaleString('en-IN');
+                const subtotal = price * currentNights;
+                const gst = subtotal * 0.18;
+                const total = subtotal + gst;
 
-            document.getElementById("summaryNights").innerText = currentNights;
+                document.getElementById("summaryRoomPrice").innerText =
+                    "₹" + price.toLocaleString('en-IN');
+                document.getElementById("summaryNights").innerText = currentNights;
+                document.getElementById("summaryGst").innerText =
+                    "₹" + gst.toLocaleString('en-IN', {
+                        maximumFractionDigits: 0
+                    });
+                document.getElementById("summaryTotal").innerText =
+                    "₹" + total.toLocaleString('en-IN', {
+                        maximumFractionDigits: 0
+                    });
+            }
 
-            document.getElementById("summaryGst").innerText =
-                "₹" + gst.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+            // ===== Step C: Calendar ko (re)banaane wala function =====
+            function initCalendar(disabledDates) {
 
-            document.getElementById("summaryTotal").innerText =
-                "₹" + total.toLocaleString('en-IN', { maximumFractionDigits: 0 });
-        }
-
-        const fp = flatpickr("#calendar", {
-
-            inline: true,
-            mode: "range",
-            minDate: "today",
-
-            onChange: function(selectedDates) {
-
-                if (selectedDates.length > 0) {
-
-                    document.getElementById("checkin").innerHTML =
-                        flatpickr.formatDate(selectedDates[0], "Y-m-d");
-
-                    document.getElementById("mainCheckIn").value =
-                        flatpickr.formatDate(selectedDates[0], "Y-m-d");
-
+                // Agar pehle se calendar bana hua hai, use destroy karo (taaki dubara fresh bane)
+                if (fp) {
+                    fp.destroy();
                 }
 
-                if (selectedDates.length == 1) {
+                fp = flatpickr("#calendar", {
 
-                    document.getElementById("checkout").innerHTML = "Not Selected";
-                    document.getElementById("mainCheckOut").value = "";
-                    document.getElementById("nights").innerHTML = "0";
+                    inline: true,
+                    mode: "range",
+                    minDate: "today",
+                    disable: disabledDates, // <-- yahi wo jagah hai jaha blocked dates disable hoti hain
 
-                    currentNights = 0;
-                    updateSummary();
+                    onChange: function(selectedDates) {
 
-                    const availabilityBox = document.getElementById("availabilityCheck");
-                    if (availabilityBox) availabilityBox.style.display = "none";
+                        if (selectedDates.length > 0) {
+                            document.getElementById("checkin").innerHTML =
+                                flatpickr.formatDate(selectedDates[0], "Y-m-d");
+                            document.getElementById("mainCheckIn").value =
+                                flatpickr.formatDate(selectedDates[0], "Y-m-d");
+                        }
 
-                }
+                        if (selectedDates.length == 1) {
+                            document.getElementById("checkout").innerHTML = "Not Selected";
+                            document.getElementById("mainCheckOut").value = "";
+                            document.getElementById("nights").innerHTML = "0";
 
-                if (selectedDates.length == 2) {
+                            currentNights = 0;
+                            updateSummary();
 
-                    document.getElementById("checkout").innerHTML =
-                        flatpickr.formatDate(selectedDates[1], "Y-m-d");
+                            const availabilityBox = document.getElementById("availabilityCheck");
+                            if (availabilityBox) availabilityBox.style.display = "none";
+                        }
 
-                    document.getElementById("mainCheckOut").value =
-                        flatpickr.formatDate(selectedDates[1], "Y-m-d");
+                        if (selectedDates.length == 2) {
+                            document.getElementById("checkout").innerHTML =
+                                flatpickr.formatDate(selectedDates[1], "Y-m-d");
+                            document.getElementById("mainCheckOut").value =
+                                flatpickr.formatDate(selectedDates[1], "Y-m-d");
 
-                    let nights = Math.ceil(
-                        (selectedDates[1] - selectedDates[0]) /
-                        (1000 * 60 * 60 * 24)
-                    );
+                            let nights = Math.ceil(
+                                (selectedDates[1] - selectedDates[0]) /
+                                (1000 * 60 * 60 * 24)
+                            );
+                            document.getElementById("nights").innerHTML = nights;
 
-                    document.getElementById("nights").innerHTML = nights;
+                            currentNights = nights;
+                            updateSummary();
 
-                    currentNights = nights;
-                    updateSummary();
+                            const availabilityBox = document.getElementById("availabilityCheck");
+                            const loadingEl = document.getElementById("availabilityLoading");
+                            const resultEl = document.getElementById("availabilityResult");
 
-                    const availabilityBox = document.getElementById("availabilityCheck");
-                    const loadingEl = document.getElementById("availabilityLoading");
-                    const resultEl = document.getElementById("availabilityResult");
+                            if (availabilityBox) {
+                                availabilityBox.style.display = "block";
+                                loadingEl.style.display = "flex";
+                                resultEl.style.display = "none";
 
-                    if (availabilityBox) {
-                        availabilityBox.style.display = "block";
-                        loadingEl.style.display = "flex";
-                        resultEl.style.display = "none";
-
-                        setTimeout(function() {
-                            loadingEl.style.display = "none";
-                            resultEl.style.display = "flex";
-                        }, 1500);
+                                setTimeout(function() {
+                                    loadingEl.style.display = "none";
+                                    resultEl.style.display = "flex";
+                                }, 1500);
+                            }
+                        }
                     }
+                });
+            }
 
+            // ===== Step D: Shuru mein calendar bina kisi blocking ke banao (kyunki abhi room select nahi hua) =====
+            initCalendar([]);
+
+            // ===== Step E: Jab Room Type badle, calendar ko naye blocked-dates ke sath refresh karo =====
+            document.getElementById("serviceSelect").addEventListener("change", function() {
+
+                const serviceId = this.value;
+                const blockedDatesForThisRoom = fullyBookedData[serviceId] || [];
+
+                // Purani selected dates reset kar do (kyunki room badal gaya)
+                document.getElementById("checkin").innerHTML = "Not Selected";
+                document.getElementById("checkout").innerHTML = "Not Selected";
+                document.getElementById("nights").innerHTML = "0";
+                document.getElementById("mainCheckIn").value = "";
+                document.getElementById("mainCheckOut").value = "";
+                currentNights = 0;
+
+                const availabilityBox = document.getElementById("availabilityCheck");
+                if (availabilityBox) availabilityBox.style.display = "none";
+
+                // Calendar ko naye room ke blocked-dates ke sath dobara banao
+                initCalendar(blockedDatesForThisRoom);
+
+                updateSummary();
+            });
+
+            // ===== Step F: Book Now button (sidebar) =====
+            document.getElementById("sidebarBookBtn").addEventListener("click", function() {
+                if (fp.selectedDates.length < 2) {
+                    alert("Please select both check-in and check-out dates.");
+                    return;
                 }
-
-            }
-
-        });
-
-        document.getElementById("serviceSelect").addEventListener("change", updateSummary);
-
-        document.getElementById("sidebarBookBtn").addEventListener("click", function() {
-
-            if (fp.selectedDates.length < 2) {
-                alert("Please select both check-in and check-out dates.");
-                return;
-            }
-
-            document.getElementById("bookingForm").requestSubmit();
+                document.getElementById("bookingForm").requestSubmit();
+            });
 
         });
-
-    });
-</script>
+    </script>
 @endpush

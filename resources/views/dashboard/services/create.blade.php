@@ -107,6 +107,13 @@
                                 value="{{ old('price') }}" placeholder="e.g. 2500" required>
                         </div>
 
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Total Rooms Available</label>
+                            <input type="number" name="total_rooms" class="form-control" min="1"
+                                value="{{ old('total_rooms', 1) }}" required>
+                            <div class="form-text">How many physical rooms of this type exist?</div>
+                        </div>
+
                     </div>
 
                     <div class="mt-4">

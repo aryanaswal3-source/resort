@@ -44,7 +44,7 @@
         <i class="bi bi-droplet-fill"></i>
     </span>
 
-    <span>Buy Now</span>
+    <span>Book Now</span>
 
 </a>
 
