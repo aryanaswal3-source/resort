@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Service;
-use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
@@ -52,6 +52,14 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
+        $existingBooking = Booking::where('user_id', auth()->id())
+            ->whereIn('status', ['pending', 'confirmed'])
+            ->exists();
+
+        if ($existingBooking) {
+            return back()->with('error', 'You already have an active booking. Please wait for it to be completed or cancelled before booking again.');
+        }
+
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
@@ -73,6 +81,7 @@ class BookingController extends Controller
         $gst = $subtotal * 0.18;
         $total = $subtotal + $gst;
 
+        $data['user_id'] = auth()->id();
         $data['price'] = $service->price;
         $data['gst_amount'] = $gst;
         $data['total_amount'] = $total;

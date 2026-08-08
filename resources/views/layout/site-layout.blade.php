@@ -37,8 +37,7 @@
 <body>
     {{-- ===== Global Fixed Buy Now Button ===== --}}
    <a href="{{ route('booking.create') }}"
-   class="btn-buy-now"
-   target="_blank">
+   class="btn-buy-now">
 
     <span class="icon-circle">
         <i class="bi bi-droplet-fill"></i>
@@ -100,6 +99,19 @@
         </script>
     @endif
 
+    @if (session('info'))
+        <script>
+            Swal.fire({
+                icon: 'info',
+                title: 'Login Required',
+                text: @json(session('info')),
+                showConfirmButton: true
+            });
+
+            window.history.replaceState({}, document.title);
+        </script>
+    @endif
+
 
 
     @include('partials.header')
@@ -125,7 +137,7 @@
 
     @stack('scripts')
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
-    <script>
+   <script>
         document.addEventListener('DOMContentLoaded', function() {
             const signInModalEl = document.getElementById('signInModal');
             const signUpModalEl = document.getElementById('signUpModal');
@@ -146,6 +158,10 @@
 
             @if (session('form') === 'register' && $errors->any())
                 signUpModal.show();
+            @endif
+
+            @if (session('show_login'))
+                signInModal.show();
             @endif
         });
     </script>

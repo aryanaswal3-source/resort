@@ -84,9 +84,9 @@ Route::get('/services', [ServiceController::class, 'index'])
 Route::get('/booking', [BookingController::class, 'create'])
     ->name('booking.create');
 
-Route::post('/booking', [BookingController::class, 'store'])
+Route::post('/booking', [BookingController::class, 'store'])->middleware('auth.booking')
     ->name('booking.store');
-
+    
 // Travel Query
 Route::get('/query-form', [TravelQueryController::class, 'create'])
     ->name('query.form');
