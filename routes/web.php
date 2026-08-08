@@ -15,100 +15,187 @@ use App\Http\Controllers\TravelQueryController;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| Public Routes
+|--------------------------------------------------------------------------
+*/
+
+// Home
 Route::get('/', function () {
+
     $services = Service::latest()->take(4)->get();
 
     return view('site.home', compact('services'));
+
 })->name('home');
 
+// About
 Route::get('/about', function () {
+
     return view('site.about');
+
 })->name('about');
 
+// Welcome
 Route::get('/welcome', function () {
+
     return view('welcome');
+
 })->name('welcome');
 
-Route::post('/register', [RegisterController::class,
-    'register'])->name('register');
+// Register
+Route::post('/register', [RegisterController::class, 'register'])
+    ->name('register');
 
+// Login Page - GET
+// Login Page - GET
+Route::get('/login', function () {
+    return redirect()->route('home', ['login' => 1]);
+})->name('login');
+
+// Login Submit - POST
+Route::post('/login', [LoginController::class, 'login'])
+    ->name('login.submit');
+// Logout
+Route::post('/logout', [LoginController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
+
+// Contact
 Route::get('/contact', function () {
+
     return view('site.contact');
+
 })->name('contact');
 
 Route::post('/contact-store', [ContactController::class, 'store'])
     ->name('contact.store');
 
-// Route::get('/gallery', function () {
-//     return view('site.galleryfour');
-// })->name('gallery');
+// Gallery
+Route::get('/gallery', [SiteGalleryController::class, 'index'])
+    ->name('gallery');
 
-Route::get('/gallery', [SiteGalleryController::class, 'index'])->name('gallery');
+// Services
+Route::get('/services', [ServiceController::class, 'index'])
+    ->name('services');
 
-// Route::get('/admin', function () {
-//     return view('layout.admin-layout');
-// });
+// Booking
+Route::get('/booking', [BookingController::class, 'create'])
+    ->name('booking.create');
 
-Route::get('/admin', function () {
-    return view('dashboard.dashboard');
-})->name('admin.dashboard');
+Route::post('/booking', [BookingController::class, 'store'])
+    ->name('booking.store');
 
-Route::get('/admin/gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
-Route::post('/admin/gallery', [GalleryController::class, 'store'])->name('admin.gallery.store');
-Route::delete('/admin/gallery/{gallery}', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
+// Travel Query
+Route::get('/query-form', [TravelQueryController::class, 'create'])
+    ->name('query.form');
 
-// Route::get('/services', function () {
-//     return view('site.services');
-// })->name('servies');
+Route::post('/query-form', [TravelQueryController::class, 'store'])
+    ->name('query.store');
 
-Route::get('/services', [ServiceController::class, 'index'])->name('services');
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+|
+| auth  = user must be logged in
+| admin = user role must be admin
+|
+*/
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('services', AdminServiceController::class);
-});
-// Public
-Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
-Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
 
-// Admin
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/bookings', [AdminBookingController::class, 'index'])->name('bookings.index');
-    Route::put('/bookings/{booking}/status', [AdminBookingController::class, 'updateStatus'])->name('bookings.status');
-    Route::delete('/bookings/{booking}', [AdminBookingController::class, 'destroy'])->name('bookings.destroy');
-});
+        /*
+        |--------------------------------------------------------------------------
+        | Dashboard
+        |--------------------------------------------------------------------------
+        */
 
-Route::get('/query-form', [TravelQueryController::class, 'create'])->name('query.form');
-Route::post('/query-form', [TravelQueryController::class, 'store'])->name('query.store');
+        Route::get('/', function () {
 
-Route::prefix('admin')->group(function () {
-    Route::get('/queries', [TravelQueryController::class, 'index'])->name('admin.queries.index');
-    Route::patch('/queries/{query}/status', [TravelQueryController::class, 'updateStatus'])->name('admin.queries.status');
-    Route::delete('/queries/{query}', [TravelQueryController::class, 'destroy'])->name('admin.queries.destroy');
-});
+            return view('dashboard.dashboard');
 
-Route::post('/login', [LoginController::class, 'login'])
-    ->name('login');
+        })->name('dashboard');
 
-Route::post('/logout', [LoginController::class, 'logout'])
-    ->name('logout');
+        /*
+        |--------------------------------------------------------------------------
+        | Admin Profile
+        |--------------------------------------------------------------------------
+        */
 
-Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/profile', [AdminProfileController::class, 'index'])
+            ->name('profile');
 
-    Route::resource('services', AdminServiceController::class);
+        /*
+        |--------------------------------------------------------------------------
+        | Users
+        |--------------------------------------------------------------------------
+        */
 
-    Route::get('/profile', [AdminProfileController::class, 'index'])
-        ->middleware('auth')
-        ->name('profile');
+        Route::get('/users', [AdminUserController::class, 'index'])
+            ->name('users');
 
-    Route::get('/users', [AdminUserController::class, 'index'])
-        ->middleware('auth')
-        ->name('users');
+        Route::get('/users/{user}', [AdminUserController::class, 'show'])
+            ->name('users.show');
 
-    Route::get('/users/{user}', [AdminUserController::class, 'show'])
-        ->middleware('auth')
-        ->name('users.show');
+        Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])
+            ->name('users.destroy');
 
-    Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])
-        ->middleware('auth')
-        ->name('users.destroy');
-});
+        /*
+        |--------------------------------------------------------------------------
+        | Services
+        |--------------------------------------------------------------------------
+        */
+
+        Route::resource('services', AdminServiceController::class);
+
+        /*
+        |--------------------------------------------------------------------------
+        | Gallery
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/gallery', [GalleryController::class, 'index'])
+            ->name('gallery.index');
+
+        Route::post('/gallery', [GalleryController::class, 'store'])
+            ->name('gallery.store');
+
+        Route::delete('/gallery/{gallery}', [GalleryController::class, 'destroy'])
+            ->name('gallery.destroy');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Bookings
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/bookings', [AdminBookingController::class, 'index'])
+            ->name('bookings.index');
+
+        Route::put('/bookings/{booking}/status', [AdminBookingController::class, 'updateStatus'])
+            ->name('bookings.status');
+
+        Route::delete('/bookings/{booking}', [AdminBookingController::class, 'destroy'])
+            ->name('bookings.destroy');
+
+        /*
+        |--------------------------------------------------------------------------
+        | Travel Queries
+        |--------------------------------------------------------------------------
+        */
+
+        Route::get('/queries', [TravelQueryController::class, 'index'])
+            ->name('queries.index');
+
+        Route::patch('/queries/{query}/status', [TravelQueryController::class, 'updateStatus'])
+            ->name('queries.status');
+
+        Route::delete('/queries/{query}', [TravelQueryController::class, 'destroy'])
+            ->name('queries.destroy');
+
+    });

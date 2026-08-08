@@ -14,13 +14,17 @@ class AdminUserController extends Controller
 
         $users = User::query()
             ->when($search, function ($query) use ($search) {
+
                 $query->where(function ($q) use ($search) {
+
                     $q->where('name', 'like', "%{$search}%")
-                      ->orWhere('email', 'like', "%{$search}%")
-                      ->orWhere('phone', 'like', "%{$search}%");
+                        ->orWhere('email', 'like', "%{$search}%")
+                        ->orWhere('phone', 'like', "%{$search}%");
+
                 });
+
             })
-            ->orderBy('id', 'asc')  // ✅ YEH CHANGE KAR
+            ->latest()
             ->get();
 
         return view('admin.users', compact('users', 'search'));
@@ -33,12 +37,21 @@ class AdminUserController extends Controller
 
     public function destroy(User $user)
     {
+        // Admin account cannot be deleted
         if ($user->role === 'admin') {
-            return back()->with('error', 'Admin account cannot be deleted.');
+
+            return back()->with(
+                'error',
+                'Admin account cannot be deleted.'
+            );
+
         }
 
         $user->delete();
 
-        return back()->with('success', 'User deleted successfully.');
+        return back()->with(
+            'success',
+            'User deleted successfully.'
+        );
     }
 }
