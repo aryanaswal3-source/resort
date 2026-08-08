@@ -66,7 +66,7 @@
 
             <!-- ROOM GRID -->
             <div class="row">
-
+                {{-- 
                 <div class="col-6 col-md-3">
                     <div class="room-card">
                         <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=500" alt="room">
@@ -169,7 +169,7 @@
                             <a href="#">View More <i class="fa fa-arrow-right "></i></a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 @forelse ($images as $image)
                     <div class="col-6 col-md-3">
                         <div class="room-card">

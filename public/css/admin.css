@@ -201,7 +201,9 @@ ul {
 .admin-navbar {
     height: 90px;
     padding: 0 25px;
-}
+     position: relative;
+    z-index: 1050;
+}   
 
 .menu-btn {
     width: 45px;
@@ -265,6 +267,14 @@ ul {
     color: #777;
 }
 
+.admin-navbar .dropdown {
+    position: relative;
+    z-index: 1060;
+}
+
+.admin-navbar .dropdown-menu {
+    z-index: 1070;
+}
 .dropdown-menu {
     width: 250px;
     border: none;

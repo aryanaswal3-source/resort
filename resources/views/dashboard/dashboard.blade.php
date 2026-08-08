@@ -179,6 +179,7 @@
 
             <div class="col-md-4">
                 <div class="quick-action-card qa-bulkproducts">
+                    <a href="{{ route('admin.gallery.index') }}" class="stretched-link"></a>
                     <div class="qa-icon">
                         <i class="fa-solid fa-door-open"></i>
                     </div>

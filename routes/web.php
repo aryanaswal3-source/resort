@@ -1,23 +1,23 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminServiceController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ServiceController;
-
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\Admin\BookingController as AdminBookingController;
-
-
 use App\Http\Controllers\SiteGalleryController;
 use App\Http\Controllers\TravelQueryController;
-use Illuminate\Support\Facades\Route;
 use App\Models\Service;
-
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $services = Service::latest()->take(4)->get();
+
     return view('site.home', compact('services'));
 })->name('home');
 
@@ -66,8 +66,6 @@ Route::get('/services', [ServiceController::class, 'index'])->name('services');
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('services', AdminServiceController::class);
 });
-
-
 // Public
 Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
 Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
@@ -88,3 +86,29 @@ Route::prefix('admin')->group(function () {
     Route::delete('/queries/{query}', [TravelQueryController::class, 'destroy'])->name('admin.queries.destroy');
 });
 
+Route::post('/login', [LoginController::class, 'login'])
+    ->name('login');
+
+Route::post('/logout', [LoginController::class, 'logout'])
+    ->name('logout');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+
+    Route::resource('services', AdminServiceController::class);
+
+    Route::get('/profile', [AdminProfileController::class, 'index'])
+        ->middleware('auth')
+        ->name('profile');
+
+    Route::get('/users', [AdminUserController::class, 'index'])
+        ->middleware('auth')
+        ->name('users');
+
+    Route::get('/users/{user}', [AdminUserController::class, 'show'])
+        ->middleware('auth')
+        ->name('users.show');
+
+    Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])
+        ->middleware('auth')
+        ->name('users.destroy');
+});
