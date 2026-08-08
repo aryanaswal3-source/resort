@@ -83,12 +83,6 @@
                     <a href="{{ url('/about') }}" class="nav-link">About Us</a>
                 </li>
 
-
-                <li class="nav-item">
-                        <a href="#" class="nav-link">Room Grid</a>
-                    </li>
-
-
                 <li class="nav-item">
                     <a href="{{ url('/gallery') }}" class="nav-link">Room Gallery</a>
                 </li>

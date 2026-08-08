@@ -27,6 +27,7 @@
                             <th>Title</th>
                             <th>Location</th>
                             <th>Price</th>
+                            <th>Room</th>
                             <th>Rating</th>
                             <th>Nights</th>
                             <th>Persons</th>
@@ -45,6 +46,7 @@
                                 <td>{{ $service->title }}</td>
                                 <td>{{ $service->location ?? '-' }}</td>
                                 <td class="fw-semibold">₹{{ number_format($service->price, 0) }}</td>
+                                <td>{{ $service->total_rooms }}</td>
                                 <td>{{ $service->rating ?? '-' }}</td>
                                 <td>{{ $service->nights }}</td>
                                 <td>{{ $service->persons }}</td>
@@ -74,7 +76,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9" class="text-center text-secondary py-4">
+                                <td colspan="10" class="text-center text-secondary py-4">
                                     No services added yet.
                                 </td>
                             </tr>
