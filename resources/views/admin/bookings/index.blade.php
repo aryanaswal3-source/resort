@@ -12,6 +12,23 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
+    {{-- ===== Search Box ===== --}}
+    <div class="card border-0 shadow-sm mb-3">
+        <div class="card-body">
+            <form action="{{ route('admin.bookings.index') }}" method="GET" class="d-flex gap-2">
+                <input type="text" name="search" class="form-control" placeholder="Search by name, email or phone..." value="{{ request('search') }}">
+                <button type="submit" class="btn btn-dark">
+                    <i class="fa-solid fa-search"></i> Search
+                </button>
+                @if (request('search'))
+                    <a href="{{ route('admin.bookings.index') }}" class="btn btn-outline-secondary">
+                        Clear
+                    </a>
+                @endif
+            </form>
+        </div>
+    </div>
+
     <div class="card border-0 shadow-sm">
         <div class="card-body">
             <table class="table table-hover align-middle mb-0">
@@ -75,12 +92,23 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="10" class="text-center text-muted py-4">No bookings yet.</td>
+                            <td colspan="10" class="text-center text-muted py-4">
+                                @if (request('search'))
+                                    No bookings found for "{{ request('search') }}".
+                                @else
+                                    No bookings yet.
+                                @endif
+                            </td>
                         </tr>
                     @endforelse
                 </tbody>
             </table>
         </div>
+    </div>
+
+    {{-- ===== Pagination Links ===== --}}
+    <div class="mt-4">
+      {{ $bookings->links('pagination::bootstrap-5') }}
     </div>
 
 @endsection
