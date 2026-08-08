@@ -27,19 +27,20 @@
                     <p class="section-label mb-2">WELCOME BACK</p>
                     <h3 class="section-title mb-4">Sign In to Your Account</h3>
 
-                    <form action="{{ route('login') }}" method="POST">
+                    <form action="{{ route('login.submit') }}" method="POST">
                         @csrf
                         <div class="signin-input-group">
                             <label class="signin-label">Email</label>
                             <i class="bi bi-envelope field-icon"></i>
-                            <input type="email" name="email" class="signin-input" placeholder="you@example.com" required>
+                            <input type="email" name="email" class="signin-input" placeholder="you@example.com"
+                                required>
                         </div>
 
                         <div class="signin-input-group">
                             <label class="signin-label">Password</label>
                             <i class="bi bi-lock field-icon"></i>
-                            <input type="password" class="signin-input" name="password" id="signinPassword" placeholder="••••••••"
-                                required>
+                            <input type="password" class="signin-input" name="password" id="signinPassword"
+                                placeholder="••••••••" required>
                             <button type="button" class="toggle-password"
                                 onclick="
                                 const f=document.getElementById('signinPassword');
@@ -53,7 +54,7 @@
 
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="rememberMe"   name="remember">
+                                <input class="form-check-input" type="checkbox" id="rememberMe" name="remember">
                                 <label class="form-check-label small" for="rememberMe">Remember me</label>
                             </div>
                             <a href="#" class="small signin-forgot">Forgot password?</a>
