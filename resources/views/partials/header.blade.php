@@ -10,9 +10,11 @@
 
                     <a href="https://www.instagram.com/_badoni_ji/"><i class="fa-brands fa-instagram""></i></a>
 
-                    <a href="https://www.guvi.in/verify-certificate?id=1C1121187877nOiHt4&course=chatgptenglish&trk=public_profile_see-credential"><i class="fa-solid fa-g""></i></a>
+                    <a
+                        href="https://www.guvi.in/verify-certificate?id=1C1121187877nOiHt4&course=chatgptenglish&trk=public_profile_see-credential"><i
+                            class="fa-solid fa-g""></i></a>
 
-                    <a href="https://www.linkedin.com/in/vivek-badoni-396912325"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="www.linkedin.com/in/aryan-aswal-0074612a2"><i class="fab fa-linkedin-in"></i></a>
 
                     <a href="https://www.youtube.com/@VivekBadoni-r9"><i class="fab fa-youtube"></i></a>
 
@@ -51,7 +53,7 @@
 </header>
 <!--======================== 2 NAVBAR===========================-->
 
-<nav class="navbar navbar-expand-lg custom-navbar">
+<nav class="navbar navbar-expand-lg custom-navbar" >
 
     <div class="container">
 
@@ -93,12 +95,9 @@
                 </li>
 
 
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Booking</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ url('/booking') }}">Book Now</a></li>
-                        <li><a class="dropdown-item" href="#">Checkout</a></li>
-                    </ul>
+
+                <li class="nav-item ">
+                    <a  href="{{ url('/booking') }}" class="nav-link">Booking</a>
                 </li>
 
                 <li class="nav-item">
@@ -118,14 +117,12 @@
 
             <div class="header-call">
 
-                <div class="call-icon">
-
+                <a href="tel:9368545116" class="call-icon">
                     <i class="fa fa-phone-volume"></i>
-
-                </div>
+                </a>
 
                 <div class="call-text">
-                    <h6> +91 982569756</h6>
+                    <h6> +91 9368545116</h6>
                 </div>
 
             </div>

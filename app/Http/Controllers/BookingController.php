@@ -47,7 +47,14 @@ class BookingController extends Controller
             $fullyBookedDates[$service->id] = $blockedDates;
         }
 
-        return view('site.booking', compact('services', 'fullyBookedDates'));
+        $prefill = [
+            'checkin' => request('checkin'),
+            'checkout' => request('checkout'),
+            'adults' => request('adults', 1),
+            'children' => request('children', 0),
+        ];
+
+        return view('site.booking', compact('services', 'fullyBookedDates', 'prefill'));
     }
 
     public function store(Request $request)

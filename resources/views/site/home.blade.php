@@ -4,6 +4,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endpush
 
 @section('content')
@@ -24,7 +25,7 @@
                 <div class="booking-field">
                     <label>Arrival Date</label>
                     <div class="booking-value">
-                        <span id="arrivalDate">29/02/2026</span>
+                        <input type="text" id="heroArrival" class="hero-date-input" placeholder="Select date" readonly>
                         <i class="bi bi-calendar3"></i>
                     </div>
                 </div>
@@ -32,35 +33,32 @@
                 <div class="booking-field">
                     <label>Departure Date</label>
                     <div class="booking-value">
-                        <span id="departureDate">29/02/2026</span>
+                        <input type="text" id="heroDeparture" class="hero-date-input" placeholder="Select date" readonly>
                         <i class="bi bi-calendar3"></i>
                     </div>
                 </div>
 
                 <div class="booking-field">
                     <label>Adults</label>
-                    <select>
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                        <option>04</option>
-                    </select>
+                    <div class="booking-value">
+                        <input type="number" id="heroAdults" class="hero-number-input" value="1" min="1"
+                            max="20">
+                    </div>
                 </div>
 
                 <div class="booking-field">
                     <label>Children</label>
-                    <select>
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                    </select>
+                    <div class="booking-value">
+                        <input type="number" id="heroChildren" class="hero-number-input" value="0" min="0"
+                            max="10">
+                    </div>
                 </div>
 
                 <div class="booking-submit">
-                   <a href="{{ route('booking.create') }}" class="btn-explore">
+                    <button type="button" id="checkAvailabilityBtn" class="btn-explore">
                         Check Availability
                         <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
-                    </a>
+                    </button>
                 </div>
 
             </div>
@@ -120,19 +118,19 @@
 
     {{-- ===== City View Carousel Section ===== --}}
     <section class="cityview-section" style="background-image: url('{{ asset('image/beach-hut.jpg') }}');">
-        
+
         <!-- Top wavy border -->
         <div class="cityview-wave top ">
             <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill="var(--bg)" d="M0,80 L0.0,20 C9.5,22.5 38.0,30.7 57.1,35.0 C76.2,39.3 95.2,
-                    44.2 114.3,46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,
-                    38.8 266.6,43.7 285.7,45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,
-                    52.0 C419.0,51.0 438.1,40.8 457.1,41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,
-                    43.7 571.4,44.0 C590.5,44.3 609.5,56.2 628.6,55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,
-                    33.7 723.9,32.5 742.9,35.0 C761.9,37.5 781.0,50.7 800.0,52.0 C819.0,53.3 838.1,44.2 857.1,
-                    43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,46.0 952.4,48.0 971.4,49.0 C990.4,50.0 1009.5,
-                    50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,49.5 1123.9,50.2 1142.9,48.0 C1162.0,
-                    45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
+                                44.2 114.3,46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,
+                                38.8 266.6,43.7 285.7,45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,
+                                52.0 C419.0,51.0 438.1,40.8 457.1,41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,
+                                43.7 571.4,44.0 C590.5,44.3 609.5,56.2 628.6,55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,
+                                33.7 723.9,32.5 742.9,35.0 C761.9,37.5 781.0,50.7 800.0,52.0 C819.0,53.3 838.1,44.2 857.1,
+                                43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,46.0 952.4,48.0 971.4,49.0 C990.4,50.0 1009.5,
+                                50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,49.5 1123.9,50.2 1142.9,48.0 C1162.0,
+                                45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
             </svg>
         </div>
 
@@ -189,7 +187,8 @@
                 <button class="cityview-arrow prev" type="button" data-bs-target="#cityViewCarousel" data-bs-slide="prev">
                     <i class="bi bi-arrow-left"></i>
                 </button>
-                <button class="cityview-arrow next" type="button" data-bs-target="#cityViewCarousel" data-bs-slide="next">
+                <button class="cityview-arrow next" type="button" data-bs-target="#cityViewCarousel"
+                    data-bs-slide="next">
                     <i class="bi bi-arrow-right"></i>
                 </button>
 
@@ -200,13 +199,13 @@
         <div class="cityview-wave bottom">
             <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill="var(--bg)" d="M0,80 L0.0,20 C9.5,22.5 38.0,30.7 57.1,35.0 C76.2,39.3 95.2,44.2 114.3,
-                    46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,38.8 266.6,43.7 285.7,
-                    45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,52.0 C419.0,51.0 438.1,40.8 457.1,
-                    41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,43.7 571.4,44.0 C590.5,44.3 609.5,56.2 628.6,
-                    55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,33.7 723.9,32.5 742.9,35.0 C761.9,37.5 781.0,50.7 800.0,
-                    52.0 C819.0,53.3 838.1,44.2 857.1,43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,46.0 952.4,48.0 971.4,
-                    49.0 C990.4,50.0 1009.5,50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,49.5 1123.9,50.2 1142.9,
-                    48.0 C1162.0,45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
+                                46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,38.8 266.6,43.7 285.7,
+                                45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,52.0 C419.0,51.0 438.1,40.8 457.1,
+                                41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,43.7 571.4,44.0 C590.5,44.3 609.5,56.2 628.6,
+                                55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,33.7 723.9,32.5 742.9,35.0 C761.9,37.5 781.0,50.7 800.0,
+                                52.0 C819.0,53.3 838.1,44.2 857.1,43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,46.0 952.4,48.0 971.4,
+                                49.0 C990.4,50.0 1009.5,50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,49.5 1123.9,50.2 1142.9,
+                                48.0 C1162.0,45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
             </svg>
         </div>
 
@@ -343,17 +342,17 @@
 
     {{-- ===== Countdown / Last Minute Offer Section ===== --}}
     <section class="countdown-section" style="background-image: url('{{ asset('image/ocean-rocks.jpg') }}');">
-        
+
         <div class="section-wave top">
             <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill="var(--bg)" d="M0,80 L0.0,20 C9.5,22.5 38.0,30.7 57.1,35.0 C76.2,39.3 95.2,
-                    44.2 114.3,46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,
-                    38.8 266.6,43.7 285.7,45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,52.0 C419.0,
-                    51.0 438.1,40.8 457.1,41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,43.7 571.4,44.0 C590.5,
-                    44.3 609.5,56.2 628.6,55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,33.7 723.9,32.5 742.9,35.0 C761.9,
-                    37.5 781.0,50.7 800.0,52.0 C819.0,53.3 838.1,44.2 857.1,43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,
-                    46.0 952.4,48.0 971.4,49.0 C990.4,50.0 1009.5,50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,
-                    49.5 1123.9,50.2 1142.9,48.0 C1162.0,45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
+                                44.2 114.3,46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,
+                                38.8 266.6,43.7 285.7,45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,52.0 C419.0,
+                                51.0 438.1,40.8 457.1,41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,43.7 571.4,44.0 C590.5,
+                                44.3 609.5,56.2 628.6,55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,33.7 723.9,32.5 742.9,35.0 C761.9,
+                                37.5 781.0,50.7 800.0,52.0 C819.0,53.3 838.1,44.2 857.1,43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,
+                                46.0 952.4,48.0 971.4,49.0 C990.4,50.0 1009.5,50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,
+                                49.5 1123.9,50.2 1142.9,48.0 C1162.0,45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
             </svg>
         </div>
 
@@ -391,19 +390,19 @@
         <div class="section-wave bottom">
             <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill="var(--bg)" d="M0,80 L0.0,20 C9.5,22.5 38.0,30.7 57.1,35.0 C76.2,39.3 95.2,44.2 114.3,
-                    46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,38.8 266.6,43.7 285.7,
-                    45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,52.0 C419.0,51.0 438.1,40.8 457.1,
-                    41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,43.7 571.4,44.0 C590.5,44.3 609.5,56.2 628.6,
-                    55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,33.7 723.9,32.5 742.9,35.0 C761.9,37.5 781.0,50.7 800.0,
-                    52.0 C819.0,53.3 838.1,44.2 857.1,43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,46.0 952.4,48.0 971.4,
-                    49.0 C990.4,50.0 1009.5,50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,49.5 1123.9,
-                    50.2 1142.9,48.0 C1162.0,45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
+                                46.0 C133.3,47.8 152.3,47.2 171.4,46.0 C190.5,44.8 209.6,39.2 228.6,39.0 C247.6,38.8 266.6,43.7 285.7,
+                                45.0 C304.8,46.3 323.8,45.8 342.9,47.0 C361.9,48.2 381.0,53.0 400.0,52.0 C419.0,51.0 438.1,40.8 457.1,
+                                41.0 C476.2,41.2 495.2,52.5 514.3,53.0 C533.3,53.5 552.3,43.7 571.4,44.0 C590.5,44.3 609.5,56.2 628.6,
+                                55.0 C647.7,53.8 666.7,40.3 685.7,37.0 C704.8,33.7 723.9,32.5 742.9,35.0 C761.9,37.5 781.0,50.7 800.0,
+                                52.0 C819.0,53.3 838.1,44.2 857.1,43.0 C876.1,41.8 895.2,44.0 914.3,45.0 C933.3,46.0 952.4,48.0 971.4,
+                                49.0 C990.4,50.0 1009.5,50.8 1028.6,51.0 C1047.6,51.2 1066.7,50.5 1085.7,50.0 C1104.8,49.5 1123.9,
+                                50.2 1142.9,48.0 C1162.0,45.8 1190.5,38.8 1200.0,37.0  L1200,80 Z" />
             </svg>
         </div>
 
     </section>
-    
-{{-- ===== Exclusive Offers Section ===== --}}
+
+    {{-- ===== Exclusive Offers Section ===== --}}
     <section class="offers-section">
         <div class="container">
 
@@ -419,7 +418,8 @@
                         <div class="row g-3 offer-card align-items-stretch">
                             <div class="col-5">
                                 <div class="offer-img-wrap">
-                                    <img src="{{ $service->image ? asset('storage/' . $service->image) : asset('image/adminlogo.png') }}" alt="{{ $service->title }}" class="offer-img">
+                                    <img src="{{ $service->image ? asset('storage/' . $service->image) : asset('image/adminlogo.png') }}"
+                                        alt="{{ $service->title }}" class="offer-img">
                                 </div>
                             </div>
                             <div class="col-7">
@@ -427,7 +427,8 @@
                                     <h4 class="section-title">{{ $service->title }}</h4>
                                     <div class="offer-stars">
                                         @for ($i = 1; $i <= 5; $i++)
-                                            <i class="bi bi-star-fill {{ $i <= round($service->rating) ? '' : 'text-secondary opacity-25' }}"></i>
+                                            <i
+                                                class="bi bi-star-fill {{ $i <= round($service->rating) ? '' : 'text-secondary opacity-25' }}"></i>
                                         @endfor
                                     </div>
                                     <p>{{ Str::limit($service->description, 70) }}</p>
@@ -557,7 +558,7 @@
                             <span><i class="bi bi-clock"></i>Duration: 2 Hours</span>
                             <span><i class="bi bi-record-circle"></i>18+ years</span>
                         </div>
-                       <a href="{{ route('booking.create') }}" class="btn-explore">
+                        <a href="{{ route('booking.create') }}" class="btn-explore">
                             Book Online
                             <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
                         </a>
@@ -574,7 +575,7 @@
                             <span><i class="bi bi-clock"></i>Duration: 2 Hours</span>
                             <span><i class="bi bi-record-circle"></i>18+ years</span>
                         </div>
-                      <a href="{{ route('booking.create') }}" class="btn-explore">
+                        <a href="{{ route('booking.create') }}" class="btn-explore">
                             Book Online
                             <span class="icon-circle"><i class="bi bi-arrow-right"></i></span>
                         </a>
@@ -666,7 +667,7 @@
                     <div class="testimonial-people">
                         <button type="button" class="testimonial-person active" data-bs-target="#testimonialCarousel"
                             data-bs-slide-to="0">
-                            <img src="{{ asset('image/avatar-1.jpg') }}" alt="Ayman Jenis">
+                            <img src="{{ asset('image/avatar-1.jpg') }}" alt="Aryan Aswal">
                             <div class="person-info">
                                 <strong>Aryan Aswal</strong>
                                 <span>Ary@ceo</span>
@@ -807,4 +808,47 @@
 @endsection
 
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const arrivalPicker = flatpickr("#heroArrival", {
+                dateFormat: "d/m/Y",
+                minDate: "today",
+                onChange: function(selectedDates) {
+                    departurePicker.set('minDate', selectedDates[0]);
+                }
+            });
+
+            const departurePicker = flatpickr("#heroDeparture", {
+                dateFormat: "d/m/Y",
+                minDate: "today"
+            });
+
+            document.getElementById('checkAvailabilityBtn').addEventListener('click', function() {
+
+                const arrival = arrivalPicker.selectedDates[0];
+                const departure = departurePicker.selectedDates[0];
+
+                if (!arrival || !departure) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Dates Missing',
+                        text: 'Please select both arrival and departure dates to check availability.',
+                        confirmButtonColor: '#CC8C18'
+                    });
+                    return;
+                }
+
+                const checkin = flatpickr.formatDate(arrival, "Y-m-d");
+                const checkout = flatpickr.formatDate(departure, "Y-m-d");
+                const adults = document.getElementById('heroAdults').value;
+                const children = document.getElementById('heroChildren').value;
+
+                window.location.href =
+                    `{{ route('booking.create') }}?checkin=${checkin}&checkout=${checkout}&adults=${adults}&children=${children}`;
+            });
+
+        });
+    </script>
 @endpush

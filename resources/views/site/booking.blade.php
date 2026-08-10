@@ -166,7 +166,7 @@
                                             <label class="form-label"><i class="bi bi-people-fill me-1"
                                                     style="color: var(--gold);"></i> Adults</label>
                                             <input type="number" name="adults" class="form-control" min="1"
-                                                value="1">
+                                                value="{{ $prefill['adults'] }}">
                                         </div>
 
                                         <!-- Children -->
@@ -174,9 +174,8 @@
                                             <label class="form-label"><i class="bi bi-emoji-smile-fill me-1"
                                                     style="color: var(--gold);"></i> Children</label>
                                             <input type="number" name="children" class="form-control" min="0"
-                                                value="0">
+                                                value="{{ $prefill['children'] }}">
                                         </div>
-
                                         <!-- Message -->
                                         <div class="col-12 mb-4">
                                             <label class="form-label"><i class="bi bi-chat-left-text-fill me-1"
@@ -477,11 +476,16 @@
             }
 
             // ===== Step C: Calendar ko (re)banaane wala function =====
-            function initCalendar(disabledDates) {
+            function initCalendar(disabledDates, prefillData) {
 
                 // Agar pehle se calendar bana hua hai, use destroy karo (taaki dubara fresh bane)
                 if (fp) {
                     fp.destroy();
+                }
+
+                let defaultDates = [];
+                if (prefillData && prefillData.checkin && prefillData.checkout) {
+                    defaultDates = [prefillData.checkin, prefillData.checkout];
                 }
 
                 fp = flatpickr("#calendar", {
@@ -490,6 +494,7 @@
                     mode: "range",
                     minDate: "today",
                     disable: disabledDates, // <-- yahi wo jagah hai jaha blocked dates disable hoti hain
+                    defaultDate: defaultDates,
 
                     onChange: function(selectedDates) {
 
@@ -544,10 +549,24 @@
                         }
                     }
                 });
+
+                // Agar dates pre-filled hain, turant checkin/checkout/nights/summary bhi update kar do
+                if (defaultDates.length === 2) {
+                    document.getElementById("checkin").innerHTML = defaultDates[0];
+                    document.getElementById("checkout").innerHTML = defaultDates[1];
+                    document.getElementById("mainCheckIn").value = defaultDates[0];
+                    document.getElementById("mainCheckOut").value = defaultDates[1];
+
+                    currentNights = Math.ceil(
+                        (new Date(defaultDates[1]) - new Date(defaultDates[0])) / (1000 * 60 * 60 * 24)
+                    );
+                    document.getElementById("nights").innerHTML = currentNights;
+                    updateSummary();
+                }
             }
 
-            // ===== Step D: Shuru mein calendar bina kisi blocking ke banao (kyunki abhi room select nahi hua) =====
-            initCalendar([]);
+            // ===== Step D: Shuru mein calendar banao, agar Hero se dates aayi hon to pre-filled =====
+            initCalendar([], @json($prefill));
 
             // ===== Step E: Jab Room Type badle, calendar ko naye blocked-dates ke sath refresh karo =====
             document.getElementById("serviceSelect").addEventListener("change", function() {
@@ -566,7 +585,7 @@
                 const availabilityBox = document.getElementById("availabilityCheck");
                 if (availabilityBox) availabilityBox.style.display = "none";
 
-                // Calendar ko naye room ke blocked-dates ke sath dobara banao
+                // Calendar ko naye room ke blocked-dates ke sath dobara banao (bina prefill ke, kyunki room badla hai)
                 initCalendar(blockedDatesForThisRoom);
 
                 updateSummary();

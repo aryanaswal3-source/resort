@@ -184,6 +184,7 @@
     right: 68px;
 }
 
+
 @keyframes pulseRing {
     0% {
         transform: scale(1);

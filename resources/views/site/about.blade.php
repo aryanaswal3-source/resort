@@ -314,10 +314,10 @@
                                             eiusmoeiusmod tempor inte emamnsecacing eiusmoeiusmod"
                                         </p>
                                         <div class="testimonial-author">
-                                            <img src="{{ asset('image/testimonials/user-' . ($i + 1) . '.jpg') }}"
+                                            <img src="{{ asset('image/avatar-1.jpg') }}"
                                                 alt="Aryan Jenis">
                                             <div>
-                                                <h6>Aryan Jenis</h6>
+                                                <h6>Aryan Aswal</h6>
                                                 <span>CEO@Leasuely</span>
                                             </div>
                                         </div>
@@ -346,7 +346,7 @@
                                             eiusmoeiusmod tempor inte emamnsecacing eiusmoeiusmod"
                                         </p>
                                         <div class="testimonial-author">
-                                            <img src="{{ asset('image/testimonials/user-' . ($i + 4) . '.jpg') }}"
+                                            <img src="{{ asset('image/avatar-2.jpg') }}"
                                                 alt="Guest">
                                             <div>
                                                 <h6>Sarah Khan</h6>

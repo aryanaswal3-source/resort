@@ -143,7 +143,8 @@
 
                             <div class="contact-text">
                                 <h5>Phone</h5>
-                                <p>+91 982569756</p>
+                                <p>+91 9368545116</p><br>
+                                <p>+91 9690384930</p>
                             </div>
                         </div>
 
@@ -155,7 +156,8 @@
 
                             <div class="contact-text">
                                 <h5>Email</h5>
-                                <p>sunsetvista@gmail.com.com</p>
+                                <p>aryanaswal3@gmail.com.com</p><br>
+                                <p>badonivivek2006@gmail.com</P>
                             </div>
                         </div>
 
@@ -175,7 +177,7 @@
 
                     <div class="col-lg-6 text-center text-lg-start">
                         <p>
-                            © 2026 <span>SUNSET VISTA</span> is Proudly Owned by Vivek Badoni
+                            © 2026 <span>SUNSET VISTA</span> is Proudly Owned by Vivek Badoni and Aryan Aswal
                         </p>
                     </div>
 
@@ -185,6 +187,9 @@
                             <a href="#">
                                 <i class="far fa-heart"></i>
                                 Vivek Badoni
+                                <br>
+                                <i class="far fa-heart"></i>
+                                Aryan Aswal
                             </a>
                         </p>
                     </div>

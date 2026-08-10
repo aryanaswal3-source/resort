@@ -366,6 +366,23 @@ ul {
     font-size: 22px;
 }
 
+.call-icon:hover {
+     transform: scale(1.1);
+     cursor: pointer;
+} 
+
+.call-icon:hover i {
+    animation: ring 0.5s ease-in-out;
+}
+
+@keyframes ring {
+    0%   { transform: rotate(0deg); }
+    25%  { transform: rotate(15deg); }
+    50%  { transform: rotate(-15deg); }
+    75%  { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+}
+
 .call-text h6 {
     margin: 0;
     color: #fff;
@@ -394,6 +411,8 @@ ul {
     animation: sticky 0.4s;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
+
+
 
 @keyframes sticky {
     from {

@@ -856,6 +856,41 @@ body {
     margin-bottom: 50px;
 }
 
+/* ===== Hero booking-bar date inputs ===== */
+.hero-date-input {
+    border: none;
+    background: transparent;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--navy);
+    width: 100%;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hero-date-input:focus {
+    outline: none;
+}
+
+.hero-number-input {
+    border: none;
+    background: transparent;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--navy);
+    width: 100%;
+    padding: 0;
+}
+
+.hero-number-input:focus {
+    outline: none;
+}
+
+/* SweetAlert ko navbar se upar force karo */
+.swal2-container {
+    z-index: 99999 !important;
+}
+
 /* Booking search bar */
 .booking-bar {
     display: flex;
