@@ -1,6 +1,6 @@
 @extends('layout.site-layout')
 
-@section('title', 'Booking')
+@section('title', 'Booking-Sunset-Vista-Resort')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/booking.css') }}">

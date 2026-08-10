@@ -852,3 +852,146 @@ ul {
         height: 250px;
     }
 }
+
+/* =========================================================
+   SUNSET VISTA RESORT - SPLASH SCREEN
+========================================================= */
+
+#siteSplash {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+
+    background: #ffffff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 999999;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 0.6s ease,
+        visibility 0.6s ease;
+}
+
+/* Main logo area */
+.splash-content {
+    position: relative;
+
+    width: 350px;
+    height: 350px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation: splashZoom 1.2s ease-out forwards;
+}
+
+/* Sunset Vista Logo */
+.splash-logo {
+    width: 310px;
+    height: 310px;
+
+    object-fit: contain;
+
+    position: relative;
+    z-index: 2;
+
+    animation: logoFade 1.2s ease-out forwards;
+}
+
+/* Circular rotating border */
+.splash-ring {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    border: 3px solid transparent;
+
+    border-top-color: #d99a20;
+    border-right-color: #d99a20;
+
+    z-index: 1;
+
+    animation: splashRotate 1.5s linear infinite;
+}
+
+/* Logo Zoom Animation */
+@keyframes splashZoom {
+    0% {
+        transform: scale(0.45);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.08);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Logo Fade */
+@keyframes logoFade {
+    0% {
+        opacity: 0;
+        transform: scale(0.65);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Ring Rotation */
+@keyframes splashRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hide Splash */
+#siteSplash.hide-splash {
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 576px) {
+    .splash-content {
+        width: 260px;
+        height: 260px;
+    }
+
+    .splash-logo {
+        width: 230px;
+        height: 230px;
+    }
+
+    .splash-ring {
+        width: 230px;
+        height: 230px;
+    }
+}

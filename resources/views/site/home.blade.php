@@ -1,6 +1,6 @@
 @extends('layout.site-layout')
 
-@section('title', 'Aryan/Resort')
+@section('title', 'Home-Sunset-Vista-Resort')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">

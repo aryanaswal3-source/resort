@@ -1,6 +1,6 @@
 @extends('layout.site-layout')
 
-@section('title', 'Contact')
+@section('title', 'Contact-Sunset-Vista-Resort')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/contact.css') }}">

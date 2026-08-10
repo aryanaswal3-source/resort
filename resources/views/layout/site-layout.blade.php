@@ -30,34 +30,53 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <link rel="icon" type="image/png" href="{{ asset('image/icon.png') }}">
+
+    <!-- Apple / Mobile Icon -->
+    {{-- <link rel="apple-touch-icon" href="{{ asset('image/icon.png') }}"> --}}
     @stack('styles')
 
 </head>
 
 <body>
+    {{-- ================= SUNSET VISTA SPLASH SCREEN ================= --}}
+    <div id="siteSplash">
+
+        <div class="splash-content">
+
+            <div class="splash-ring"></div>
+
+            <img src="{{ asset('image/favicon.png') }}" alt="Sunset Vista Resort" class="splash-logo">
+
+        </div>
+
+    </div>
+    {{-- ================= END SPLASH SCREEN ================= --}}
+
     {{-- ===== Global Fixed Buy Now Button ===== --}}
-   <a href="{{ route('booking.create') }}"
-   class="btn-buy-now">
+    <a href="{{ route('booking.create') }}" class="btn-buy-now">
 
-    <span class="icon-circle">
-        <i class="bi bi-droplet-fill"></i>
-    </span>
+        <span class="icon-circle">
+            <i class="bi bi-droplet-fill"></i>
+        </span>
 
-    <span>Book Now</span>
+        <span>Book Now</span>
 
-</a>
+    </a>
 
     {{-- ===== Floating WhatsApp + Call buttons ===== --}}
-<div class="floating-contact">
-    <a href="https://wa.me/919368545116" target="_blank" class="floating-btn whatsapp-btn">
-        <i class="bi bi-whatsapp"></i>
-        <span class="floating-tooltip">Chat on WhatsApp</span>
-    </a>
-    {{-- <a href="tel:+919876543210" class="floating-btn call-btn">
+    <div class="floating-contact">
+        <a href="https://wa.me/919368545116" target="_blank" class="floating-btn whatsapp-btn">
+            <i class="bi bi-whatsapp"></i>
+            <span class="floating-tooltip">Chat on WhatsApp</span>
+        </a>
+        {{-- <a href="tel:+919876543210" class="floating-btn call-btn">
         <i class="bi bi-telephone-fill"></i>
         <span class="floating-tooltip">Call Us Now</span>
     </a> --}}
-</div>
+    </div>
+
 
 
     @if (session('success'))
@@ -137,7 +156,7 @@
 
     @stack('scripts')
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
-   <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const signInModalEl = document.getElementById('signInModal');
             const signUpModalEl = document.getElementById('signUpModal');

@@ -1,6 +1,6 @@
 @extends('layout.site-layout')
 
-@section('title', 'Check Room Availability')
+@section('title', 'Check Room Availability -Sunset-Vista-Resort')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/query.css') }}">

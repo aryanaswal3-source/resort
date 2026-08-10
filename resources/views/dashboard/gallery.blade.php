@@ -1,6 +1,6 @@
 @extends('layout.admin-layout')
 
-@section('title', 'Gallery')
+@section('title', 'Gallery-Sunset-Vista-Resort')
 
 @section('content')
 

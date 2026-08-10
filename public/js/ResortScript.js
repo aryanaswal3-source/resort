@@ -103,3 +103,21 @@ window.addEventListener("load", () => {
     document.body.classList.add("loaded");
 
 });
+
+/* =========================================================
+   SUNSET VISTA SPLASH SCREEN
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const splash = document.getElementById("siteSplash");
+
+    if (!splash) return;
+
+    setTimeout(function () {
+
+        splash.classList.add("hide-splash");
+
+    }, 950);
+
+});
