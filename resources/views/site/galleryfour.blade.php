@@ -1,6 +1,6 @@
 @extends('layout.site-layout')
 
-@section('title', 'Gallery')
+@section('title', 'Gallery-Sunset-Vista-Resort')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/gallery.css') }}">

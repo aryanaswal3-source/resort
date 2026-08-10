@@ -43,7 +43,7 @@
 
                 <div class="col-lg-3 col-md-6">
 
-                    <img src="{{ asset('image/logo3.jpg') }}" class="footer-logo" alt="Logo">
+                    <img src="{{ asset('image/favicon.png') }}" class="footer-logo" alt="Logo">
 
                     <p class="footer-about">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.

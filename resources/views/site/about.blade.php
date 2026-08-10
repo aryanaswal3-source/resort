@@ -1,6 +1,6 @@
 @extends('layout.site-layout')
 
-@section('title', 'about page')
+@section('title', 'About-Sunset-Vista-Resort')
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/aboutpg.css') }}">

@@ -1,6 +1,6 @@
 @extends('layout.admin-layout')
 
-@section('title', 'Customer Queries')
+@section('title', 'Customer Queries-Sunset-Vista-Resort')
 
 @section('content')
 

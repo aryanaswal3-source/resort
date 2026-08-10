@@ -1,6 +1,6 @@
 @extends('layout.site-layout')
 
-@section('title', 'Services')
+@section('title', 'Services-Sunset-Vista-Resort')
 
 @push('styles')
     <style>

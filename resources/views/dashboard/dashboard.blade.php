@@ -1,6 +1,6 @@
 @extends('layout.admin-layout')
 
-@section('title', 'Dashboard')
+@section('title', 'Dashboard-Sunset-Vista-Resort')
 
 @section('content')
 
