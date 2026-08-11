@@ -16,7 +16,8 @@
     <div class="card border-0 shadow-sm mb-3">
         <div class="card-body">
             <form action="{{ route('admin.bookings.index') }}" method="GET" class="d-flex gap-2">
-                <input type="text" name="search" class="form-control" placeholder="Search by name, email or phone..." value="{{ request('search') }}">
+                <input type="text" name="search" class="form-control" placeholder="Search by name, email or phone..."
+                    value="{{ request('search') }}">
                 <button type="submit" class="btn btn-dark">
                     <i class="fa-solid fa-search"></i> Search
                 </button>
@@ -34,6 +35,7 @@
             <table class="table table-hover align-middle mb-0">
                 <thead>
                     <tr>
+                        <th>User id</th>
                         <th>Guest</th>
                         <th>Room</th>
                         <th>Check In</th>
@@ -46,15 +48,17 @@
                         <th class="text-end">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody>`
                     @forelse ($bookings as $booking)
                         <tr>
+                            <td>{{ $booking->user_id ?? '-' }}</td>
                             <td>
                                 <div class="fw-semibold">{{ $booking->name }}</div>
                                 <div class="text-muted small">{{ $booking->email }}</div>
                                 <div class="text-muted small">{{ $booking->phone }}</div>
                             </td>
                             <td>{{ $booking->service->title ?? 'N/A' }}</td>
+                            <!-- ...baaki sab same rahega... -->
                             <td>{{ \Carbon\Carbon::parse($booking->check_in_date)->format('d M Y') }}</td>
                             <td>{{ \Carbon\Carbon::parse($booking->check_out_date)->format('d M Y') }}</td>
                             <td>{{ $booking->adults }} Adults, {{ $booking->children }} Children</td>
@@ -71,17 +75,23 @@
                                 @endif
                             </td>
                             <td class="text-end">
-                                <form action="{{ route('admin.bookings.status', $booking->id) }}" method="POST" class="d-inline-flex align-items-center gap-2">
+                                <form action="{{ route('admin.bookings.status', $booking->id) }}" method="POST"
+                                    class="d-inline-flex align-items-center gap-2">
                                     @csrf
                                     @method('PUT')
-                                    <select name="status" class="form-select form-select-sm" onchange="this.form.submit()" style="width: auto;">
-                                        <option value="pending" {{ $booking->status === 'pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="confirmed" {{ $booking->status === 'confirmed' ? 'selected' : '' }}>Confirmed</option>
-                                        <option value="cancelled" {{ $booking->status === 'cancelled' ? 'selected' : '' }}>Cancelled</option>
+                                    <select name="status" class="form-select form-select-sm" onchange="this.form.submit()"
+                                        style="width: auto;">
+                                        <option value="pending" {{ $booking->status === 'pending' ? 'selected' : '' }}>
+                                            Pending</option>
+                                        <option value="confirmed" {{ $booking->status === 'confirmed' ? 'selected' : '' }}>
+                                            Confirmed</option>
+                                        <option value="cancelled" {{ $booking->status === 'cancelled' ? 'selected' : '' }}>
+                                            Cancelled</option>
                                     </select>
                                 </form>
 
-                                <form action="{{ route('admin.bookings.destroy', $booking->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Delete this booking?');">
+                                <form action="{{ route('admin.bookings.destroy', $booking->id) }}" method="POST"
+                                    class="d-inline" onsubmit="return confirm('Delete this booking?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-outline-danger">
@@ -108,7 +118,7 @@
 
     {{-- ===== Pagination Links ===== --}}
     <div class="mt-4">
-      {{ $bookings->links('pagination::bootstrap-5') }}
+        {{ $bookings->links('pagination::bootstrap-5') }}
     </div>
 
 @endsection
