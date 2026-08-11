@@ -53,7 +53,7 @@
 </header>
 <!--======================== 2 NAVBAR===========================-->
 
-<nav class="navbar navbar-expand-lg custom-navbar" >
+<nav class="navbar navbar-expand-lg custom-navbar">
 
     <div class="container">
 
@@ -97,7 +97,7 @@
 
 
                 <li class="nav-item ">
-                    <a  href="{{ url('/booking') }}" class="nav-link">Booking</a>
+                    <a href="{{ url('/booking') }}" class="nav-link">Booking</a>
                 </li>
 
                 <li class="nav-item">
@@ -109,10 +109,30 @@
 
             </ul>
 
-            <button type="button" class="btn-signin" data-bs-toggle="modal" data-bs-target="#signInModal">
-                <i class="bi bi-person"></i> Sign In
-            </button>
+            @guest
+                <button type="button" class="btn-signin" data-bs-toggle="modal" data-bs-target="#signInModal">
+                    <i class="bi bi-person"></i> Sign In
+                </button>
+            @endguest
 
+            @auth
+                <div class="dropdown">
+                    <button class="btn-signin dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i> {{ auth()->user()->name }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-danger">
+                                    <i class="bi bi-box-arrow-left"></i> Logout
+                                </button>
+                            </form>
+                    </li>
+                    </ul>
+                </div>
+            @endauth
+            
             <!-- Phone -->
 
             <div class="header-call">

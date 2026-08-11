@@ -7,7 +7,7 @@
                 <i class="bi bi-x-lg"></i>
             </button>
 
-            
+
             <div class="signin-row">
 
                 {{-- Left gradient panel (reused from signin) --}}
@@ -42,14 +42,14 @@
                         <div class="text-center mb-3">
                             <label for="profilePhoto" style="cursor:pointer;">
                                 <img id="photoPreview" src="{{ asset('image/avatar/resort-logo.png') }}"
-                                     class="rounded-circle border" width="90" height="90"
-                                     style="object-fit: cover;" alt="Preview">
+                                    class="rounded-circle border" width="90" height="90"
+                                    style="object-fit: cover;" alt="Preview">
                                 <div class="small text-muted mt-1">
                                     <i class="bi bi-camera"></i> Upload Photo
                                 </div>
                             </label>
-                            <input type="file" name="profile_photo" id="profilePhoto" class="d-none"
-                                   accept="image/*" onchange="
+                            <input type="file" name="profile_photo" id="profilePhoto" class="d-none" accept="image/*"
+                                onchange="
                                        const file = this.files[0];
                                        if (file) {
                                            document.getElementById('photoPreview').src = URL.createObjectURL(file);
@@ -60,31 +60,44 @@
                         <div class="mb-3">
                             <label for="name" class="form-label fw-semibold">Full Name</label>
                             <input type="text" name="name" id="name" class="form-control"
-                                   value="{{ old('name') }}" placeholder="Your name" required>
+                                value="{{ old('name') }}" placeholder="Your name" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label fw-semibold">Email</label>
                             <input type="email" name="email" id="email" class="form-control"
-                                   value="{{ old('email') }}" placeholder="you@example.com" required>
+                                value="{{ old('email') }}" placeholder="you@example.com" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="phone" class="form-label fw-semibold">Phone Number</label>
                             <input type="text" name="phone" id="phone" class="form-control"
-                                   value="{{ old('phone') }}" placeholder="98765 43210" maxlength="15">
+                                value="{{ old('phone') }}" placeholder="98765 43210" maxlength="15">
                         </div>
 
                         <div class="row">
                             <div class="col-6 mb-3">
                                 <label for="password" class="form-label fw-semibold">Password</label>
-                                <input type="password" name="password" id="password" class="form-control"
-                                       placeholder="••••••••" required>
+                                <div class="position-relative">
+                                    <input type="password" name="password" id="password" class="form-control pe-5"
+                                        placeholder="••••••••" required>
+                                    <i class="bi bi-eye position-absolute" id="passwordToggle"
+                                        style="right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #6c757d;"
+                                        onclick="const f = document.getElementById('password');f.type = f.type === 'password' ? 'text' : 'password';
+                                        this.classList.toggle('bi-eye'); this.classList.toggle('bi-eye-slash');"></i>
+                                </div>
                             </div>
                             <div class="col-6 mb-3">
                                 <label for="password_confirmation" class="form-label fw-semibold">Confirm</label>
-                                <input type="password" name="password_confirmation" id="password_confirmation"
-                                       class="form-control" placeholder="••••••••" required>
+                                <div class="position-relative">
+                                    <input type="password" name="password_confirmation" id="password_confirmation"
+                                        class="form-control pe-5" placeholder="••••••••" required>
+                                    <i class="bi bi-eye position-absolute" id="confirmToggle"
+                                        style="right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #6c757d;"
+                                        onclick="const f = document.getElementById('password_confirmation');
+                                        f.type = f.type === 'password' ? 'text' : 'password';this.classList.toggle('bi-eye');
+                                        this.classList.toggle('bi-eye-slash');"></i>
+                                </div>
                             </div>
                         </div>
 

@@ -51,7 +51,7 @@
                 <tbody>`
                     @forelse ($bookings as $booking)
                         <tr>
-                            <td>{{ $booking->user_id ?? '-' }}</td>
+                            <td>{{ $booking->id ?? '-' }}</td>
                             <td>
                                 <div class="fw-semibold">{{ $booking->name }}</div>
                                 <div class="text-muted small">{{ $booking->email }}</div>
