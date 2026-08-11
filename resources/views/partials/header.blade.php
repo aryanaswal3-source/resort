@@ -53,7 +53,7 @@
 </header>
 <!--======================== 2 NAVBAR===========================-->
 
-<nav class="navbar navbar-expand-lg custom-navbar" >
+<nav class="navbar navbar-expand-lg custom-navbar">
 
     <div class="container">
 
@@ -97,7 +97,7 @@
 
 
                 <li class="nav-item ">
-                    <a  href="{{ url('/booking') }}" class="nav-link">Booking</a>
+                    <a href="{{ url('/booking') }}" class="nav-link">Booking</a>
                 </li>
 
                 <li class="nav-item">
@@ -106,7 +106,9 @@
                 <li class="nav-item">
                     <a href="{{ url('/contact') }}" class="nav-link">Contact Us</a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="{{ route('my.bookings') }}" class="nav-link">My Bookings</a>
+                </li>
             </ul>
 
             <button type="button" class="btn-signin" data-bs-toggle="modal" data-bs-target="#signInModal">

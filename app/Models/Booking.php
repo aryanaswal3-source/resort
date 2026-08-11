@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Service;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Booking extends Model
 {
     protected $fillable = [
-        'User id',
+        'user_id',
         'name',
         'email',
         'phone',
@@ -32,4 +34,12 @@ class Booking extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    protected $casts = [
+        'check_in_date' => 'date',
+        'check_out_date' => 'date',
+        'price' => 'decimal:2',
+        'gst_amount' => 'decimal:2',
+        'total_amount' => 'decimal:2',
+    ];
 }

@@ -14,6 +14,7 @@ use App\Http\Controllers\SiteGalleryController;
 use App\Http\Controllers\TravelQueryController;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MyBookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -199,3 +200,19 @@ Route::prefix('admin')
             ->name('queries.destroy');
 
     });
+
+
+    // My Bookings
+Route::middleware('auth')->group(function () {
+
+    Route::get('/my-bookings', [MyBookingController::class, 'index'])
+        ->name('my.bookings');
+
+    // Receipt - ALL bookings
+    Route::get('/my-bookings/receipt', [MyBookingController::class, 'receipt'])
+        ->name('my.booking.receipt');
+
+    // Single booking details
+    Route::get('/my-bookings/{id}', [MyBookingController::class, 'show'])
+        ->name('my.booking.show');
+});

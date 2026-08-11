@@ -32,13 +32,18 @@ class BookingController extends Controller
                 );
 
                 foreach ($period as $date) {
+
                     $dateString = $date->format('Y-m-d');
-                    $dateCounts[$dateString] = ($dateCounts[$dateString] ?? 0) + 1;
+
+                    $dateCounts[$dateString] =
+                        ($dateCounts[$dateString] ?? 0) + 1;
                 }
             }
 
             $blockedDates = [];
+
             foreach ($dateCounts as $date => $count) {
+
                 if ($count >= $service->total_rooms) {
                     $blockedDates[] = $date;
                 }
@@ -54,48 +59,78 @@ class BookingController extends Controller
             'children' => request('children', 0),
         ];
 
-        return view('site.booking', compact('services', 'fullyBookedDates', 'prefill'));
+        return view(
+            'site.booking',
+            compact('services', 'fullyBookedDates', 'prefill')
+        );
     }
+
 
     public function store(Request $request)
     {
-        $existingBooking = Booking::where('user_id', auth()->id())
-            ->whereIn('status', ['pending', 'confirmed'])
-            ->exists();
-
-        if ($existingBooking) {
-            return back()->with('error', 'You already have an active booking. Please wait for it to be completed or cancelled before booking again.');
-        }
-
         $data = $request->validate([
+
             'name' => 'required|string|max:255',
+
             'email' => 'required|email',
+
             'phone' => 'required|string|max:15',
+
             'service_id' => 'required|exists:services,id',
+
             'check_in_date' => 'required|date',
+
             'check_out_date' => 'required|date|after:check_in_date',
+
             'adults' => 'required|integer|min:1',
+
             'children' => 'nullable|integer|min:0',
+
             'message' => 'nullable|string',
         ]);
 
+
         $service = Service::findOrFail($data['service_id']);
 
-        $nights = Carbon::parse($data['check_in_date'])
-            ->diffInDays(Carbon::parse($data['check_out_date']));
 
+        // Calculate number of nights
+        $nights = Carbon::parse($data['check_in_date'])
+            ->diffInDays(
+                Carbon::parse($data['check_out_date'])
+            );
+
+
+        // Price calculation
         $subtotal = $service->price * $nights;
+
         $gst = $subtotal * 0.18;
+
         $total = $subtotal + $gst;
 
+
+        // Automatically attach logged-in user
         $data['user_id'] = auth()->id();
+
+
+        // Save booking price information
         $data['price'] = $service->price;
+
         $data['gst_amount'] = $gst;
+
         $data['total_amount'] = $total;
+
+
+        // Default booking status
         $data['status'] = 'pending';
 
+
+        // Create NEW booking
         Booking::create($data);
 
-        return back()->with('success', 'Your booking request has been received! We will contact you soon.');
+
+        return back()->with(
+            'success',
+            'Your booking request has been received! We will contact you soon.'
+        );
     }
 }
