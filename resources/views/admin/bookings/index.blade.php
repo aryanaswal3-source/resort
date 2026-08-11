@@ -51,14 +51,14 @@
                 <tbody>`
                     @forelse ($bookings as $booking)
                         <tr>
-                            <td>{{ $booking->user_id ?? '-' }}</td>
+                            <td>#{{ $booking-> id ?? '-' }}</td>
                             <td>
                                 <div class="fw-semibold">{{ $booking->name }}</div>
                                 <div class="text-muted small">{{ $booking->email }}</div>
                                 <div class="text-muted small">{{ $booking->phone }}</div>
                             </td>
                             <td>{{ $booking->service->title ?? 'N/A' }}</td>
-                            <!-- ...baaki sab same rahega... -->
+                            
                             <td>{{ \Carbon\Carbon::parse($booking->check_in_date)->format('d M Y') }}</td>
                             <td>{{ \Carbon\Carbon::parse($booking->check_out_date)->format('d M Y') }}</td>
                             <td>{{ $booking->adults }} Adults, {{ $booking->children }} Children</td>
