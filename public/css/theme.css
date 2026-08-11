@@ -184,6 +184,18 @@
     right: 68px;
 }
 
+/* ===== Force all popups above navbar (z-index: 9999) ===== */
+.modal-backdrop.show {
+    z-index: 100000 !important;
+}
+
+.modal.show {
+    z-index: 100001 !important;
+}
+
+.swal2-container {
+    z-index: 100002 !important;
+}
 
 @keyframes pulseRing {
     0% {

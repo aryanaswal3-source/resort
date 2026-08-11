@@ -57,6 +57,9 @@ class BookingController extends Controller
             'checkout' => request('checkout'),
             'adults' => request('adults', 1),
             'children' => request('children', 0),
+            'name' => auth()->check() ? auth()->user()->name : '',
+            'email' => auth()->check() ? auth()->user()->email : '',
+            'phone' => auth()->check() ? auth()->user()->phone : '',
         ];
 
         return view(
