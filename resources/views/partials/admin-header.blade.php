@@ -47,9 +47,21 @@
                         <hr class="dropdown-divider">
                     </li>
 
-                    <a class="dropdown-item py-2" href="{{ route('admin.profile') }}">
-                        <i class="fa-solid fa-user me-2"></i> Profile
-                    </a>
+                    <li>
+                        <a class="dropdown-item py-2" href="{{ route('admin.profile') }}">
+                            <i class="fa-solid fa-user me-2"></i> Profile
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item py-2" href="{{ route('home') }}" target="_blank">
+                            <i class="fa-solid fa-globe me-2"></i> Visit Website
+                        </a>
+                    </li>
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
 
                     <li>
                         <form action="{{ route('logout') }}" method="POST" class="m-0">

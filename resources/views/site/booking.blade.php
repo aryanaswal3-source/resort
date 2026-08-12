@@ -284,6 +284,7 @@
                         <script id="fullyBookedData" type="application/json">
                            {!! json_encode($fullyBookedDates) !!}
                         </script>
+                        
 
                         <button type="button" id="sidebarBookBtn"
                             class="btn btn-success w-100 py-3 rounded-pill fw-bold">
