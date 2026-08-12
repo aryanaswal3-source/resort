@@ -4,130 +4,64 @@
 
 @section('content')
 
-<div class="container py-5">
+    <div class="container py-5">
 
-@foreach ($bookings as $booking)
+        {{-- Top Actions --}}
+        <div class="d-flex justify-content-between align-items-center mb-4 no-print">
 
-@php
-    $nights = $booking->check_in_date->diffInDays($booking->check_out_date);
-    $subtotal = $booking->price * $nights;
-@endphp
+            <a href="{{ route('my.bookings') }}" class="btn btn-outline-secondary rounded-pill px-4">
+                ← My Bookings
+            </a>
 
-<div class="mx-auto" style="max-width:900px">
+            <a href="{{ route('my.booking.receipt.download') }}" class="btn rounded-pill px-4 text-white"
+                style="background:#d89b32;">
+                <i class="bi bi-download me-2"></i>
+                Download PDF
+            </a>
 
-    {{-- RECEIPT --}}
-    <div class="card border-0 shadow rounded-4 overflow-hidden">
+        </div>
 
-        {{-- HEADER --}}
-        <div class="p-4 p-md-5 text-white"
-             style="background:linear-gradient(135deg,#c88a24,#8f5d0b)">
 
-            <div class="row align-items-center">
+        {{-- Receipt --}}
+        <div class="receipt bg-white shadow-sm">
 
-                <div class="col-md-7">
+            {{-- Header --}}
+            <div class="p-4 p-md-5 text-white" style="background:#d89b32;">
 
-                    <div class="d-flex align-items-center gap-3">
+                <div class="row align-items-center">
 
-                        <div class="bg-white rounded-3 p-3 fs-3">
-                            🏨
-                        </div>
+                    {{-- Resort Information --}}
+                    <div class="col-md-8 d-flex align-items-center gap-3">
+
+                        <img src="{{ asset('image/logo3.jpg') }}" alt="Sunset Vista Resort" class="rounded-3 bg-white p-1"
+                            style="width:70px;height:70px;object-fit:contain;">
 
                         <div>
+
                             <h2 class="fw-bold mb-1">
                                 Sunset Vista Resort
                             </h2>
 
-                            <div class="opacity-75">
+                            <p class="mb-0 opacity-75">
                                 Luxury Hospitality • Dehradun
-                            </div>
+                            </p>
+
                         </div>
 
                     </div>
 
-                </div>
 
-                <div class="col-md-5 text-md-end mt-4 mt-md-0">
+                    {{-- Receipt Information --}}
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
 
-                    <small class="opacity-75">
-                        OFFICIAL BOOKING RECEIPT
-                    </small>
+                        <h4 class="fw-bold mb-1">
+                            BOOKING RECEIPT
+                        </h4>
 
-                    <h3 class="fw-bold mb-1">
-                        #{{ $booking->id }}
-                    </h3>
+                        <small>
+                            Receipt #{{ str_pad($bookings->first()->id ?? 0, 5, '0', STR_PAD_LEFT) }}
+                        </small>
 
-                    <small>
-                        {{ $booking->created_at->format('d M Y') }}
-                    </small>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        {{-- STATUS --}}
-        <div class="px-4 px-md-5 py-3 bg-light
-                    d-flex justify-content-between align-items-center">
-
-            <span class="text-muted">
-                Reservation Status
-            </span>
-
-            <span class="badge rounded-pill px-3 py-2
-                {{ $booking->status == 'confirmed'
-                    ? 'bg-success'
-                    : ($booking->status == 'cancelled'
-                        ? 'bg-danger'
-                        : 'bg-warning text-dark') }}">
-
-                {{ ucfirst($booking->status) }}
-
-            </span>
-
-        </div>
-
-
-        <div class="card-body p-4 p-md-5">
-
-
-            {{-- GUEST --}}
-            <div class="mb-5">
-
-                <h5 class="fw-bold mb-3">
-                    Guest Information
-                </h5>
-
-                <div class="row g-3">
-
-                    <div class="col-md-4">
-                        <div class="border rounded-3 p-3 h-100">
-                            <small class="text-muted d-block">
-                                Guest Name
-                            </small>
-                            <strong>{{ $booking->name }}</strong>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="border rounded-3 p-3 h-100">
-                            <small class="text-muted d-block">
-                                Email
-                            </small>
-                            <strong class="text-break">
-                                {{ $booking->email }}
-                            </strong>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="border rounded-3 p-3 h-100">
-                            <small class="text-muted d-block">
-                                Phone
-                            </small>
-                            <strong>{{ $booking->phone }}</strong>
-                        </div>
                     </div>
 
                 </div>
@@ -135,61 +69,286 @@
             </div>
 
 
-            {{-- STAY --}}
-            <div class="mb-5">
+            {{-- Main Receipt Content --}}
+            <div class="p-4 p-md-5">
 
-                <h5 class="fw-bold mb-3">
-                    Stay Details
-                </h5>
+                @php
 
-                <div class="table-responsive border rounded-3">
+                    $firstBooking = $bookings->first();
 
-                    <table class="table mb-0 align-middle">
+                    /*
+                |--------------------------------------------------------------------------
+                | Booking Amount Calculation
+                |--------------------------------------------------------------------------
+                */
 
-                        <thead style="background:#fff8eb">
+                    $subtotalTotal = 0;
+                    $gstTotal = 0;
+                    $grandTotal = 0;
+
+                    $cancelledSubtotal = 0;
+                    $cancelledGst = 0;
+                    $cancelledTotal = 0;
+
+                    foreach ($bookings as $booking) {
+                        $nights = $booking->check_in_date->diffInDays($booking->check_out_date);
+
+                        $subtotal = $booking->price * $nights;
+                        $gst = $booking->gst_amount;
+                        $total = $booking->total_amount;
+
+                        /*
+                    |--------------------------------------------------------------------------
+                    | Cancelled Booking
+                    |--------------------------------------------------------------------------
+                    */
+
+                        if ($booking->status === 'cancelled') {
+                            $cancelledSubtotal += $subtotal;
+                            $cancelledGst += $gst;
+                            $cancelledTotal += $total;
+                        } else {
+                            /*
+                        |--------------------------------------------------------------------------
+                        | Active Booking
+                        |--------------------------------------------------------------------------
+                        */
+
+                            $subtotalTotal += $subtotal;
+                            $gstTotal += $gst;
+                            $grandTotal += $total;
+                        }
+                    }
+
+                    /*
+                |--------------------------------------------------------------------------
+                | Stay Information
+                |--------------------------------------------------------------------------
+                */
+
+                    $totalAdults = $bookings->where('status', '!=', 'cancelled')->sum('adults');
+
+                    $totalChildren = $bookings->where('status', '!=', 'cancelled')->sum('children');
+
+                    $totalNights = 0;
+
+                    foreach ($bookings as $booking) {
+                        if ($booking->status !== 'cancelled') {
+                            $totalNights += $booking->check_in_date->diffInDays($booking->check_out_date);
+                        }
+                    }
+
+                    /*
+                |--------------------------------------------------------------------------
+                | Booking Status Counts
+                |--------------------------------------------------------------------------
+                */
+
+                    $confirmedCount = $bookings->where('status', 'confirmed')->count();
+
+                    $pendingCount = $bookings->where('status', 'pending')->count();
+
+                    $cancelledCount = $bookings->where('status', 'cancelled')->count();
+
+                @endphp
+
+
+                {{-- Customer Information --}}
+                <div class="row mb-4">
+
+                    <div class="col-md-7">
+
+                        <small class="text-muted">
+                            Guest
+                        </small>
+
+                        <h5 class="fw-bold mb-1">
+                            {{ $firstBooking->name ?? 'Guest' }}
+                        </h5>
+
+                        <div class="text-muted">
+                            {{ $firstBooking->email ?? '' }}
+                        </div>
+
+                        <div class="text-muted">
+                            {{ $firstBooking->phone ?? '' }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-5 text-md-end mt-3 mt-md-0">
+
+                        <small class="text-muted d-block">
+                            Booking Date
+                        </small>
+
+                        <strong>
+                            {{ $firstBooking?->created_at?->format('d M Y') }}
+                        </strong>
+
+
+                        <small class="text-muted d-block mt-2">
+                            Total Bookings
+                        </small>
+
+                        <strong>
+                            {{ $totalBookings }}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                {{-- Booking Summary --}}
+                <h6 class="fw-bold text-uppercase mb-3" style="color:#8b6b3f;">
+                    Booking Summary
+                </h6>
+
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered align-middle mb-4">
+
+                        <thead class="table-light">
 
                             <tr>
-                                <th class="px-3 py-3">Room</th>
+
+                                <th>#</th>
+                                <th>Room</th>
                                 <th>Check-in</th>
                                 <th>Check-out</th>
                                 <th>Guests</th>
                                 <th>Nights</th>
+                                <th>Status</th>
+                                <th class="text-end">Amount</th>
+
                             </tr>
 
                         </thead>
 
+
                         <tbody>
 
-                            <tr>
+                            @foreach ($bookings as $booking)
+                                @php
 
-                                <td class="px-3 fw-semibold">
-                                    {{ $booking->service->title ?? 'Room Booking' }}
-                                </td>
+                                    $nights = $booking->check_in_date->diffInDays($booking->check_out_date);
 
-                                <td>
-                                    {{ $booking->check_in_date->format('d M Y') }}
-                                </td>
+                                    $subtotal = $booking->price * $nights;
 
-                                <td>
-                                    {{ $booking->check_out_date->format('d M Y') }}
-                                </td>
+                                @endphp
 
-                                <td>
-                                    {{ $booking->adults }} Adults
 
-                                    @if($booking->children)
-                                        <br>
-                                        <small class="text-muted">
-                                            {{ $booking->children }} Children
+                                <tr>
+
+                                    {{-- Number --}}
+                                    <td>
+                                        {{ $loop->iteration }}
+                                    </td>
+
+
+                                    {{-- Room --}}
+                                    <td>
+
+                                        <strong>
+                                            {{ $booking->service->title ?? 'Room Booking' }}
+                                        </strong>
+
+                                        <small class="d-block text-muted">
+                                            Booking #{{ $booking->id }}
                                         </small>
-                                    @endif
-                                </td>
 
-                                <td class="fw-semibold">
-                                    {{ $nights }}
-                                </td>
+                                    </td>
 
-                            </tr>
+
+                                    {{-- Check-in --}}
+                                    <td>
+                                        {{ $booking->check_in_date->format('d M Y') }}
+                                    </td>
+
+
+                                    {{-- Check-out --}}
+                                    <td>
+                                        {{ $booking->check_out_date->format('d M Y') }}
+                                    </td>
+
+
+                                    {{-- Guests --}}
+                                    <td>
+
+                                        {{ $booking->adults }} Adults
+
+                                        @if ($booking->children)
+                                            <small class="d-block text-muted">
+                                                {{ $booking->children }} Children
+                                            </small>
+                                        @endif
+
+                                    </td>
+
+
+                                    {{-- Nights --}}
+                                    <td>
+                                        {{ $nights }}
+                                    </td>
+
+
+                                    {{-- Individual Status --}}
+                                    <td>
+
+                                        @if ($booking->status === 'confirmed')
+                                            <span class="badge bg-success rounded-pill px-3 py-2">
+
+                                                <i class="bi bi-check-circle me-1"></i>
+
+                                                Confirmed
+
+                                            </span>
+                                        @elseif ($booking->status === 'cancelled')
+                                            <span class="badge bg-danger rounded-pill px-3 py-2">
+
+                                                <i class="bi bi-x-circle me-1"></i>
+
+                                                Cancelled
+
+                                            </span>
+                                        @else
+                                            <span
+                                                class="badge bg-warning-subtle text-warning-emphasis rounded-pill px-3 py-2">
+
+                                                <i class="bi bi-clock-history me-1"></i>
+
+                                                Pending
+
+                                            </span>
+                                        @endif
+
+                                    </td>
+
+
+                                    {{-- Amount --}}
+                                    <td class="text-end fw-semibold">
+
+                                        @if ($booking->status === 'cancelled')
+                                            <span class="text-decoration-line-through text-muted">
+
+                                                ₹{{ number_format($subtotal, 2) }}
+
+                                            </span>
+
+                                            <small class="d-block text-danger">
+                                                Cancelled
+                                            </small>
+                                        @else
+                                            ₹{{ number_format($subtotal, 2) }}
+                                        @endif
+
+                                    </td>
+
+                                </tr>
+                            @endforeach
 
                         </tbody>
 
@@ -197,173 +356,367 @@
 
                 </div>
 
-            </div>
+
+                {{-- Payment Status --}}
+                <div class="text-end mb-4">
+
+                    <small class="text-muted d-block mb-1">
+                        Payment Status
+                    </small>
+
+                    <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill px-3 py-2">
+
+                        <i class="bi bi-clock-history me-1"></i>
+
+                        Payment Pending
+
+                    </span>
+
+                </div>
 
 
-            {{-- PAYMENT --}}
-            <div class="row justify-content-end">
+                {{-- Stay Information + Payment Summary --}}
+                <div class="row g-5 align-items-start mt-4">
 
-                <div class="col-md-6 col-lg-5">
 
-                    <div class="border rounded-4 p-4"
-                         style="background:#fffaf1">
+                    {{-- Stay Information --}}
+                    <div class="col-md-6">
 
-                        <h5 class="fw-bold mb-4">
+                        <h6 class="fw-bold text-uppercase mb-3" style="color:#8b6b3f;">
+                            Stay Information
+                        </h6>
+
+
+                        <div class="bg-light rounded-3 p-4">
+
+
+                            {{-- Rooms Booked --}}
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                <span class="text-muted">
+
+                                    <i class="bi bi-door-open me-2"></i>
+
+                                    Active Rooms
+
+                                </span>
+
+                                <strong>
+                                    {{ $totalBookings - $cancelledCount }}
+                                </strong>
+
+                            </div>
+
+
+                            {{-- Total Guests --}}
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                <span class="text-muted">
+
+                                    <i class="bi bi-people me-2"></i>
+
+                                    Total Guests
+
+                                </span>
+
+                                <strong class="text-end">
+
+                                    {{ $totalAdults }} Adults
+
+                                    @if ($totalChildren > 0)
+                                        <span class="text-muted fw-normal">
+
+                                            • {{ $totalChildren }}
+                                            Child{{ $totalChildren > 1 ? 'ren' : '' }}
+
+                                        </span>
+                                    @endif
+
+                                </strong>
+
+                            </div>
+
+
+                            {{-- Room Nights --}}
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                <span class="text-muted">
+
+                                    <i class="bi bi-moon-stars me-2"></i>
+
+                                    Room Nights
+
+                                </span>
+
+                                <strong>
+                                    {{ $totalNights }}
+                                </strong>
+
+                            </div>
+
+
+                            {{-- Booking Status --}}
+                            <div class="d-flex justify-content-between align-items-start">
+
+                                <span class="text-muted">
+
+                                    <i class="bi bi-clipboard-check me-2"></i>
+
+                                    Booking Status
+
+                                </span>
+
+
+                                <div class="text-end">
+
+                                    @if ($confirmedCount > 0)
+                                        <div class="mb-1">
+
+                                            <span class="badge bg-success rounded-pill px-2 py-1">
+
+                                                {{ $confirmedCount }}
+                                                Confirmed
+
+                                            </span>
+
+                                        </div>
+                                    @endif
+
+
+                                    @if ($pendingCount > 0)
+                                        <div class="mb-1">
+
+                                            <span
+                                                class="badge bg-warning-subtle text-warning-emphasis rounded-pill px-2 py-1">
+
+                                                {{ $pendingCount }}
+                                                Pending
+
+                                            </span>
+
+                                        </div>
+                                    @endif
+
+
+                                    @if ($cancelledCount > 0)
+                                        <div>
+
+                                            <span class="badge bg-danger rounded-pill px-2 py-1">
+
+                                                {{ $cancelledCount }}
+                                                Cancelled
+
+                                            </span>
+
+                                        </div>
+                                    @endif
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    {{-- Payment Summary --}}
+                    <div class="col-md-6 col-lg-5 ms-md-auto">
+
+                        <h6 class="fw-bold text-uppercase mb-3" style="color:#8b6b3f;">
+
                             Payment Summary
-                        </h5>
 
-                        <div class="d-flex justify-content-between mb-3">
-                            <span class="text-muted">
-                                Room Price
-                            </span>
+                        </h6>
 
-                            <span>
-                                ₹{{ number_format($booking->price, 2) }}
-                            </span>
-                        </div>
 
-                        <div class="d-flex justify-content-between mb-3">
-                            <span class="text-muted">
-                                {{ $nights }} Night(s)
-                            </span>
+                        {{-- Active Room Charges --}}
+                        <div class="d-flex justify-content-between mb-2">
 
                             <span>
-                                ₹{{ number_format($subtotal, 2) }}
+                                Room Charges
                             </span>
+
+                            <strong>
+                                ₹{{ number_format($subtotalTotal, 2) }}
+                            </strong>
+
                         </div>
 
+
+                        {{-- GST --}}
                         <div class="d-flex justify-content-between mb-3">
-                            <span class="text-muted">
+
+                            <span>
                                 GST (18%)
                             </span>
 
-                            <span>
-                                ₹{{ number_format($booking->gst_amount, 2) }}
-                            </span>
+                            <strong>
+                                ₹{{ number_format($gstTotal, 2) }}
+                            </strong>
+
                         </div>
+
+
+                        {{-- Cancelled Deduction --}}
+                        @if ($cancelledCount > 0)
+                            <div class="d-flex justify-content-between align-items-start mb-3 text-danger">
+
+                                <span>
+
+                                    <i class="bi bi-dash-circle me-1"></i>
+
+                                    Cancelled Booking Deduction
+
+                                    <small class="d-block text-muted">
+                                        {{ $cancelledCount }} booking{{ $cancelledCount > 1 ? 's' : '' }} cancelled
+                                    </small>
+
+                                </span>
+
+                                <strong>
+                                    - ₹{{ number_format($cancelledTotal, 2) }}
+                                </strong>
+
+                            </div>
+                        @endif
+
 
                         <hr>
 
-                        <div class="d-flex justify-content-between align-items-center">
 
-                            <span class="fw-bold fs-5">
+                        {{-- Grand Total --}}
+                        <div class="d-flex justify-content-between align-items-center rounded-3 p-3"
+                            style="background:#f6f3ee;">
+
+                            <strong>
                                 Grand Total
-                            </span>
+                            </strong>
 
-                            <span class="fw-bold fs-3"
-                                  style="color:#b87912">
-                                ₹{{ number_format($booking->total_amount, 2) }}
-                            </span>
+                            <strong class="fs-4" style="color:#8b6b3f;">
+
+                                ₹{{ number_format($grandTotal, 2) }}
+
+                            </strong>
 
                         </div>
 
-                    </div>
 
-                </div>
+                        {{-- Cancelled Information --}}
+                        @if ($cancelledCount > 0)
+                            <small class="text-muted d-block mt-2 text-end">
 
-            </div>
+                                <i class="bi bi-info-circle me-1"></i>
 
+                                Cancelled booking amount has been deducted.
 
-            {{-- SPECIAL REQUEST --}}
-            @if($booking->message)
-
-                <div class="mt-5">
-
-                    <h5 class="fw-bold mb-3">
-                        Special Request
-                    </h5>
-
-                    <div class="alert mb-0 border-0 rounded-3"
-                         style="background:#fff8eb">
-
-                        {{ $booking->message }}
+                            </small>
+                        @endif
 
                     </div>
 
                 </div>
 
-            @endif
+
+                {{-- Special Requests --}}
+                @php
+
+                    $messages = $bookings->whereNotNull('message')->where('message', '!=', '');
+
+                @endphp
 
 
-        </div>
+                @if ($messages->count())
+
+                    <h6 class="fw-bold text-uppercase mt-5 mb-3" style="color:#8b6b3f;">
+
+                        Special Requests
+
+                    </h6>
 
 
-        {{-- FOOTER --}}
-        <div class="text-center border-top p-4">
+                    @foreach ($messages as $booking)
+                        <div class="bg-light rounded-3 p-3 mb-2">
 
-            <h6 class="fw-bold mb-1">
-                Thank you for choosing
-                <span style="color:#b87912">
-                    Sunset Vista Resort
-                </span>
-            </h6>
+                            <strong>
+                                Booking #{{ $booking->id }}
+                            </strong>
 
-            <small class="text-muted">
-                Park Estate, Hathi Paon George Everest House,
-                Mussoorie 248179, India
-            </small>
+                            <span class="text-muted">
+                                — {{ $booking->message }}
+                            </span>
 
-            <div class="mt-2">
-                <small class="text-muted">
-                    Computer-generated booking receipt
-                </small>
+                        </div>
+                    @endforeach
+
+                @endif
+
+
+                {{-- Footer --}}
+                <div class="text-center border-top mt-5 pt-4">
+
+                    <h6 class="fw-bold mb-1">
+                        Thank you for choosing Sunset Vista Resort
+                    </h6>
+
+                    <p class="text-muted mb-1">
+                        We look forward to welcoming you.
+                    </p>
+
+                    <small class="text-muted">
+                        This is a computer-generated booking receipt and does not require a signature.
+                    </small>
+
+                </div>
+
             </div>
 
         </div>
 
     </div>
 
-</div>
 
-@endforeach
+    {{-- Minimal Custom CSS --}}
+    <style>
+        .receipt {
+            max-width: 1100px;
+            margin: auto;
+            border: 1px solid #e5e5e5;
+            border-radius: 18px;
+            overflow: hidden;
+        }
 
+        @media print {
 
-{{-- BUTTONS --}}
-<div class="text-center mt-4">
+            body {
+                background: #fff !important;
+            }
 
-    <button onclick="window.print()"
-            class="btn btn-dark rounded-pill px-4 me-2">
-        🖨 Print / Save PDF
-    </button>
+            .no-print,
+            nav,
+            header,
+            footer {
+                display: none !important;
+            }
 
-    <a href="{{ route('my.bookings') }}"
-       class="btn btn-outline-dark rounded-pill px-4">
-        ← My Bookings
-    </a>
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
 
-</div>
+            .receipt {
+                max-width: 100%;
+                border: 0;
+                box-shadow: none !important;
+                border-radius: 0;
+            }
 
-</div>
+            @page {
+                size: A4;
+                margin: 12mm;
+            }
 
-
-{{-- PRINT --}}
-<style>
-@media print {
-
-    body {
-        background: #fff !important;
-    }
-
-    .navbar,
-    header,
-    footer,
-    .btn {
-        display: none !important;
-    }
-
-    .card {
-        box-shadow: none !important;
-    }
-
-    .container {
-        max-width: 100% !important;
-    }
-
-    @page {
-        size: A4;
-        margin: 10mm;
-    }
-}
-</style>
+        }
+    </style>
 
 @endsection
