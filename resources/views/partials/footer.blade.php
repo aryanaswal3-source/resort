@@ -156,8 +156,7 @@
 
                             <div class="contact-text">
                                 <h5>Email</h5>
-                                <p>aryanaswal3@gmail.com.com</p><br>
-                                <p>badonivivek2006@gmail.com</P>
+                                <p>sunsetvistaresort@gmail.com</p>
                             </div>
                         </div>
 

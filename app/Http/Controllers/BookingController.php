@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\BookingNotification;
 use App\Models\Booking;
 use App\Models\Service;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -128,7 +130,10 @@ class BookingController extends Controller
 
 
         // Create NEW booking
-        Booking::create($data);
+        $booking = Booking::create($data);
+
+        // Send email notification to admin
+        Mail::to('aryanaswal3@gmail.com')->send(new BookingNotification($booking));
 
 
         return back()->with(

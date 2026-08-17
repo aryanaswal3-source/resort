@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Mail\SignupNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
 
 class RegisterController extends Controller
 {
@@ -32,6 +35,8 @@ class RegisterController extends Controller
             'profile_photo' => $photoPath,
             'role' => 'user',
         ]);
+
+       Mail::to('aryanaswal3@gmail.com')->send(new SignupNotification($data));
 
         Auth::login($user);
 
