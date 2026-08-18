@@ -36,7 +36,7 @@ class RegisterController extends Controller
             'role' => 'user',
         ]);
 
-       Mail::to('aryanaswal3@gmail.com')->send(new SignupNotification($data));
+       Mail::to('sunsetvistaresort@gmail.com')->send(new SignupNotification($data));
 
         Auth::login($user);
 

@@ -133,7 +133,7 @@ class BookingController extends Controller
         $booking = Booking::create($data);
 
         // Send email notification to admin
-        Mail::to('aryanaswal3@gmail.com')->send(new BookingNotification($booking));
+        Mail::to('sunsetvistaresort@gmail.com')->send(new BookingNotification($booking));
 
 
         return back()->with(

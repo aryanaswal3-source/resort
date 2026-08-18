@@ -41,6 +41,7 @@ class GalleryController extends Controller
             Storage::disk('public')->delete($gallery->image_path);
         }
 
+        
         $gallery->delete();
 
         return back()->with('success', 'Image deleted successfully.');

@@ -21,7 +21,7 @@ class ContactController extends Controller
 
         ContactInfo::create($data);
 
-        Mail::to('aryanaswal3@gmail.com')->send(new ContactFormMail($data));
+        Mail::to('sunsetvistaresort@gmail.com')->send(new ContactFormMail($data));
 
         return back()->with('success', 'Message Sent Successfully!');
     }

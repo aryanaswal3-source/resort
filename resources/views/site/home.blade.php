@@ -830,6 +830,7 @@
                 const arrival = arrivalPicker.selectedDates[0];
                 const departure = departurePicker.selectedDates[0];
 
+                
                 if (!arrival || !departure) {
                     Swal.fire({
                         icon: 'warning',
