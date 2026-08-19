@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\BookingNotification;
 use App\Models\Booking;
 use App\Models\Service;
+use App\Services\EmailService;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
@@ -75,59 +75,69 @@ class BookingController extends Controller
         $data = $request->validate([
 
             'name' => 'required|string|max:255',
-
             'email' => 'required|email',
-
             'phone' => 'required|string|max:15',
-
             'service_id' => 'required|exists:services,id',
-
             'check_in_date' => 'required|date',
-
             'check_out_date' => 'required|date|after:check_in_date',
-
             'adults' => 'required|integer|min:1',
-
             'children' => 'nullable|integer|min:0',
-
             'message' => 'nullable|string',
         ]);
 
         $service = Service::findOrFail($data['service_id']);
 
-        // Calculate number of nights
         $nights = Carbon::parse($data['check_in_date'])
-            ->diffInDays(
-                Carbon::parse($data['check_out_date'])
-            );
+            ->diffInDays(Carbon::parse($data['check_out_date']));
 
-        // Price calculation
         $subtotal = $service->price * $nights;
-
         $gst = $subtotal * 0.18;
-
         $total = $subtotal + $gst;
 
-        // Automatically attach logged-in user
         $data['user_id'] = auth()->id();
-
-        // Save booking price information
         $data['price'] = $service->price;
-
         $data['gst_amount'] = $gst;
-
         $data['total_amount'] = $total;
-
-        // Default booking status
         $data['status'] = 'pending';
 
-        // Create NEW booking
         $booking = Booking::create($data);
 
-        // Send email notification to admin
-        Mail::to('sunsetvistaresort@gmail.com')->send(new BookingNotification($booking));
+        $emailService = new EmailService;
 
-        Mail::send('emails.booking-user-confirmation', ['booking' => $booking], function ($message) use ($booking) {
+        // Email to Admin
+        $adminHtml = $emailService->buildEmailHtml([
+            'headerLabel' => 'NEW BOOKING RECEIVED',
+            'paragraphs' => ['A new booking has just been made on your website.'],
+            'rows' => [
+                'Guest Name' => e($booking->name),
+                'Email' => e($booking->email),
+                'Phone' => e($booking->phone),
+                'Room' => e($booking->service->title ?? 'N/A'),
+                'Check In' => Carbon::parse($booking->check_in_date)->format('d M Y'),
+                'Check Out' => Carbon::parse($booking->check_out_date)->format('d M Y'),
+                'Guests' => $booking->adults.' Adults, '.$booking->children.' Children',
+                'Total Amount' => '₹'.number_format($booking->total_amount, 0),
+            ],
+        ]);
+
+        Mail::html($adminHtml, function ($message) {
+            $message->to(env('ADMIN_EMAIL'))->subject('New Booking Received');
+        });
+
+        // Email to User
+        $userHtml = $emailService->buildEmailHtml([
+            'greeting' => 'Hi '.$booking->name.',',
+            'paragraphs' => ["Thank you for your booking request! Here's a summary of your reservation:"],
+            'rows' => [
+                'Room' => e($booking->service->title ?? 'N/A'),
+                'Check In' => Carbon::parse($booking->check_in_date)->format('d M Y'),
+                'Check Out' => Carbon::parse($booking->check_out_date)->format('d M Y'),
+                'Total Amount' => '₹'.number_format($booking->total_amount, 0),
+            ],
+            'statusNote' => 'Your booking status is currently <strong style="color:#cc8c18;">Pending</strong>. Our team will confirm it shortly and reach out to you.',
+        ]);
+
+        Mail::html($userHtml, function ($message) use ($booking) {
             $message->to($booking->email)->subject('Booking Received - Sunset Vista Resort');
         });
 
