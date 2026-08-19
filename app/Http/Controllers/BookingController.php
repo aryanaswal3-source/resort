@@ -70,7 +70,6 @@ class BookingController extends Controller
         );
     }
 
-
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -94,16 +93,13 @@ class BookingController extends Controller
             'message' => 'nullable|string',
         ]);
 
-
         $service = Service::findOrFail($data['service_id']);
-
 
         // Calculate number of nights
         $nights = Carbon::parse($data['check_in_date'])
             ->diffInDays(
                 Carbon::parse($data['check_out_date'])
             );
-
 
         // Price calculation
         $subtotal = $service->price * $nights;
@@ -112,10 +108,8 @@ class BookingController extends Controller
 
         $total = $subtotal + $gst;
 
-
         // Automatically attach logged-in user
         $data['user_id'] = auth()->id();
-
 
         // Save booking price information
         $data['price'] = $service->price;
@@ -124,10 +118,8 @@ class BookingController extends Controller
 
         $data['total_amount'] = $total;
 
-
         // Default booking status
         $data['status'] = 'pending';
-
 
         // Create NEW booking
         $booking = Booking::create($data);
@@ -135,6 +127,9 @@ class BookingController extends Controller
         // Send email notification to admin
         Mail::to('sunsetvistaresort@gmail.com')->send(new BookingNotification($booking));
 
+        Mail::send('emails.booking-user-confirmation', ['booking' => $booking], function ($message) use ($booking) {
+            $message->to($booking->email)->subject('Booking Received - Sunset Vista Resort');
+        });
 
         return back()->with(
             'success',

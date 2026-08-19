@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\ContactInfo;
 use App\Mail\ContactFormMail;
+use App\Models\ContactInfo;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -22,6 +22,10 @@ class ContactController extends Controller
         ContactInfo::create($data);
 
         Mail::to('sunsetvistaresort@gmail.com')->send(new ContactFormMail($data));
+
+        Mail::send('emails.contact-user-confirmation', ['formData' => $data], function ($message) use ($data) {
+            $message->to($data['email'])->subject('We Received Your Message - Sunset Vista Resort');
+        });
 
         return back()->with('success', 'Message Sent Successfully!');
     }

@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Mail\SignupNotification;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-
 
 class RegisterController extends Controller
 {
@@ -36,7 +35,12 @@ class RegisterController extends Controller
             'role' => 'user',
         ]);
 
-       Mail::to('sunsetvistaresort@gmail.com')->send(new SignupNotification($data));
+        Mail::to('sunsetvistaresort@gmail.com')->send(new SignupNotification($data));
+
+        // Email to User (Welcome)
+        Mail::send('emails.welcome-email', ['userName' => $data['name']], function ($message) use ($data) {
+            $message->to($data['email'])->subject('Welcome to Sunset Vista Resort!');
+        });
 
         Auth::login($user);
 
