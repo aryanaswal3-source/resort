@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>New Contact Form Submission</title>
 </head>
+
 <body style="margin:0; padding:0; background-color:#f4f4f4; font-family: Arial, sans-serif;">
 
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f4; padding:30px 0;">
@@ -11,8 +13,9 @@
             <td align="center">
 
 
-                
-                <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff; border-radius:8px; overflow:hidden;">
+
+                <table width="600" cellpadding="0" cellspacing="0"
+                    style="background-color:#ffffff; border-radius:8px; overflow:hidden;">
 
                     <!-- Header -->
                     <tr>
@@ -36,24 +39,31 @@
 
                             <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
                                 <tr>
-                                    <td style="width:130px; color:#24416B; font-weight:bold; font-size:14px; vertical-align:top;">Name</td>
+                                    <td
+                                        style="width:130px; color:#24416B; font-weight:bold; font-size:14px; vertical-align:top;">
+                                        Name</td>
                                     <td style="color:#333; font-size:14px;">{{ $formData['name'] }}</td>
                                 </tr>
                                 <tr>
-                                    <td style="color:#24416B; font-weight:bold; font-size:14px; vertical-align:top;">Email</td>
+                                    <td style="color:#24416B; font-weight:bold; font-size:14px; vertical-align:top;">
+                                        Email</td>
                                     <td style="color:#333; font-size:14px;">{{ $formData['email'] }}</td>
                                 </tr>
                                 <tr>
-                                    <td style="color:#24416B; font-weight:bold; font-size:14px; vertical-align:top;">Phone</td>
+                                    <td style="color:#24416B; font-weight:bold; font-size:14px; vertical-align:top;">
+                                        Phone</td>
                                     <td style="color:#333; font-size:14px;">{{ $formData['phone'] }}</td>
                                 </tr>
                                 <tr>
-                                    <td style="color:#24416B; font-weight:bold; font-size:14px; vertical-align:top;">Subject</td>
+                                    <td style="color:#24416B; font-weight:bold; font-size:14px; vertical-align:top;">
+                                        Subject</td>
                                     <td style="color:#333; font-size:14px;">{{ $formData['subject'] }}</td>
                                 </tr>
                                 <tr>
-                                    <td style="color:#24416B; font-weight:bold; font-size:14px; vertical-align:top;">Message</td>
-                                    <td style="color:#333; font-size:14px; line-height:1.6;">{{ $formData['message'] }}</td>
+                                    <td style="color:#24416B; font-weight:bold; font-size:14px; vertical-align:top;">
+                                        Message</td>
+                                    <td style="color:#333; font-size:14px; line-height:1.6;">{{ $formData['message'] }}
+                                    </td>
                                 </tr>
                             </table>
 
@@ -76,4 +86,5 @@
     </table>
 
 </body>
+
 </html>

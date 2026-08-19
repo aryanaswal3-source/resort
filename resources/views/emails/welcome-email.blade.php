@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>Welcome to Sunset Vista Resort</title>
 </head>
+
 <body style="margin:0; padding:0; background-color:#f4f4f4; font-family: Arial, sans-serif;">
 
     <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f4; padding:30px 0;">
         <tr>
             <td align="center">
 
-                <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff; border-radius:8px; overflow:hidden;">
+                <table width="600" cellpadding="0" cellspacing="0"
+                    style="background-color:#ffffff; border-radius:8px; overflow:hidden;">
 
                     <!-- Header -->
                     <tr>
@@ -33,15 +36,18 @@
                             </h2>
 
                             <p style="color:#555; font-size:15px; line-height:1.7;">
-                                Thank you for creating an account with Sunset Vista Resort. We're thrilled to have you join us!
+                                Thank you for creating an account with Sunset Vista Resort. We're thrilled to have you
+                                join us!
                             </p>
 
                             <p style="color:#555; font-size:15px; line-height:1.7;">
-                                You can now browse our rooms, explore our services, and book your perfect getaway with just a few clicks.
+                                You can now browse our rooms, explore our services, and book your perfect getaway with
+                                just a few clicks.
                             </p>
 
                             <div style="text-align:center; margin:35px 0;">
-                                <a href="{{ url('/') }}" style="background-color:#cc8c18; color:#ffffff; text-decoration:none; padding:14px 32px; border-radius:50px; font-weight:bold; font-size:14px; display:inline-block;">
+                                <a href="{{ url('/') }}"
+                                    style="background-color:#cc8c18; color:#ffffff; text-decoration:none; padding:14px 32px; border-radius:50px; font-weight:bold; font-size:14px; display:inline-block;">
                                     Explore Our Resort
                                 </a>
                             </div>
@@ -69,4 +75,5 @@
     </table>
 
 </body>
+
 </html>
