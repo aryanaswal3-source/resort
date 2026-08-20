@@ -106,9 +106,14 @@
                 <li class="nav-item">
                     <a href="{{ url('/contact') }}" class="nav-link">Contact Us</a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{ route('my.bookings') }}" class="nav-link">My Bookings</a>
-                </li>
+                
+                @auth
+                    @if (auth()->user()->role !== 'admin')
+                        <li class="nav-item">
+                            <a href="{{ route('my.bookings') }}" class="nav-link">My Bookings</a>
+                        </li>
+                    @endif
+                @endauth
             </ul>
 
             @guest
