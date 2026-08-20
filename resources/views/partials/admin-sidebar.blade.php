@@ -17,19 +17,7 @@
                 </a>
             </li>
 
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-folder-plus"></i>
-                    <span>Add Categories</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    <i class="fa-solid fa-list"></i>
-                    <span> List</span>
-                </a>
-            </li>
+        
 
             <li class="nav-item">
                 <a href="{{ route('admin.services.index') }}"
@@ -38,33 +26,7 @@
                     <span>Services</span>
                 </a>
             </li>
-            {{-- <li>
-                <a href="#">
-                    <i class="fa-solid fa-bowl-food"></i>
-                    <span>Item List</span>
-                </a>
-            </li> --}}
-
-            {{-- <li>
-                <a href="#">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>Order List</span>
-                </a>
-            </li> --}}
-
-            {{-- <li>
-                <a href="#">
-                    <i class="fa-solid fa-boxes-stacked"></i>
-                    <span>Add Bulk Products</span>
-                </a>
-            </li> --}}
-
-            {{-- <li>
-                <a href="#">
-                    <i class="fa-solid fa-box-open"></i>
-                    <span>Bulk Product List</span>
-                </a>
-            </li> --}}
+     
 
             <li>
                 <a href="{{ route('admin.users') }}" class="{{ request()->routeIs('admin.users*') ? 'active' : '' }}">
@@ -99,11 +61,11 @@
                 </a>
             </li>
 
-            <li>
+            {{-- <li>
                 <a href="#">
                     <i class="fa-solid fa-gear"></i>
                     <span>Settings</span>
-                </a>
+                </a> --}}
             </li>
         </ul>
     </div>
