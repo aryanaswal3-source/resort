@@ -10,6 +10,9 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MyBookingController;
 use App\Http\Controllers\RegisterController;
+
+
+
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteGalleryController;
 use App\Http\Controllers\TravelQueryController;
@@ -86,7 +89,9 @@ Route::get('/booking', [BookingController::class, 'create'])
     ->name('booking.create');
 
 Route::post('/booking', [BookingController::class, 'store'])->middleware('auth.booking')
-    ->name('booking.store');
+    
+
+->name('booking.store');
 
 // Travel Query
 Route::get('/query-form', [TravelQueryController::class, 'create'])
