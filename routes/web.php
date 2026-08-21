@@ -10,9 +10,6 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MyBookingController;
 use App\Http\Controllers\RegisterController;
-
-
-
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteGalleryController;
 use App\Http\Controllers\TravelQueryController;
@@ -89,9 +86,7 @@ Route::get('/booking', [BookingController::class, 'create'])
     ->name('booking.create');
 
 Route::post('/booking', [BookingController::class, 'store'])->middleware('auth.booking')
-    
-
-->name('booking.store');
+    ->name('booking.store');
 
 // Travel Query
 Route::get('/query-form', [TravelQueryController::class, 'create'])
@@ -135,6 +130,8 @@ Route::prefix('admin')
 
         Route::get('/profile', [AdminProfileController::class, 'index'])
             ->name('profile');
+        Route::post('/password/update', [AdminProfileController::class, 'updatePassword'])
+            ->name('password.update');
 
         /*
         |--------------------------------------------------------------------------
@@ -219,7 +216,7 @@ Route::middleware('auth')->group(function () {
     // Single booking details
     Route::get('/my-bookings/{id}', [MyBookingController::class, 'show'])
         ->name('my.booking.show');
-        
+
     Route::get('/my-bookings/receipt/download', [MyBookingController::class, 'downloadReceipt'])
         ->name('my.booking.receipt.download');
 });
