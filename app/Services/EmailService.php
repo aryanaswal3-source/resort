@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+
 class EmailService
 {
     public function buildEmailHtml(array $options): string

@@ -7,12 +7,10 @@ use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MyBookingController;
 use App\Http\Controllers\RegisterController;
-
-
-
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SiteGalleryController;
 use App\Http\Controllers\TravelQueryController;
@@ -66,6 +64,11 @@ Route::post('/logout', [LoginController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
+//forgot password 
+Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLink'])->name('password.email');
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [ForgotPasswordController::class, 'reset'])->name('password.update');
+
 // Contact
 Route::get('/contact', function () {
 
@@ -89,9 +92,7 @@ Route::get('/booking', [BookingController::class, 'create'])
     ->name('booking.create');
 
 Route::post('/booking', [BookingController::class, 'store'])->middleware('auth.booking')
-    
-
-->name('booking.store');
+    ->name('booking.store');
 
 // Travel Query
 Route::get('/query-form', [TravelQueryController::class, 'create'])
@@ -219,7 +220,7 @@ Route::middleware('auth')->group(function () {
     // Single booking details
     Route::get('/my-bookings/{id}', [MyBookingController::class, 'show'])
         ->name('my.booking.show');
-        
+
     Route::get('/my-bookings/receipt/download', [MyBookingController::class, 'downloadReceipt'])
         ->name('my.booking.receipt.download');
 });

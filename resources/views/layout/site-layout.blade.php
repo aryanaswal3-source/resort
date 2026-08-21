@@ -144,6 +144,8 @@
 
     @include('partials.signup-modal')
 
+    @include('partials.forgot-password-modal')
+
 
     @stack('scripts')
 
@@ -156,34 +158,53 @@
 
     @stack('scripts')
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const signInModalEl = document.getElementById('signInModal');
-            const signUpModalEl = document.getElementById('signUpModal');
-            const signInModal = new bootstrap.Modal(signInModalEl);
-            const signUpModal = new bootstrap.Modal(signUpModalEl);
+   <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const signInModalEl = document.getElementById('signInModal');
+    const signUpModalEl = document.getElementById('signUpModal');
+    const forgotPasswordModalEl = document.getElementById('forgotPasswordModal');
 
-            document.getElementById('goToSignUp')?.addEventListener('click', function(e) {
-                e.preventDefault();
-                signInModal.hide();
-                setTimeout(() => signUpModal.show(), 300);
-            });
+    const signInModal = new bootstrap.Modal(signInModalEl);
+    const signUpModal = new bootstrap.Modal(signUpModalEl);
+    const forgotPasswordModal = new bootstrap.Modal(forgotPasswordModalEl);
 
-            document.getElementById('backToSignIn')?.addEventListener('click', function(e) {
-                e.preventDefault();
-                signUpModal.hide();
-                setTimeout(() => signInModal.show(), 300);
-            });
+    document.getElementById('goToSignUp')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        signInModal.hide();
+        setTimeout(() => signUpModal.show(), 300);
+    });
 
-            @if (session('form') === 'register' && $errors->any())
-                signUpModal.show();
-            @endif
+    document.getElementById('backToSignIn')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        signUpModal.hide();
+        setTimeout(() => signInModal.show(), 300);
+    });
 
-            @if (session('show_login'))
-                signInModal.show();
-            @endif
-        });
-    </script>
+    document.getElementById('goToForgotPassword')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        signInModal.hide();
+        setTimeout(() => forgotPasswordModal.show(), 300);
+    });
+
+    document.getElementById('backToSignInFromForgot')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        forgotPasswordModal.hide();
+        setTimeout(() => signInModal.show(), 300);
+    });
+
+    @if (session('form') === 'register' && $errors->any())
+        signUpModal.show();
+    @endif
+
+    @if (session('show_login'))
+        signInModal.show();
+    @endif
+
+    @if (session('form') === 'forgot_password')
+        forgotPasswordModal.show();
+    @endif
+});
+</script>
 </body>
 
 </html>
