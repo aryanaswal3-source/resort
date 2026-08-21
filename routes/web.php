@@ -136,6 +136,8 @@ Route::prefix('admin')
 
         Route::get('/profile', [AdminProfileController::class, 'index'])
             ->name('profile');
+        Route::post('/password/update', [AdminProfileController::class, 'updatePassword'])
+            ->name('password.update');
 
         /*
         |--------------------------------------------------------------------------
