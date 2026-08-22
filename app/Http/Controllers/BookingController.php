@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\Service;
+use App\Models\User;
 use App\Services\EmailService;
+use App\Notifications\NewBookingNotification;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
@@ -140,6 +142,11 @@ class BookingController extends Controller
         Mail::html($userHtml, function ($message) use ($booking) {
             $message->to($booking->email)->subject('Booking Received - Sunset Vista Resort');
         });
+
+        $admins = User::where('role', 'admin')->get();
+        foreach ($admins as $admin) {
+            $admin->notify(new NewBookingNotification($booking));
+        }
 
         return back()->with(
             'success',

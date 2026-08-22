@@ -17,7 +17,7 @@
                 </a>
             </li>
 
-        
+
 
             <li class="nav-item">
                 <a href="{{ route('admin.services.index') }}"
@@ -26,7 +26,7 @@
                     <span>Services</span>
                 </a>
             </li>
-     
+
 
             <li>
                 <a href="{{ route('admin.users') }}" class="{{ request()->routeIs('admin.users*') ? 'active' : '' }}">
@@ -43,6 +43,12 @@
                     class="{{ request()->routeIs('admin.bookings.*') ? 'active' : '' }}">
                     <i class="fa-solid fa-calendar"></i>
                     <span>Bookings</span>
+                    @php
+                        $unreadCount = auth()->user()->unreadNotifications->count();
+                    @endphp
+                    @if ($unreadCount > 0)
+                        <span class="badge bg-danger rounded-pill ms-auto">{{ $unreadCount }}</span>
+                    @endif
                 </a>
             </li>
             <li>

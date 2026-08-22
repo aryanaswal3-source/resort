@@ -10,6 +10,8 @@ class BookingController extends Controller
 {
     public function index(Request $request)
     {
+         auth()->user()->unreadNotifications->markAsRead();
+
         $query = Booking::with('service')->orderBy('created_at', 'desc');
 
         if ($request->filled('search')) {
