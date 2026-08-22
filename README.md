@@ -1,11 +1,6 @@
 # Resort Management System
-
 <p align="center">
-  <img src="assets/resort-management-logo.png" alt="Resort Management System Logo" width="280">
-</p>
-
-<p align="center">
-  <img src="assets/sunset-vista-resort-banner.png" alt="Sunset Vista Resort Banner" width="100%">
+  <img src="image/logo3.jpg" alt="Sunset Vista Resort Banner" width="100%">
 </p>
 
 A modern and user-friendly **Resort Management System** built using the Laravel framework. This project allows users to explore resort services, view rooms, make bookings, and manage reservations through an admin panel.
