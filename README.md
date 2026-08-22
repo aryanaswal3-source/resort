@@ -149,9 +149,7 @@ This project was developed as a team project.
 
 **Contributors:**
 
-* Aryan Aswal
-* Dev
-* Vivek
+* Aryan Aswal & Vivek Badoni
 
 ## 📄 License
 
